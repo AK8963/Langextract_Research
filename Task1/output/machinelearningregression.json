@@ -1,0 +1,79 @@
+[
+    {
+        "chunk_id1": {
+            "Main Heading 1": "Machine Learning -Regression .....",
+            "Main Heading 2": "Contents ....."
+        },
+        "Text": "Machine Learning -Regression\nThesis · January 2022\nDOI: 10.13140/RG.2.2.35768.67842\nCITATIONS\n\nREADS\n10,895\n2 authors:\nHaidara Saleh\nHigher Institute for Applied Sciences and Technology\n1 PUBLICATION   2 CITATIONS   \nSEE PROFILE\nJamil Antone Layous\nHigher Institute for Applied Sciences and Technology\n10 PUBLICATIONS   2 CITATIONS   \nSEE PROFILE\nAll content following this page was uploaded by Jamil Antone Layous on 21 January 2022.\nThe user has requested enhancement of the downloaded file.\n\nSyrian Arab Republic \nHigher Institute for Applied Sciences and Technology \nDepartment of Electronic and Mechanical Systems \nMechatronics Engineering - fourth year \n \n \n \n \n \nMachine Learning – Regression  \n \n \n \n \n \nBy: \nHaidara SALEH \n \n \nScientific Supervisor: \nM.Sc. Jamil LAYOUS \nOrganizer Supervisor:      Dr. Adel ALKAFRI \nLinguistic Supervisor:     Mr. Fahmi ALAMMAREEN \n \n \nDamascus 2021-2022\nContents"
+    },
+    {
+        "chunk_id2": {
+            "Parent Heading": "1 Introduction to Machine learning: what and why? .....",
+            "Main Heading 1": "1.1 SUPERVISED MACHINE LEARNING .....",
+            "Main Heading 2": "1.2 Unsupervised Machine learning ....."
+        },
+        "Text": "1 Introduction to Machine learning: what and why?\n1.1 SUPERVISED MACHINE LEARNING\n1.2 Unsupervised Machine learning"
+    },
+    {
+        "chunk_id3": {
+            "Parent Heading": "1 Introduction to Machine learning: what and why? .....",
+            "Main Heading 1": "2 Data Splitting .....",
+            "2 Data Splitting Details": {
+                "Sub Heading 1": "2.1 Leave-One-Out Bootstrap .....",
+                "Sub Heading 2": "2.2 K-fold cross-validation .....",
+                "Sub Heading 3": "2.3 Kennard‑Stone Sampling ....."
+            }
+        },
+        "Text": "2 Data Splitting\n2.1 Leave-One-Out Bootstrap\n2.2 K-fold cross-validation\n2.3 Kennard‑Stone Sampling"
+    },
+    {
+        "chunk_id4": {
+            "Parent Heading": "1 Introduction to Machine learning: what and why? .....",
+            "Main Heading 1": "3 Regression Methods .....",
+            "3 Regression Methods Details": {
+                "Sub Heading 1": "3.1 Linear regression .....",
+                "Sub Heading 2": "3.1.1 Simple Linear regression .....",
+                "Sub Heading 3": "3.1.2 Multiple Linear regression .....",
+                "Sub Heading 4": "3.2 Polynomial Regression .....",
+                "Sub Heading 5": "3.3 Regularization .....",
+                "Sub Heading 6": "3.3.1 Ridge .....",
+                "Sub Heading 7": "3.3.2 Lasso .....",
+                "Sub Heading 8": "3.3.3 ElasticNet ....."
+            }
+        },
+        "Text": "3 Regression Methods\n3.1 Linear regression\n3.1.1 Simple Linear regression\n3.1.2 Multiple Linear regression\n3.2 Polynomial Regression\n3.3 Regularization\n3.3.1 Ridge\n3.3.2 Lasso\n3.3.3 ElasticNet"
+    },
+    {
+        "chunk_id5": {
+            "Parent Heading": "1 Introduction to Machine learning: what and why? .....",
+            "Main Heading 1": "4 Regression Application in House Price Prediction ....."
+        },
+        "Text": "4 Regression Application in House Price Prediction"
+    },
+    {
+        "chunk_id6": {
+            "Parent Heading": "Conclusion ....."
+        },
+        "Text": "Conclusion"
+    },
+    {
+        "chunk_id7": {
+            "Parent Heading": "References ....."
+        },
+        "Text": "References\n2 \n \nList of figures \n \nFigure 1: Example of clustering with a bidimensional dataset split into four natural clusters  Figure 2: Example of association learning Figure 3: Illustration of the k-fold cross-validation procedure  Figure 4: Illustration of how Samples are selected using the Kennard-Stone algorithm  Figure 5: Illustration of Moore's law over time  Figure 6: Linear Regression for one-dimensional examples  Figure 7: Illustration of the linear model with the data set  Figure 8: Illustration of the first one thousand samples used in the model  3"
+    },
+    {
+        "chunk_id8": {
+            "Parent Heading": "Acknowledgments ....."
+        },
+        "Text": "Acknowledgments\nI thank M.Sc. Jamil LAYOUS for his guidance through each stage of the process \n… \nI thank Mr. Fahmi ALAMAREEN for his hard work in thoroughly reading and \ncorrecting this research linguistically ... \nI thank Dr. Adel ALKAFRI for his notes and technical advice ..."
+    },
+    {
+        "chunk_id9": {
+            "Parent Heading": "Abstract .....",
+            "Main Heading 1": "3.1.2.1 Problem Statement .....",
+            "Main Heading 2": "3.1.2.2 Solution ....."
+        },
+        "Text": "Abstract\nThe goal of a regression model is to build a mathematical equation that defines y \n(the outcome variable) as a function of one or multiple predictor variables (x). \nNext, this equation can be used to predict the outcome (y) based on new values of \nthe predictor variables (x). This research tackles the main concepts considering \nRegression analysis as a statistical process consisting of a set of machine learning \nmethods including data splitting and regularization, we start by introducing the \nmeaning of supervised and unsupervised learning and then we develop motivation \nfor algorithms used in data splitting. Regression methods are then discussed with \nfair length focusing on linear regression. We conclude the research with an \napplication of a real-life regression problem. \n\n1 Introduction to Machine learning: what and why? \n \nMachine learning is one of today’s most rapidly growing technical fields and \none of the fastest-growing areas of computer science, with far-reaching \napplications.  It’s the field of study that gives computer algorithms the ability to \nlearn without being explicitly programmed. \nIt Lies at the intersection of computer science and statistics, and at the core of \nartificial intelligence. it addresses the question of how to build computers that \nimprove automatically through experience. \nMachine learning is usually divided into two main types depending on the \npredictive or supervised learning approach, and the descriptive or unsupervised \nlearning approach. \n \n1.1 SUPERVISED MACHINE LEARNING \nSupervised learning is the major practical machine learning used nowadays. \nA supervised scenario can be described by the concept of a teacher or supervisor \nwhose main task is to provide the agent with a precise measure of its error (directly \ncomparable with output values). Starting from this information, the agent can \ncorrect its parameters so as to reduce the magnitude of a global loss function after \neach iteration, in other words, it is where yo\n3.1.2.1 Problem Statement\nWe have a collection of labeled examples {(xi, yi)}i=1N, where N is the size of \nthe collection, xi is the D-dimensional feature vector of example i = 1, . . . ,N, yi is \na real valued target and every feature xi , j = 1, . . . , D, is also a real number. \n  \nWe want to build a model fw,b(x) as a linear combination of features of example x: \nfw,b(x) = wx + b  \n  (5) \nwhere w is a D-dimensional vector of parameters and b is a real number. The \nnotation fw,b means that the model  f  is parametrized by two values: w and b. \nWe will use the model to predict the unknown y for a given x.  Two models \nparametrized by two different pairs (w, b) will likely produce two different \npredictions when applied to the same example. We want to find the optimal values \n(w∗, b∗). The optimal values of parameters define the model that makes the most \naccurate predictions. \nThe hyperplane in linear regression is chosen to be as close to all training examples \nas possible. We can see why this latter requirement is essential by looking at the \nillustration in Figure 6, It displays the regression line (in red) for one-dimensional \nexamples (blue dots). We can use this line to predict the value of the target ynew for \na new unlabeled input example xnew. If our examples are D-dimensional feature \nvectors (for D > 1), the only difference with the one-dimensional case is that the \nregression model is not a line but a plane (for two dimensions) or a hyperplane (for \nD > 2). \n\nFigure 6: Linear Regression for one-dimensional examples\n3.1.2.2 Solution\nTo get this latter requirement satisfied, the optimization procedure which we \nuse to find the optimal values for w∗ and b∗ tries to minimize the following \nexpression: \n\n𝑁∑[ 𝑓𝑤, 𝑏(𝑥𝑖) −𝑦𝑖 ]2\n𝑁\n𝑖=1\n                       (6) \n \nIn mathematics [13], the expression we minimize or maximize is called an \nobjective function, or, simply, an objective. The expression (fw,b(xi) - yi)2 in the \nabove objective is called the loss function. It’s a measure of penalty for \nmisclassification of example i. This particular choice of the loss function is called \nsquared error loss. All model-based learning algorithms have a loss function and \nwhat we do to find the best model trying to minimize the objective known as the \ncost function. In linear regression, the cost function is given by the average loss, \n\nalso called the empirical risk. The average loss, or empirical risk, for a model, is \nthe average of all penalties obtained by applying the model to the training data. \n \n3.2 Polynomial Regression \n \nPolynomial regression is a technique based on a trick that allows the use of \nlinear models even when the dataset has strong non-linearities. The idea is to \nadd some extra variables computed from the existing ones and using (in this \ncase) only polynomial combinations: \n \n𝑦̃𝑘= 𝛼0 + ∑\n𝛼𝑖𝑥̅𝑘\n(𝑖) + ∑\n𝛼𝑗𝑓𝑝𝑗 (𝑥̅𝑘\n(1), 𝑥̅𝑘\n(2), … , 𝑥̅𝑘\n(𝑚))\n𝑘\n𝑗=𝑚+1\n𝑚\n𝑖=1\n      (7) \n \nIn the previous expression, every fPj(•) is a polynomial function of a single \nfeature. For example, with two variables, it's possible to extend to a second-degree \nproblem by transforming the initial vector (whose dimension is equal \nto m) into another one with higher dimensionality (whose dimension is k > m): \n \n𝑥̅ = (𝑥1, 𝑥2) → 𝑥̅𝑡= (𝑥1, 𝑥2, 𝑥1\n2, 𝑥2\n2, 𝑥1𝑥2)            (8) \n \n3.3 Regularization \n \nRegularization is an umbrella-term that encompasses methods that force the \nlearning algorithm to build a less complex model. In practice, that often leads to \nslightly higher bias but significantly reduces the variance. This"
+    }
+]
