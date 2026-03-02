@@ -32,6 +32,3 @@ Thumbs.db
 .env
 .env.*
 
-# Project outputs and data
-output/
-data/
