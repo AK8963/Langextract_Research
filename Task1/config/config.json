@@ -1,20 +1,22 @@
 {
     "model": {
-        "model_id": "gemma2:9b",
+        "model_id": "gemma2:27b",
         "timeout": 1200,
         "max_retries": 3,
         "retry_delay": 3
     },
+    "pdf_source": "data/book.pdf",
     "output": {
-        "output_file": "output/sales_report_gemma13.json"
+        "markdown_path": "data/Markdowns/sales_analysis_report.md",
+        "output_file": "output/md_json_outputs/sales_analysis_report4.json"
     },
     "text_splitter": {
         "chunk_size": 2500,
-        "chunk_overlap": 500
+        "chunk_overlap": 0
     },
     "settings": {
-        "verbose": true,
-        "use_fallback_regex": true,
+        "verbose": false,
+        "use_fallback_regex": false,
         "max_heading_length": 100
     },
     "heading_detection": {

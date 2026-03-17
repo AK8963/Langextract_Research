@@ -17,6 +17,7 @@ TIMEOUT = config['model']['timeout']
 MAX_RETRIES = config['model']['max_retries']
 RETRY_DELAY = config['model']['retry_delay']
 
+MARKDOWN_PATH = config['output']['markdown_path']
 OUTPUT_FILE = config['output']['output_file']
 
 TEXT_SPLITTER_CHUNK_SIZE = config['text_splitter']['chunk_size']
