@@ -222,28 +222,7 @@ Task1/
            │
            ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 5: Validation & Deduplication  [extraction/extractor.py]   │
-│  ────────────────────────────────────────────────────────────    │
-│  • validate_and_deduplicate_headings()                           │
-│  • Filter false positives (figures, tables, body text)           │
-│  • Verify heading exists in source text (fuzzy matching)         │
-│  • Remove duplicates with normalized comparison                  │
-│  • Re-assign heading levels using consistent rules               │
-└──────────────────────────────────────────────────────────────────┘
-           │
-           ▼
-┌──────────────────────────────────────────────────────────────────┐
-│  STEP 6: Section Text Extraction  [extraction/extractor.py]      │
-│  ────────────────────────────────────────────────────────        │
-│  • extract_sections_with_text()                                  │
-│  • Find precise position of each heading in Markdown text        │
-│  • Extract text span from heading to next heading                │
-│  • Cap section size to prevent oversized blocks                  │
-└──────────────────────────────────────────────────────────────────┘
-           │
-           ▼
-┌──────────────────────────────────────────────────────────────────┐
-│  STEP 7: Output Generation                                       │
+│  STEP 5: Output Generation                                       │
 │  ─────────────────────────                                       │
 │  • JSON written to output/md_json_outputs/                       │
 │  • Excel metrics report written to output/metrics_results/       │
