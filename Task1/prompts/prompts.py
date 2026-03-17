@@ -4,100 +4,130 @@ import langextract as lx
 
 # Main extraction prompt
 EXTRACTION_PROMPT = textwrap.dedent("""
-TASK: Extract ONLY true structural headings that appear EXACTLY in this document text.
- 
-CRITICAL RULES:
-1. ONLY extract headings that appear VERBATIM in the text - do NOT invent or hallucinate headings
-2. Extract the EXACT text as it appears - do not paraphrase or modify
-3. If unsure whether something is a heading, DO NOT extract it
- 
-WHAT IS A HEADING:
-- Document/Report titles (first major title)
-- Chapter titles ("Chapter 1", "Part I")
-- Numbered sections: "1 Introduction", "2 Methods", "3. Results"
-- Numbered subsections: "1.1 Background", "2.1 Data", "3.1.1 Analysis"
-- Named standalone sections: "Abstract", "Conclusion", "References"
- 
-WHAT IS NOT A HEADING (DO NOT EXTRACT):
-- Figure captions: "Figure 1:", "Fig. 2 shows..."
-- Table captions: "Table 1:", "Table 2 displays..."
-- Body text sentences or paragraphs
-- Bullet points or list items
-- Equations or formulas
-- Page numbers: "Page 1", "1", "Page 2 of 10"
-- Metadata: "DOI", "ISBN", "Thesis", "CITATIONS"
-- Author names or affiliations
-- Code snippets
- 
-HEADING LEVELS:
-Level 1 → Document title, Chapter ("Machine Learning", "Chapter 3")
-Level 2 → Major section ("1 Introduction", "2 Methods", "Conclusion")
-Level 3 → Subsection ("1.1 Background", "2.1 Data Collection")
-Level 4 → Sub-subsection ("1.1.1 History", "2.1.1 Sources")
- 
-ONLY return headings you are CERTAIN exist in the text.
+TASK: Extract ONLY true structural headings from this markdown document text. You will be given a chunk
+of the document. Extract only headings that are present verbatim as lines in this chunk.
+
+CRITICAL RULES (reduce false positives):
+1. ONLY extract headings that appear VERBATIM as their own line in the chunk—do NOT invent or hallucinate headings.
+2. Return the exact heading text as it appears (but strip leading `#` characters and surrounding `**` bold markers).
+3. If a heading line begins with `#` characters, the level is equal to the number of `#` characters.
+4. If the line is a numbered heading (e.g., "1.", "1.1"), set the level by numbering only when no `#` is present.
+5. DO NOT extract table rows, bullet items, code, captions, or inline sentences—only standalone heading lines.
+6. If unsure, do not extract.
+
+MARKDOWN RULES:
+- `# Title` → level 1
+- `## Section` → level 2
+- `### Subsection` → level 3
+- `#### Sub-subsection` → level 4
+- `##### Deep section` → level 5
+
+OUTPUT FORMAT:
+- Return a JSON array (no surrounding text) where each item is an object with keys: `text` (string), `level` (integer).
+- `text` must be the heading as it appears in the document line, with any leading `#` and surrounding `**` removed.
+- `level` must reflect the number of `#` if present; otherwise a sensible numeric level based on numbering.
+- `confidence` (optional): a float between 0 and 1 indicating how confident you are that this is a true heading in the provided chunk. If included, higher values indicate higher confidence.
+
+EXTRA EXAMPLE (few-shot):
+Chunk input:
+'''
+# **Sales Analysis Report**
+
+### **Executive Summary**
+
+Some paragraph.
+
+## Methodology
+'''
+
+Desired JSON output (exact):
+[ {"text": "Sales Analysis Report", "level": 1, "confidence": 0.98},
+  {"text": "Executive Summary", "level": 3, "confidence": 0.95},
+  {"text": "Methodology", "level": 2, "confidence": 0.96} ]
+
+ONLY return headings you are CERTAIN are markdown heading lines in the chunk.
 """)
 
 
 # Example extractions for few-shot learning
 EXTRACTION_EXAMPLES = [
-    # Example 1: Academic paper with numbered sections
+    # Example 1: Markdown report with mixed heading levels
     lx.data.ExampleData(
-        text="""Machine Learning Methods
- 
-1 Introduction
-Machine learning is a rapidly growing field.
-Figure 1: Overview of ML types
-Table 1: Comparison of algorithms
- 
-1.1 Background
-The history of ML dates back to...
- 
-2 Methods
-2.1 Data Collection
-We collected data from...
- 
-Conclusion
-In summary, this paper presented...
- 
-References
-[1] Author et al.""",
+        text="""# **Sales Analysis Report**
+
+### **Executive Summary**
+
+This report covers two months of sales data with key trends.
+
+## **Methodology**
+
+- Data extraction using SQL and Python
+- Tableau visualization for reporting
+
+## **Key Findings**
+
+### **Sales Performance**
+
+- Overall revenue growth of 15%
+- Top 3 products contribute 65% of revenue
+
+### **Customer Behavior**
+
+- Average transaction value increased by 12%
+
+| Month | Revenue |
+|-------|---------|
+| Jan   | $308,000 |
+| Feb   | $354,200 |
+""",
         extractions=[
-            lx.data.Extraction(extraction_class="heading", extraction_text="Machine Learning Methods", attributes={"level": 1}),
-            lx.data.Extraction(extraction_class="heading", extraction_text="1 Introduction", attributes={"level": 2}),
-            lx.data.Extraction(extraction_class="heading", extraction_text="1.1 Background", attributes={"level": 3}),
-            lx.data.Extraction(extraction_class="heading", extraction_text="2 Methods", attributes={"level": 2}),
-            lx.data.Extraction(extraction_class="heading", extraction_text="2.1 Data Collection", attributes={"level": 3}),
-            lx.data.Extraction(extraction_class="heading", extraction_text="Conclusion", attributes={"level": 2}),
-            lx.data.Extraction(extraction_class="heading", extraction_text="References", attributes={"level": 2}),
+            lx.data.Extraction(extraction_class="heading", extraction_text="Sales Analysis Report", attributes={"level": 1, "confidence": 0.98}),
+            lx.data.Extraction(extraction_class="heading", extraction_text="Executive Summary", attributes={"level": 3, "confidence": 0.95}),
+            lx.data.Extraction(extraction_class="heading", extraction_text="Methodology", attributes={"level": 2, "confidence": 0.96}),
+            lx.data.Extraction(extraction_class="heading", extraction_text="Key Findings", attributes={"level": 2, "confidence": 0.93}),
+            lx.data.Extraction(extraction_class="heading", extraction_text="Sales Performance", attributes={"level": 3, "confidence": 0.92}),
+            lx.data.Extraction(extraction_class="heading", extraction_text="Customer Behavior", attributes={"level": 3, "confidence": 0.92}),
         ],
     ),
-    # Example 2: Technical document with subsections
+    # Example 2: Markdown with deep nesting and code blocks
     lx.data.ExampleData(
-        text="""3 Regression Methods
- 
-3.1 Linear Regression
-Linear regression is a popular technique...
-Figure 5: Illustration of linear fit
- 
-3.1.1 Simple Linear Regression
-The basic model is Y = b0 + b1*X + e
- 
-3.1.2 Multiple Linear Regression
-Most applications use more than one regressor.
- 
-3.2 Polynomial Regression
-Polynomial regression extends linear models.
- 
-4 Application
-We applied these methods to real data.""",
+        text="""## **1. Data Collection & Preparation**
+
+#### **1.1 Data Sources**
+
+```sql
+SELECT date, product_id, sales_amount
+FROM sales_transactions
+WHERE date BETWEEN '2024-01-01' AND '2024-02-29'
+```
+
+#### **1.2 Data Cleaning (Python)**
+
+```python
+import pandas as pd
+def clean_sales_data(df):
+    df = df.drop_duplicates()
+    return df
+```
+
+## **2. Analysis Process**
+
+##### **2.1 Excel Analysis**
+
+- Created pivot tables for initial data exploration
+- Developed automated reports
+
+##### **2.2 Python Analysis**
+
+- Customer segmentation applied
+""",
         extractions=[
-            lx.data.Extraction(extraction_class="heading", extraction_text="3 Regression Methods", attributes={"level": 2}),
-            lx.data.Extraction(extraction_class="heading", extraction_text="3.1 Linear Regression", attributes={"level": 3}),
-            lx.data.Extraction(extraction_class="heading", extraction_text="3.1.1 Simple Linear Regression", attributes={"level": 4}),
-            lx.data.Extraction(extraction_class="heading", extraction_text="3.1.2 Multiple Linear Regression", attributes={"level": 4}),
-            lx.data.Extraction(extraction_class="heading", extraction_text="3.2 Polynomial Regression", attributes={"level": 3}),
-            lx.data.Extraction(extraction_class="heading", extraction_text="4 Application", attributes={"level": 2}),
+            lx.data.Extraction(extraction_class="heading", extraction_text="1. Data Collection & Preparation", attributes={"level": 2, "confidence": 0.97}),
+            lx.data.Extraction(extraction_class="heading", extraction_text="1.1 Data Sources", attributes={"level": 4, "confidence": 0.95}),
+            lx.data.Extraction(extraction_class="heading", extraction_text="1.2 Data Cleaning (Python)", attributes={"level": 4, "confidence": 0.94}),
+            lx.data.Extraction(extraction_class="heading", extraction_text="2. Analysis Process", attributes={"level": 2, "confidence": 0.96}),
+            lx.data.Extraction(extraction_class="heading", extraction_text="2.1 Excel Analysis", attributes={"level": 5, "confidence": 0.92}),
+            lx.data.Extraction(extraction_class="heading", extraction_text="2.2 Python Analysis", attributes={"level": 5, "confidence": 0.92}),
         ],
     ),
 ]
