@@ -1,6 +1,6 @@
-# LangExtract PDF Heading Extraction Pipeline
+# LangExtract Markdown Heading Extraction Pipeline
 
-A modular Python pipeline for extracting hierarchical headings from PDF documents using LLM-based extraction with LangExtract and intelligent fallback mechanisms.
+A modular Python pipeline for extracting hierarchical headings from documents using LLM-based extraction with LangExtract. The pipeline converts PDFs to Markdown first, then extracts structured headings and outputs JSON chunks alongside Excel metrics reports.
 
 ---
 
@@ -13,62 +13,83 @@ A modular Python pipeline for extracting hierarchical headings from PDF document
 5. [Configuration](#configuration)
 6. [Usage](#usage)
 7. [Output Format](#output-format)
+8. [Dependencies](#dependencies)
+9. [Metrics](#metrics)
 
 ---
 
 ## Project Overview
 
-This project extracts structural headings from PDF documents and organizes them into hierarchical JSON chunks suitable for RAG (Retrieval-Augmented Generation) applications. It uses:
+This project extracts structural headings from documents and organizes them into hierarchical JSON chunks suitable for RAG (Retrieval-Augmented Generation) applications. The two-stage pipeline:
 
-- **PyMuPDF (fitz)**: For PDF text extraction
-- **LangExtract**: For LLM-based heading extraction using few-shot prompting
-- **LangChain Text Splitters**: For intelligent text chunking
-- **Regex Fallback**: For robust extraction when LLM fails
+1. **PDF → Markdown**: Uses an Ollama-hosted LLM to convert PDFs into clean Markdown text
+2. **Markdown → JSON + Excel**: Extracts headings from Markdown, builds hierarchical JSON chunks, and generates an Excel metrics report
+
+Key technologies:
+- **LangExtract**: LLM-based heading extraction using few-shot prompting
+- **Ollama**: Local LLM runtime (default model: `gemma2:9b`)
+- **LangChain Text Splitters**: Intelligent text chunking
+- **openpyxl**: Excel metrics report generation
+- **Regex Fallback**: Robust extraction when LLM output cannot be parsed
 
 ---
 
 ## Project Structure
 
 ```
-Langextract_project/
-├── main.py                     # Entry point - orchestrates the pipeline
-├── requirements.txt            # Python dependencies
-├── __init__.py                 # Package initializer
+Task1/
+├── main.py                         # Entry point - orchestrates the pipeline
+├── main.ipynb                      # Jupyter notebook version of the pipeline
+├── requirements313.txt             # Python 3.13 dependencies
+├── requirements314.txt             # Python 3.14 dependencies
+├── __init__.py                     # Package initializer
+├── .gitignore                      # Git ignore rules
 │
-├── config/                     # Configuration module
-│   ├── __init__.py             # Config loader with exported constants
-│   └── config.json             # All configurable parameters
+├── config/                         # Configuration module
+│   ├── __init__.py                 # Config loader with exported constants
+│   └── config.json                 # All configurable parameters
 │
-├── prompts/                    # LLM prompts and examples
+├── prompts/                        # LLM prompts and examples
 │   ├── __init__.py
-│   └── prompts.py              # Extraction prompt and few-shot examples
+│   └── prompts.py                  # Extraction prompt and few-shot examples
 │
-├── extraction/                 # PDF and heading extraction logic
+├── extraction/                     # Markdown reading and heading extraction
 │   ├── __init__.py
-│   └── extractor.py            # PDF parsing, LLM extraction, validation
+│   └── extractor.py                # Markdown parsing, LLM extraction, validation
 │
-├── processing/                 # Post-processing and chunk building
+├── processing/                     # Post-processing and report generation
 │   ├── __init__.py
-│   └── chunk_builder.py        # Hierarchical chunk construction
+│   └── excel.py                    # Excel metrics report builder
 │
-├── utils/                      # Utility functions
+├── utils/                          # Utility functions
 │   ├── __init__.py
-│   └── utils.py                # Validation, text processing, formatting
+│   ├── pdf_to_md.py                # PDF → Markdown conversion via Ollama LLM
+│   └── utils.py                    # Validation, text processing, formatting
 │
-├── data/                       # Input PDF files
+├── data/                           # Input files
 │   ├── book.pdf
 │   ├── chap3.pdf
 │   ├── machinelearningregression.pdf
 │   ├── notes.pdf
 │   ├── paper.pdf
 │   ├── report.pdf
-│   └── sales_analysis_report.pdf
+│   ├── sales_analysis_report.pdf
+│   └── Markdowns/                  # Intermediate Markdown files (PDF → MD)
+│       ├── book.md
+│       ├── notes.md
+│       └── sales_analysis_report.md
 │
-└── output/                     # Generated JSON output files
-    ├── book.json
-    ├── machinelearningregression.json
-    ├── notes.json
-    └── sales_analysis_report.json
+└── output/                         # Generated output files
+    ├── md_json_outputs/             # Hierarchical JSON from Markdown extraction
+    │   ├── book.json
+    │   ├── notes.json
+    │   ├── sales_analysis_report.json
+    │   └── sales_analysis_report1.json
+    └── metrics_results/             # Excel metrics reports per document
+        ├── book_metrics.xlsx
+        ├── notes_metrics.xlsx
+        ├── sales_analysis_report_metrics.xlsx
+        └── sales_analysis_report1_metrics.xlsx
 ```
 
 ---
@@ -79,9 +100,11 @@ Langextract_project/
 
 | File | Description |
 |------|-------------|
-| `main.py` | **Entry point** - Orchestrates the 6-step extraction pipeline. Imports from all modules and runs `process_pdf()` function. |
-| `requirements.txt` | Lists all Python dependencies (langextract, PyMuPDF, langchain, etc.) |
-| `__init__.py` | Package initializer with version info |
+| `main.py` | **Entry point** - Orchestrates the full extraction pipeline. Runs `process_markdown()` which reads a Markdown file, extracts headings, builds JSON output, and generates an Excel metrics report. |
+| `main.ipynb` | **Jupyter notebook** version of the pipeline for interactive use and experimentation. |
+| `requirements313.txt` | Python 3.13-compatible dependencies. |
+| `requirements314.txt` | Python 3.14-compatible dependencies. |
+| `__init__.py` | Package initializer with version info. |
 
 ---
 
@@ -90,7 +113,7 @@ Langextract_project/
 | File | Description |
 |------|-------------|
 | `config.json` | **Central configuration file** containing all tunable parameters: <br>• `model`: LLM settings (model_id, timeout, retries) <br>• `output`: Output file path <br>• `text_splitter`: Chunk size and overlap settings <br>• `settings`: Verbose mode, fallback regex toggle <br>• `heading_detection`: Keywords for level-1 headings and regex patterns to filter false positives |
-| `__init__.py` | **Config loader** - Reads `config.json` and exports constants like `MODEL_ID`, `TIMEOUT`, `TEXT_SPLITTER_CHUNK_SIZE`, etc. as Python variables for easy import |
+| `__init__.py` | **Config loader** - Reads `config.json` and exports constants like `MODEL_ID`, `TIMEOUT`, `TEXT_SPLITTER_CHUNK_SIZE`, `MARKDOWN_PATH`, etc. as Python variables for easy import. |
 
 ---
 
@@ -98,7 +121,7 @@ Langextract_project/
 
 | File | Description |
 |------|-------------|
-| `prompts.py` | Contains the **LLM extraction prompt** and **few-shot examples**: <br>• `EXTRACTION_PROMPT`: Detailed instructions for the LLM on what constitutes a heading vs body text <br>• `EXTRACTION_EXAMPLES`: Two example documents with correct heading extractions for few-shot learning |
+| `prompts.py` | Contains the **LLM extraction prompt** and **few-shot examples**: <br>• `EXTRACTION_PROMPT`: Detailed instructions for the LLM on what constitutes a heading vs body text <br>• `EXTRACTION_EXAMPLES`: Example documents with correct heading extractions for few-shot learning |
 
 ---
 
@@ -106,7 +129,7 @@ Langextract_project/
 
 | File | Description |
 |------|-------------|
-| `extractor.py` | **Core extraction logic** with these functions: <br>• `get_pdf_text()`: Extracts text from PDF using PyMuPDF, removes TOC artifacts <br>• `split_text_into_chunks()`: Uses RecursiveCharacterTextSplitter with adaptive sizing <br>• `extract_headings_from_chunks()`: Calls LangExtract for each chunk with retry logic and regex fallback <br>• `validate_and_deduplicate_headings()`: Filters false positives, removes duplicates, validates against source text <br>• `extract_sections_with_text()`: Maps headings to their text content |
+| `extractor.py` | **Core extraction logic**: <br>• `get_markdown_text()`: Reads and parses a Markdown file <br>• `split_text_into_chunks()`: Uses RecursiveCharacterTextSplitter with adaptive sizing <br>• `extract_headings_from_chunks()`: Calls LangExtract per chunk with retry logic and regex fallback <br>• `validate_and_deduplicate_headings()`: Filters false positives, removes duplicates, validates against source text <br>• `extract_sections_with_text()`: Maps each heading to its text content |
 
 ---
 
@@ -114,7 +137,7 @@ Langextract_project/
 
 | File | Description |
 |------|-------------|
-| `chunk_builder.py` | **Hierarchical chunk construction**: <br>• `build_hierarchical_chunks()`: Takes validated sections and builds structured JSON output <br>• Creates chunks based on document structure (Level-1 starts new chunk, Level-2 can start new chunk, Level-3+ stays with parent) <br>• Generates output format with Parent Heading, Main Heading, Sub Headings, and combined Text |
+| `excel.py` | **Excel metrics report generator**: <br>• `generate_excel_report()`: Takes run metrics from `main.py` and writes a formatted `.xlsx` file to `output/metrics_results/` <br>• Captures document stats, chunk counts, heading rejection breakdown, LLM call counts, token usage, and timing data |
 
 ---
 
@@ -122,23 +145,30 @@ Langextract_project/
 
 | File | Description |
 |------|-------------|
-| `utils.py` | **Utility functions** organized into categories: <br><br>**Validation Functions:** <br>• `is_valid_heading_in_text()`: Fuzzy matching to verify heading exists in document <br>• `is_false_heading()`: Checks against false positive patterns (figures, tables, etc.) <br>• `is_likely_body_text()`: Detects body text masquerading as headings <br>• `is_page_marker()`: Identifies page number artifacts <br><br>**Heading Processing:** <br>• `determine_heading_level()`: Assigns level (1-5) based on numbering pattern <br>• `find_heading_position()`: Locates heading in document text <br>• `find_heading_in_original()`: Precise position finding with fallbacks <br>• `normalize_for_dedup()`: Normalizes text for duplicate detection <br><br>**Text Processing:** <br>• `preprocess_chunk()`: Cleans chunks before LLM (removes math, code, LaTeX) <br>• `extract_headings_regex()`: Fallback regex-based extraction <br>• `scan_for_missed_headings()`: Post-processing scan for missed numbered headings <br><br>**Output Formatting:** <br>• `print_header()`, `print_step()`, `print_metrics_table()`: Console output formatting |
+| `pdf_to_md.py` | **PDF → Markdown converter**: <br>• `convert_pdf_to_markdown()`: Uses an Ollama-hosted LLM to convert a PDF file into a clean Markdown file saved under `data/Markdowns/` |
+| `utils.py` | **Utility functions** organized into categories: <br><br>**Validation:** `is_valid_heading_in_text()`, `is_false_heading()`, `is_likely_body_text()`, `is_page_marker()` <br>**Heading Processing:** `determine_heading_level()`, `find_heading_position()`, `find_heading_in_original()`, `normalize_for_dedup()` <br>**Text Processing:** `preprocess_chunk()`, `extract_headings_regex()`, `scan_for_missed_headings()` <br>**Output Formatting:** `print_header()`, `print_step()`, `print_metrics_table()` |
 
 ---
 
 ### data/
 
-Contains input PDF files to be processed. Place your PDFs here.
+| Path | Description |
+|------|-------------|
+| `data/*.pdf` | Input PDF documents to be processed. |
+| `data/Markdowns/` | Intermediate Markdown files generated by `pdf_to_md.py`. These serve as input to the main extraction pipeline. |
+
+---
 
 ### output/
 
-Contains generated JSON files with extracted hierarchical headings and text content.
+| Path | Description |
+|------|-------------|
+| `output/md_json_outputs/` | Hierarchical JSON files produced from Markdown extraction. One JSON per processed document. |
+| `output/metrics_results/` | Excel (`.xlsx`) metrics reports. One file per pipeline run, named `<document>_metrics.xlsx`. |
 
 ---
 
 ## Pipeline Flow
-
-The extraction pipeline follows these 6 steps:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -152,28 +182,36 @@ The extraction pipeline follows these 6 steps:
            │
            ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 1: PDF Text Extraction                                     │
-│  ─────────────────────────────                                   │
-│  • get_pdf_text() in extractor.py                                │
-│  • Uses PyMuPDF to extract raw text                              │
-│  • Removes TOC artifacts (dotted lines, page numbers)            │
+│  STEP 1: PDF → Markdown Conversion  [utils/pdf_to_md.py]         │
+│  ──────────────────────────────────────────────────────          │
+│  • convert_pdf_to_markdown()                                     │
+│  • Sends PDF pages to Ollama LLM for structured Markdown output  │
+│  • Saves .md file to data/Markdowns/                             │
 └──────────────────────────────────────────────────────────────────┘
            │
            ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 2: Text Chunking                                           │
-│  ─────────────────────                                           │
-│  • split_text_into_chunks() in extractor.py                      │
+│  STEP 2: Markdown Text Reading  [extraction/extractor.py]        │
+│  ────────────────────────────────────────────────────            │
+│  • get_markdown_text()                                           │
+│  • Reads and parses the .md file                                 │
+└──────────────────────────────────────────────────────────────────┘
+           │
+           ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  STEP 3: Text Chunking  [extraction/extractor.py]                │
+│  ──────────────────────────────────────────────                  │
+│  • split_text_into_chunks()                                      │
 │  • RecursiveCharacterTextSplitter with adaptive sizing           │
-│  • Default: 2500 chars, 500 overlap                              │
-│  • Large docs (>500K chars): 6000 chars, 1000 overlap            │
+│  • Default: 2500 chars / 500 overlap                             │
+│  • Large docs (>500K chars): 6000 chars / 1000 overlap           │
 └──────────────────────────────────────────────────────────────────┘
            │
            ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 3: Heading Extraction (Per Chunk)                          │
-│  ───────────────────────────────────────                         │
-│  • extract_headings_from_chunks() in extractor.py                │
+│  STEP 4: Heading Extraction (Per Chunk)  [extraction/extractor]  │
+│  ──────────────────────────────────────────────────────────────  │
+│  • extract_headings_from_chunks()                                │
 │  • For each chunk:                                               │
 │    1. Preprocess (clean math, code, LaTeX)                       │
 │    2. Call LangExtract with prompt + few-shot examples           │
@@ -184,40 +222,39 @@ The extraction pipeline follows these 6 steps:
            │
            ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 4: Validation & Deduplication                              │
-│  ──────────────────────────────────                              │
-│  • validate_and_deduplicate_headings() in extractor.py           │
+│  STEP 5: Validation & Deduplication  [extraction/extractor.py]   │
+│  ────────────────────────────────────────────────────────────    │
+│  • validate_and_deduplicate_headings()                           │
 │  • Filter false positives (figures, tables, body text)           │
-│  • Check heading exists in source text (fuzzy matching)          │
+│  • Verify heading exists in source text (fuzzy matching)         │
 │  • Remove duplicates with normalized comparison                  │
 │  • Re-assign heading levels using consistent rules               │
 └──────────────────────────────────────────────────────────────────┘
            │
            ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 5: Section Text Extraction                                 │
-│  ───────────────────────────────                                 │
-│  • extract_sections_with_text() in extractor.py                  │
-│  • Find precise position of each heading                         │
-│  • Extract text from heading to next heading                     │
-│  • Limit section size to prevent huge blocks                     │
+│  STEP 6: Section Text Extraction  [extraction/extractor.py]      │
+│  ────────────────────────────────────────────────────────        │
+│  • extract_sections_with_text()                                  │
+│  • Find precise position of each heading in Markdown text        │
+│  • Extract text span from heading to next heading                │
+│  • Cap section size to prevent oversized blocks                  │
 └──────────────────────────────────────────────────────────────────┘
            │
            ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 6: Hierarchical Chunk Building                             │
-│  ───────────────────────────────────                             │
-│  • build_hierarchical_chunks() in chunk_builder.py               │
-│  • Create chunk boundaries based on heading levels               │
-│  • Build nested structure: Parent > Main > Sub headings          │
-│  • Combine text content for each chunk                           │
+│  STEP 7: Output Generation                                       │
+│  ─────────────────────────                                       │
+│  • JSON written to output/md_json_outputs/                       │
+│  • Excel metrics report written to output/metrics_results/       │
+│    via generate_excel_report() in processing/excel.py            │
 └──────────────────────────────────────────────────────────────────┘
            │
            ▼
-    ┌──────────────┐
-    │ OUTPUT JSON  │
-    │  (output/)   │
-    └──────────────┘
+    ┌─────────────────────────────────┐
+    │  output/md_json_outputs/*.json  │
+    │  output/metrics_results/*.xlsx  │
+    └─────────────────────────────────┘
 ```
 
 ---
@@ -229,7 +266,7 @@ All settings are in `config/config.json`:
 ### Model Settings
 ```json
 "model": {
-    "model_id": "gemma2:9b",    // LLM model (Ollama)
+    "model_id": "gemma2:9b",    // Ollama LLM model
     "timeout": 1200,            // Request timeout (seconds)
     "max_retries": 3,           // Retry attempts per chunk
     "retry_delay": 3            // Delay between retries (seconds)
@@ -247,8 +284,8 @@ All settings are in `config/config.json`:
 ### Heading Detection
 ```json
 "heading_detection": {
-    "level_1_keywords": ["chapter", "appendix", ...],  // Top-level heading keywords
-    "false_heading_patterns": ["^Figure\\s+\\d+", ...]  // Regex patterns to filter
+    "level_1_keywords": ["chapter", "appendix", ...],   // Top-level heading keywords
+    "false_heading_patterns": ["^Figure\\s+\\d+", ...]  // Regex patterns to filter out
 }
 ```
 
@@ -256,32 +293,43 @@ All settings are in `config/config.json`:
 
 ## Usage
 
-### Basic Usage
+### Step 1 — Convert PDF to Markdown (one-time per document)
 
+```python
+from utils.pdf_to_md import convert_pdf_to_markdown
+
+convert_pdf_to_markdown(
+    pdf_path="data/your_document.pdf",
+    output_md_path="data/Markdowns/your_document.md",
+    ollama_model="gemma2:9b"
+)
+```
+
+### Step 2 — Run Heading Extraction
+
+#### From the command line:
 ```bash
-cd Langextract_project
+cd Task1
 python main.py
 ```
 
-This processes the default PDF (`data/book.pdf`).
+This processes the default Markdown path defined in `config/config.json`.
 
-### Custom PDF
-
+#### Custom Markdown file:
 ```bash
-python main.py "data/your_document.pdf"
+python main.py "data/Markdowns/your_document.md"
 ```
 
-### From Parent Directory
-
-```bash
-python Langextract_project/main.py "Langextract_project/data/report.pdf"
-```
+#### From the Jupyter Notebook:
+Open `main.ipynb` and run the cells interactively.
 
 ---
 
 ## Output Format
 
-The pipeline generates JSON with hierarchical chunks:
+### JSON (`output/md_json_outputs/`)
+
+Each document produces a JSON file with hierarchical chunks:
 
 ```json
 [
@@ -316,27 +364,53 @@ The pipeline generates JSON with hierarchical chunks:
 | 4 | Sub-subsections | "1.1.1 History", "2.3.1 Cleaning Steps" |
 | 5 | Deep nesting | "1.1.1.1.1 Specific Detail" |
 
+### Excel Metrics (`output/metrics_results/`)
+
+Each run produces an `.xlsx` file with:
+- Document name, length, chunk size
+- Raw vs validated heading counts
+- Rejection breakdown (false patterns, body text, duplicates, not found in text)
+- LLM call count, input/output token usage
+- Timing: document retrieval, extraction, LLM processing
+- Per-chunk LLM timing
+
 ---
 
 ## Dependencies
 
-- `langextract` - LLM-based extraction framework
-- `PyMuPDF` (fitz) - PDF text extraction
-- `langchain-text-splitters` - Text chunking
-- `ollama` - Local LLM runtime (for gemma2:9b)
+- `langextract` — LLM-based extraction framework
+- `langchain-text-splitters` — Text chunking
+- `ollama` — Local LLM runtime
+- `openpyxl` — Excel report generation
+- `PyMuPDF` (fitz) — Used in `pdf_to_md.py` for PDF page reading
 
-Install with:
+Install dependencies for your Python version:
+
 ```bash
-pip install -r requirements.txt
+# Python 3.13
+pip install -r requirements313.txt
+
+# Python 3.14
+pip install -r requirements314.txt
 ```
 
 ---
 
 ## Metrics
 
-The pipeline outputs detailed metrics including:
-- Document length and chunk count
-- Raw vs validated heading counts
-- Rejection reasons (false patterns, body text, duplicates)
-- Heading level distribution
-- LLM success rate vs regex fallbacks
+The pipeline captures and exports the following metrics to Excel:
+
+| Metric | Description |
+|--------|-------------|
+| Document length | Total character count of the Markdown input |
+| Total chunks | Number of text chunks processed |
+| Raw headings | Headings returned by LLM before validation |
+| Valid headings | Headings after all validation filters |
+| Rejected (false pattern) | Filtered by false-positive regex (figures, tables, etc.) |
+| Rejected (body text) | Filtered as likely body text |
+| Rejected (duplicate) | Removed as normalized duplicates |
+| Rejected (not in text) | Heading not found in source via fuzzy match |
+| LLM calls | Total LLM API calls made |
+| Input / Output tokens | Token usage per run |
+| LLM success rate | Chunks successfully parsed by LLM vs regex fallbacks |
+| Timing | Per-stage timing: retrieval, extraction, LLM processing |
