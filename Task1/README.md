@@ -308,40 +308,57 @@ Open `main.ipynb` and run the cells interactively.
 
 ### JSON (`output/md_json_outputs/`)
 
-Each document produces a JSON file with hierarchical chunks:
+Each document produces a JSON array where every element corresponds to one text chunk. Each chunk object contains a heading map and the raw Markdown text of that chunk.
+
+**Structure:**
 
 ```json
 [
     {
         "chunk_id1": {
-            "Parent Heading": "Document Title .....",
-            "Main Heading 1": "1 Introduction .....",
-            "1 Introduction Details": {
-                "Sub Heading 1": "1.1 Background .....",
-                "Sub Heading 2": "1.2 Objectives ....."
-            }
+            "Main Heading 1": "Chapter Title .....",
+            "Sub Heading 1": "Section Name .....",
+            "Sub Sub Heading 1": "Subsection Name .....",
+            "Sub Sub Sub Heading 1": "Deep Section .....",
+            "Sub Sub Sub Heading 2": "Another Deep Section .....",
+            "Sub Sub Sub Sub Heading 1": "Deepest Level ....."
         },
-        "Text": "Full text content of this chunk..."
+        "Text": "Raw Markdown content of this chunk, including code blocks, tables, images, and links...",
+        "Metadata": "\"Main heading\": \"Chapter Title: ........first 200 chars of section content.........\", \"Sub heading\": \"Section Name: ........first 200 chars.........\""
     },
     {
         "chunk_id2": {
-            "Parent Heading": "Document Title .....",
-            "Main Heading 1": "2 Methods ....."
+            "Sub Heading 1": "Careers with Python .....",
+            "Sub Heading 2": "Python Tutorial Playlist .....",
+            "Sub Sub Sub Heading 1": "Chapter - 02 .....",
+            "Sub Sub Sub Heading 2": "Python Installation & Setup .....",
+            "Sub Heading 3": "Install Python IDE .....",
+            "Sub Sub Sub Heading 3": "Chapter - 03 .....",
+            "Sub Heading 4": "First Python Program ....."
         },
-        "Text": "Methods section text content..."
+        "Text": "Raw Markdown content of chunk 2...",
+        "Metadata": "\"Sub heading\": \"Careers with Python: ........Python is not only one of the most popular...........\""
     }
 ]
 ```
 
-### Heading Levels
+**Key details:**
 
-| Level | Description | Examples |
-|-------|-------------|----------|
-| 1 | Document title, Chapter | "Machine Learning Fundamentals", "Chapter 3" |
-| 2 | Major sections | "1 Introduction", "Conclusion", "References" |
-| 3 | Subsections | "1.1 Background", "2.3 Data Processing" |
-| 4 | Sub-subsections | "1.1.1 History", "2.3.1 Cleaning Steps" |
-| 5 | Deep nesting | "1.1.1.1.1 Specific Detail" |
+- **`chunk_idN`** — Sequential chunk identifier starting from `chunk_id1`.
+- **Heading keys** — Label + counter per heading level: `Main Heading N`, `Sub Heading N`, `Sub Sub Heading N`, `Sub Sub Sub Heading N`, `Sub Sub Sub Sub Heading N`. Counters reset per chunk.
+- **Heading values** — The extracted heading text followed by ` .....` (5 dots).
+- **`Text`** — The full raw Markdown of the chunk, preserving code fences, tables, image references, and hyperlinks.
+- **`Metadata`** — A string of `"<level label>": "<heading text>: ........<first ~200 chars of section content>........."` entries, one per heading in the chunk.
+
+### Heading Level Labels
+
+| Level | Key Label | Example Key |
+|-------|-----------|-------------|
+| 1 | `Main Heading N` | `"Main Heading 1"` |
+| 2 | `Sub Heading N` | `"Sub Heading 2"` |
+| 3 | `Sub Sub Heading N` | `"Sub Sub Heading 1"` |
+| 4 | `Sub Sub Sub Heading N` | `"Sub Sub Sub Heading 3"` |
+| 5 | `Sub Sub Sub Sub Heading N` | `"Sub Sub Sub Sub Heading 1"` |
 
 ### Excel Metrics (`output/metrics_results/`)
 
