@@ -1,0 +1,16 @@
+{
+  "processing": {
+    "default_lines_per_level": 1,
+    "default_max_summary_chars": 0
+  },
+  "ollama": {
+    "base_url": "http://localhost:11434",
+    "model": "gemma2:2b"
+  },
+  "paths": {
+    "outputs_dir": "outputs",
+    "structured2_out": "outputs/structured2_chunks.json",
+    "ancestry_exact_out": "outputs/sales_analysis_report4_ancestry_exact.json",
+    "run5_processed_out": "outputs/sales_report_gemma8_processed.json"
+  }
+}

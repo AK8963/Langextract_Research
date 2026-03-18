@@ -12,8 +12,12 @@ try:
 except Exception:
     ollama = None
 
+# Load config from config.json
+_CONFIG_PATH = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.json')
+with open(_CONFIG_PATH, 'r', encoding='utf-8') as _f:
+    _CONFIG = json.load(_f)
 
-LLM_MODEL = os.environ.get('LLM_MODEL', 'gemma2:2b')
+LLM_MODEL = os.environ.get('LLM_MODEL', _CONFIG["ollama"]["model"])
 
 # --- Precompiled regexes (module-level, not per-chunk) ---
 _HEADING_KEY_RE = re.compile(r'(heading|title|header|section|^h\d$|name)', re.IGNORECASE)
@@ -205,6 +209,141 @@ def determine_main_heading(normalized_chunks: List[Dict], override_title: str = 
     return most_common
 
 
+def build_ancestry_with_llm(
+    ordered_headings: List[str],
+    heading_levels: Dict[str, int] = None,
+    document_text: str = "",
+    batch_size: int = 60,
+) -> Dict[str, List[str]]:
+    """Send all unique headings (in document order) to the LLM to determine
+    the full hierarchical ancestry for each heading.
+
+    heading_levels: optional dict mapping heading text → integer depth
+        (0 = root / Main, 1 = Sub, 2 = Sub Sub, 3 = Sub Sub Sub, …)
+    document_text: optional concatenated markdown/text from all chunks
+        so the LLM can see the actual heading markers (# / ## / ### / ####).
+
+    Returns a dict mapping each heading to its list of ancestors
+    from the outermost (root) to the immediate parent.
+    """
+    if ollama is None or not ordered_headings:
+        return {}
+
+    _levels = heading_levels or {}
+    _level_labels = {0: 'Root/Main', 1: 'Sub', 2: 'Sub-Sub', 3: 'Sub-Sub-Sub', 4: 'Sub-Sub-Sub-Sub'}
+
+    ancestry_map: Dict[str, List[str]] = {}
+
+    for batch_start in range(0, len(ordered_headings), batch_size):
+        batch = ordered_headings[batch_start:batch_start + batch_size]
+
+        # Provide previously resolved ancestors as context for continuation batches
+        context_section = ""
+        if batch_start > 0:
+            context_headings = ordered_headings[max(0, batch_start - 5):batch_start]
+            already_resolved = {h: ancestry_map.get(h, []) for h in context_headings}
+            context_section = (
+                "\nFor context, these headings appeared earlier with their resolved ancestors:\n"
+                + json.dumps(already_resolved, ensure_ascii=False, indent=2)
+                + "\n"
+            )
+
+        # Build numbered list with level annotations
+        lines = []
+        for i, h in enumerate(batch):
+            lvl = _levels.get(h)
+            if lvl is not None:
+                label = _level_labels.get(lvl, f'Depth {lvl}')
+                lines.append(f"{i + 1}. [Level {lvl} — {label}] {h}")
+            else:
+                lines.append(f"{i + 1}. {h}")
+        numbered_list = "\n".join(lines)
+
+        # Optionally include a snippet of the document markdown
+        text_section = ""
+        if document_text:
+            snippet = document_text[:3000]
+            text_section = (
+                "\nHere is the document's markdown/text (may be truncated) showing "
+                "heading markers (#, ##, ###, ####):\n"
+                "--- START ---\n"
+                + snippet
+                + "\n--- END ---\n"
+            )
+
+        prompt = (
+            "You are analyzing a document's heading structure to build a Table of Contents hierarchy. "
+            "Below are ALL headings extracted from the document in their original order. "
+            "Each heading is annotated with its depth level extracted from the document structure "
+            "(Level 0 = top-level / root, Level 1 = sub-section, Level 2 = sub-sub-section, etc.):\n\n"
+            f"{numbered_list}\n"
+            f"{context_section}"
+            f"{text_section}\n"
+            "For each heading, determine its ANCESTORS — the chain of parent section headings "
+            "from the document root down to (but NOT including) the heading itself.\n\n"
+            "Rules:\n"
+            "- Level 0 headings are root sections — their ancestor list is [].\n"
+            "- A Level 1 heading is a child of the nearest preceding Level 0 heading.\n"
+            "- A Level 2 heading is a child of the nearest preceding Level 1 heading, "
+            "which is itself under a Level 0 heading, so ancestors = [Level0, Level1].\n"
+            "- A Level 3 heading is under Level 2, which is under Level 1, under Level 0, "
+            "so ancestors = [Level0, Level1, Level2].\n"
+            "- Respect numbering patterns: '1.1 X' is a child of '1 Y'.\n"
+            "- Use the heading text EXACTLY as given.\n"
+            "- Every non-root heading MUST have at least one ancestor.\n\n"
+            "Return ONLY a JSON object where each key is the heading text and "
+            "the value is a list of its ancestors ordered outermost to innermost.\n\n"
+            "Example:\n"
+            '{\n'
+            '  "Report Title": [],\n'
+            '  "Chapter 1": ["Report Title"],\n'
+            '  "Section 1.1": ["Report Title", "Chapter 1"]\n'
+            '}'
+        )
+
+        try:
+            resp = ollama.generate(model=LLM_MODEL, prompt=prompt, format='json')
+            result = json.loads(resp.get('response', '{}'))
+            if isinstance(result, dict):
+                for h in batch:
+                    if h in result and isinstance(result[h], list):
+                        ancestry_map[h] = [a for a in result[h] if isinstance(a, str)]
+                    elif h not in ancestry_map:
+                        ancestry_map[h] = []
+        except Exception:
+            for h in batch:
+                if h not in ancestry_map:
+                    ancestry_map[h] = []
+
+    return ancestry_map
+
+
+def _validate_llm_ancestry(ancestry_map: Dict[str, List[str]], heading_levels: Dict[str, int]) -> bool:
+    """Return True if the LLM-produced ancestry looks reasonable.
+    Checks that most non-root headings actually have ancestors."""
+    if not ancestry_map:
+        return False
+    non_root = [h for h, lvl in heading_levels.items() if lvl > 0 and h in ancestry_map]
+    if not non_root:
+        # No non-root headings to validate
+        return True
+    with_ancestors = sum(1 for h in non_root if ancestry_map.get(h))
+    ratio = with_ancestors / len(non_root)
+    return ratio >= 0.5
+
+
+def _build_ancestry_stack(ordered_headings_leveled: List[tuple]) -> Dict[str, List[str]]:
+    """Rule-based fallback: build ancestry using a heading stack and key-based levels."""
+    heading_stack = []
+    ancestry_map = {}
+    for h, level in ordered_headings_leveled:
+        while heading_stack and heading_stack[-1][1] >= level:
+            heading_stack.pop()
+        ancestry_map[h] = [item[0] for item in heading_stack]
+        heading_stack.append((h, level))
+    return ancestry_map
+
+
 def process_document(original_data: list, override_title: str = None, use_llm: bool = True, hybrid: bool = False, progress_interval: int = 10):
     total = len(original_data)
     normalized_chunks = []
@@ -237,12 +376,12 @@ def process_document(original_data: list, override_title: str = None, use_llm: b
 
     main_title = determine_main_heading(normalized_chunks, override_title=override_title, use_llm=use_llm)
 
-    # Collect unique headings in document order with their key-based levels
+    # Collect unique headings in document order
     seen_headings = set()
-    ordered_headings = []  # list of (heading, effective_level)
+    ordered_headings_text = []       # heading strings in document order
+    ordered_headings_leveled = []    # (heading, level) tuples for rule-based fallback
 
     for chunk in normalized_chunks:
-        # Build a map from heading text to key-based level for this chunk
         levels_map = {}
         for hl in chunk.get('heading_levels', []):
             levels_map[hl['heading']] = hl['level']
@@ -251,27 +390,96 @@ def process_document(original_data: list, override_title: str = None, use_llm: b
             if h in seen_headings:
                 continue
             seen_headings.add(h)
-
+            ordered_headings_text.append(h)
             key_level = levels_map.get(h)
-            if key_level is not None:
-                # Trust the key-based level directly — the key name hierarchy
-                # (Main Heading → Sub Heading → Sub Sub Heading → Sub Sub Sub Heading)
-                # already encodes the correct nesting depth.
-                eff = key_level
-            else:
-                eff = 1  # fallback for headings without key-level info
+            ordered_headings_leveled.append((h, key_level if key_level is not None else 1))
 
-            ordered_headings.append((h, eff))
+    # --- Phase 1: Dot-numbered sub-sections (e.g. "6.1 X" is child of "6. Y") ---
+    # Only bump when we find an EXPLICIT matching parent number.
+    # e.g. "6.1 Regular Updates" → find "6. Maintenance" → make child.
+    # If no matching numbered parent exists, leave the level unchanged —
+    # same-level headings are siblings, not parent-child.
+    _DOT_NUM_RE = re.compile(r'^(\d+)\.\d+')
+    adjusted = list(ordered_headings_leveled)
+    for i, (h, lvl) in enumerate(adjusted):
+        dot_match = _DOT_NUM_RE.match(h)
+        if dot_match:
+            parent_num = dot_match.group(1)
+            parent_pat = re.compile(rf'^{re.escape(parent_num)}[.)\s]')
+            for j in range(i - 1, -1, -1):
+                prev_h, prev_lvl = adjusted[j]
+                if parent_pat.match(prev_h) and not _DOT_NUM_RE.match(prev_h):
+                    # Found explicit parent like "6. Maintenance" — make child
+                    adjusted[i] = (h, prev_lvl + 1)
+                    break
+    ordered_headings_leveled = adjusted
 
-    # Build ancestry using a heading stack
-    heading_stack = []  # [(heading, level), ...]
-    ancestry_map = {}
+    # --- Phase 2: Numbered list items under a non-numbered parent ---
+    # Only triggers when a "1. X" item immediately follows a non-numbered
+    # heading at the same level, then bumps the whole 1→2→3 run.
+    # Standalone section numbers like "6. Maintenance" are NOT bumped.
+    adjusted2 = list(ordered_headings_leveled)
+    _LIST_NUM_RE = re.compile(r'^(\d+)[.)\s]')
+    i = 0
+    while i < len(adjusted2):
+        h, lvl = adjusted2[i]
+        m = _LIST_NUM_RE.match(h)
+        if m and not _DOT_NUM_RE.match(h) and m.group(1) == '1':
+            # Found a "1. X" — look backward for a non-numbered heading at same level
+            parent_idx = None
+            for j in range(i - 1, -1, -1):
+                prev_h, prev_lvl = adjusted2[j]
+                if prev_lvl < lvl:
+                    break
+                if prev_lvl != lvl:
+                    continue
+                prev_m = _LIST_NUM_RE.match(prev_h)
+                if prev_m and not _DOT_NUM_RE.match(prev_h):
+                    # Another numbered item at same level before "1." —
+                    # not a fresh sub-list
+                    break
+                if not prev_m:
+                    parent_idx = j
+                    break
+            if parent_idx is not None:
+                # Bump "1. X" and all consecutive numbered items at same level
+                for k in range(i, len(adjusted2)):
+                    kh, klvl = adjusted2[k]
+                    km = _LIST_NUM_RE.match(kh)
+                    if km and not _DOT_NUM_RE.match(kh) and klvl == lvl:
+                        adjusted2[k] = (kh, lvl + 1)
+                    else:
+                        break
+        i += 1
+    ordered_headings_leveled = adjusted2
 
-    for h, level in ordered_headings:
-        while heading_stack and heading_stack[-1][1] >= level:
-            heading_stack.pop()
-        ancestry_map[h] = [item[0] for item in heading_stack]
-        heading_stack.append((h, level))
+    # Build heading_levels map for LLM hints and validation
+    heading_levels_map = {h: lvl for h, lvl in ordered_headings_leveled}
+
+    # Collect document text across all chunks for additional LLM context
+    doc_text_parts = []
+    for chunk in normalized_chunks:
+        rt = chunk.get('raw_text', '')
+        if rt:
+            doc_text_parts.append(rt)
+    doc_text = "\n".join(doc_text_parts)
+
+    # Build ancestry — LLM-driven when available, stack-based fallback
+    if use_llm and ollama is not None:
+        print(f"Building heading ancestry using LLM ({LLM_MODEL}) for {len(ordered_headings_text)} headings...")
+        ancestry_map = build_ancestry_with_llm(
+            ordered_headings_text,
+            heading_levels=heading_levels_map,
+            document_text=doc_text,
+        )
+        if not _validate_llm_ancestry(ancestry_map, heading_levels_map):
+            print("LLM ancestry validation failed (most non-root headings lack ancestors). "
+                  "Falling back to rule-based approach.")
+            ancestry_map = _build_ancestry_stack(ordered_headings_leveled)
+        else:
+            print(f"LLM resolved ancestry for {len(ancestry_map)} headings.")
+    else:
+        ancestry_map = _build_ancestry_stack(ordered_headings_leveled)
 
     # Shallow copy each item — avoids deepcopy of entire dataset
     final_data = []
@@ -372,7 +580,7 @@ def load_input(path: str) -> List[Dict]:
 
 def main():
     parser = argparse.ArgumentParser(description='Add ancestral_headings to JSON chunks (uses Ollama optionally).')
-    parser.add_argument('input_file', nargs='?', default='sales_analysis_report4.json')
+    parser.add_argument('input_file', nargs='?', default='data/sales_analysis_report4.json')
     parser.add_argument('--title', type=str, default=None)
     parser.add_argument('--output', '-o', type=str, default=None)
     parser.add_argument('--no-llm', action='store_true')
@@ -425,21 +633,6 @@ def main():
                 if inner is not None:
                     chunk_headings = _extract_headings_from_obj(inner).get('headings', [])
                     mapping = {h: heading_map.get(h, []) for h in chunk_headings}
-                    # Post-process numbered headings: attach to nearest preceding
-                    # non-numbered heading in the same chunk so numbered lists
-                    # become children of the containing section (e.g., Recommendations).
-                    for idx, h in enumerate(chunk_headings):
-                        if _SINGLE_NUM_HEADING_RE.match(h):
-                            prev = None
-                            for k in range(idx - 1, -1, -1):
-                                cand = chunk_headings[k]
-                                if not _SINGLE_NUM_HEADING_RE.match(cand):
-                                    prev = cand
-                                    break
-                            if prev:
-                                parent_list = heading_map.get(prev, [])
-                                # ensure prev appears as immediate parent
-                                mapping[h] = parent_list + [prev] if prev not in parent_list else parent_list
                     inner['ancestral_headings'] = mapping
                     continue
                 # fallback: attach per-chunk list (older behaviour)

@@ -63,6 +63,7 @@
         ],
         "Implementation Results": [
           "Sales Analysis Report",
+          "Recommendations",
           "3. Operational Improvements"
         ]
       }
@@ -93,6 +94,7 @@
       "ancestral_headings": {
         "Future Recommendations": [
           "Sales Analysis Report",
+          "Recommendations",
           "3. Operational Improvements"
         ],
         "Appendices": [
@@ -197,11 +199,13 @@
         ],
         "6.1 Regular Updates": [
           "Sales Analysis Report",
-          "Sales Analysis Project Documentation"
+          "Sales Analysis Project Documentation",
+          "6. Maintenance"
         ],
         "6.2 Documentation Updates": [
           "Sales Analysis Report",
-          "Sales Analysis Project Documentation"
+          "Sales Analysis Project Documentation",
+          "6. Maintenance"
         ]
       }
     },
