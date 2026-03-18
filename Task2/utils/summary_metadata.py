@@ -17,6 +17,7 @@ import json
 import sys
 import copy
 import re
+import os
 import requests
 import time
 from pathlib import Path
@@ -24,16 +25,16 @@ from typing import List, Dict, Any, Optional, Tuple
 
 # Note: Excel report generation removed — output will be written to JSON only.
 
+# ============ Configuration (loaded from config.json) ============
+_CONFIG_PATH = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.json')
+with open(_CONFIG_PATH, 'r', encoding='utf-8') as _f:
+    _CONFIG = json.load(_f)
 
-# ============ Configuration ============
-# Extract only 1 new line per chunk by default to keep context minimal
-DEFAULT_LINES_PER_LEVEL = 1      # NEW lines to extract from each chunk's content
-# Disable trimming by default (0 or None disables trimming in trim_to_chars)
-DEFAULT_MAX_SUMMARY_CHARS = 0    # 0 = no trimming
+DEFAULT_LINES_PER_LEVEL = _CONFIG["processing"]["default_lines_per_level"]
+DEFAULT_MAX_SUMMARY_CHARS = _CONFIG["processing"]["default_max_summary_chars"]
 
-# Ollama Configuration
-OLLAMA_BASE_URL = "http://localhost:11434"
-OLLAMA_MODEL = "gemma2:2b"
+OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", _CONFIG["ollama"]["base_url"])
+OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", _CONFIG["ollama"]["model"])
 
 def call_ollama(prompt: str, max_tokens: int = 400) -> Dict[str, Any]:
     """
