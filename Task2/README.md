@@ -22,7 +22,7 @@ A modular Python pipeline for normalizing structured JSON chunks and resolving h
 This project takes structured JSON chunks produced by Task1's extraction pipeline and adds a full hierarchical ancestry map to each chunk. The two-stage pipeline:
 
 1. **Normalize**: Detect headings within each chunk via structured key parsing (`Main Heading N` / `Sub Heading N` keys), regex fallback, or optional LLM disambiguation
-2. **Ancestry Resolution**: Collect all unique headings in document order, infer depth levels, then resolve each heading's full ancestor chain (root  parent) using an LLM  falling back to a deterministic stack algorithm when LLM output fails validation
+2. **Ancestry Resolution**: Collect all unique headings in document order, infer depth levels, then resolve each heading's full ancestor chain (root to parent) using an LLM — falling back to a deterministic stack algorithm when LLM output fails validation
 
 Key technologies:
 - **Ollama**: Local LLM runtime (default model: `gemma2:2b`)
@@ -36,29 +36,28 @@ Key technologies:
 
 ```
 Task2/
- main.py                         # Entry point - orchestrates normalization and ancestry
- __init__.py                     # Package initializer
-
- config/                         # Configuration module
-    __init__.py                 # Config package initializer
-    config.json                 # All configurable parameters
-
- utils/                          # Utility and processing scripts
-    __init__.py                 # Utils package initializer
-    utils.py                    # Ollama HTTP helpers, text splitting, entry loading
-    summary_metadata.py         # Cascading extractor - enriches chunks via growing context
-    without_markdown.py         # Deterministic normalizer/annotator
-    requirements.txt            # Python dependencies
-
- data/                           # Input files
-    sales_analysis_report.json
-    sales_analysis_report4.json
-    sales_report_gemma8.json
-
- output/                         # Generated output files
-     structured2_chunks.json                        # Cascading extractor output
-     sales_analysis_report4_ancestry_exact.json     # Ancestry-annotated output
-     sales_report_gemma8_processed.json             # Normalizer/annotator output
+├── main.py                         # Entry point - orchestrates normalization and ancestry
+├── __init__.py                     # Package initializer
+│
+├── config/                         # Configuration module
+│   ├── __init__.py                 # Config package initializer
+│   └── config.json                 # All configurable parameters
+│
+├── utils/                          # Utility and processing scripts
+│   ├── __init__.py                 # Utils package initializer
+│   ├── utils.py                    # Ollama HTTP helpers, text splitting, entry loading
+│   ├── summary_metadata.py         # Cascading extractor - enriches chunks via growing context
+│   ├── without_markdown.py         # Deterministic normalizer/annotator
+│   └── requirements.txt            # Python dependencies
+│
+├── data/                           # Input files
+│   ├── without_markdown.json
+│   └── with_markdown.json
+│
+└── output/                         # Generated output files
+    ├── summary_chunks.json                  # Cascading extractor output
+    ├── without_markdown.json                # Ancestry-annotated output (no-markdown input)
+    └── with_markdown.json                   # Normalizer/annotator output (markdown input)
 ```
 
 ---
@@ -78,7 +77,7 @@ Task2/
 
 | File | Description |
 |------|-------------|
-| `config.json` | **Central configuration file** containing all tunable parameters: <br> `ollama`: LLM base URL and model name <br> `processing`: Default lines-per-level and max summary characters <br> `paths`: Output directory and default output file paths |
+| `config.json` | **Central configuration file** containing all tunable parameters: <br>• `ollama`: LLM base URL and model name <br>• `processing`: Default lines-per-level and max summary characters <br>• `paths`: Output directory and default output file paths |
 | `__init__.py` | Config package initializer. |
 
 ---
@@ -87,9 +86,9 @@ Task2/
 
 | File | Description |
 |------|-------------|
-| `utils.py` | **Shared utility functions**: <br> `call_ollama()`: HTTP POST to the Ollama `/api/generate` endpoint <br> `split_context_and_content()`: Splits chunk text into context lines vs. raw content lines <br> `extract_new_lines_with_ollama()`: Extracts key lines from raw text via Ollama <br> `extract_snippets_with_ollama()`: Builds enriched snippet strings for a chunk <br> `load_entries()`: Loads JSON or JSONL files into a list of dicts <br> `find_chunk_key()` / `chunk_number_from_key()`: Chunk key helpers <br> `get_text_field()` / `set_text_field()`: Text field accessors across key variants <br> `flatten_heading_values()`: Flattens heading values out of nested metadata dicts |
-| `summary_metadata.py` | **Cascading extractor**: Processes JSON/JSONL chunks using a growing context approach with Ollama. Extracts key lines from each chunk, builds cumulative context, and enriches subsequent chunks' metadata. Outputs `structured2_chunks.json`. |
-| `without_markdown.py` | **Deterministic normalizer/annotator**: Normalizes chunk headings without relying on Markdown formatting. Uses deterministic heading detection with optional LLM fallback. Outputs `<input_basename>_processed.json`. |
+| `utils.py` | **Shared utility functions**: <br>• `call_ollama()`: HTTP POST to the Ollama `/api/generate` endpoint <br>• `split_context_and_content()`: Splits chunk text into context lines vs. raw content lines <br>• `extract_new_lines_with_ollama()`: Extracts key lines from raw text via Ollama <br>• `extract_snippets_with_ollama()`: Builds enriched snippet strings for a chunk <br>• `load_entries()`: Loads JSON or JSONL files into a list of dicts <br>• `find_chunk_key()` / `chunk_number_from_key()`: Chunk key helpers <br>• `get_text_field()` / `set_text_field()`: Text field accessors across key variants <br>• `flatten_heading_values()`: Flattens heading values out of nested metadata dicts |
+| `summary_metadata.py` | **Cascading extractor**: Processes JSON/JSONL chunks using a growing context approach with Ollama. Extracts key lines from each chunk, builds cumulative context, and enriches subsequent chunks' metadata. Outputs `output/summary_chunks.json`. |
+| `without_markdown.py` | **Deterministic normalizer/annotator**: Normalizes chunk headings without relying on Markdown formatting. Uses deterministic heading detection with optional LLM fallback. Outputs `output/without_markdown.json`. |
 | `requirements.txt` | Python dependencies for the Task2 pipeline. |
 
 ---
@@ -98,9 +97,8 @@ Task2/
 
 | Path | Description |
 |------|-------------|
-| `data/sales_analysis_report.json` | Base-level JSON input with extracted heading-structured chunks. |
-| `data/sales_analysis_report4.json` | Processed JSON input (output from an earlier pipeline run). Default input for `main.py`. |
-| `data/sales_report_gemma8.json` | JSON input produced using the `gemma2:8b` model extraction pass. |
+| `data/without_markdown.json` | Input JSON chunks that do not contain Markdown formatting — heading structure is conveyed purely through named keys (`Main Heading N`, `Sub Heading N`, etc.). |
+| `data/with_markdown.json` | Input JSON chunks that retain Markdown heading markers (`#`, `##`, `###`) in the `Text` field, used by the normalizer to cross-reference heading levels. |
 
 ---
 
@@ -108,75 +106,76 @@ Task2/
 
 | Path | Description |
 |------|-------------|
-| `output/structured2_chunks.json` | Cascading-extractor output  chunks enriched with accumulated context metadata. |
-| `output/sales_analysis_report4_ancestry_exact.json` | Ancestry-annotated output  chunks from `sales_analysis_report4.json` enriched with `ancestral_headings`. |
-| `output/sales_report_gemma8_processed.json` | Normalizer output  normalized and annotated chunks from `sales_report_gemma8.json`. |
+| `output/summary_chunks.json` | Cascading-extractor output — chunks enriched with accumulated context metadata from `summary_metadata.py`. |
+| `output/without_markdown.json` | Ancestry-annotated output from processing `data/without_markdown.json` — each chunk enriched with `ancestral_headings`. |
+| `output/with_markdown.json` | Normalizer output from processing `data/with_markdown.json` — normalized and annotated chunks. |
 
 ---
 
 ## Pipeline Flow
 
 ```
+┌─────────────────────────────────────────────────────────────────┐
+│                         PIPELINE FLOW                           │
+└─────────────────────────────────────────────────────────────────┘
 
-                         PIPELINE FLOW                           
-
-
-    
-       INPUT JSON/JSONL chunks      
-       (data/  output from Task1)  
-    
-                    
-                    
-
-  STEP 1: Load & Parse  [main.py: load_input()]                   
-                    
-   Reads JSON array or JSONL                                     
-   Normalizes nested chunk maps (chunk_idN  heading dict)       
-   Handles dict roots with 'chunks' or 'data' keys              
-
-                    
-                    
-
-  STEP 2: Normalize Headings  [main.py: normalize_chunk_with_llm()]
-     
-   BFS walk to find 'Main Heading N' / 'Sub Heading N' keys      
-   Extracts depth level from key prefix (Sub count)              
-   Regex fallback for unnamed heading-like strings               
-   LLM disambiguation for ambiguous chunks (optional)            
-
-                    
-                    
-
-  STEP 3: Collect & Adjust Heading Levels  [main.py]              
-            
-   Collect unique headings in document order                     
-   Bump dot-numbered sub-sections (e.g. "6.1 X"  child of "6") 
-   Bump numbered list runs under non-numbered parent headings    
-
-                    
-                    
-
-  STEP 4: Build Ancestry Map  [main.py: build_ancestry_with_llm()]
-    
-   Sends headings in batches to Ollama with depth annotations    
-   LLM returns {heading: [ancestors...]} JSON                    
-   Validates output: 50% of non-root headings must have parents 
-   Falls back to rule-based heading stack on validation failure  
-
-                    
-                    
-
-  STEP 5: Annotate & Write Output  [main.py]                      
-                         
-   Injects ancestral_headings into each chunk's heading dict     
-   Preserves original JSON structure                             
-   Writes to output/<input_basename>_ancestry_exact.json         
-
-                    
-                    
-    
-      output/<input_basename>_ancestry_exact.json       
-    
+    ┌────────────────────────────────┐
+    │   INPUT JSON/JSONL chunks      │
+    │   (data/ — output from Task1)  │
+    └───────────────┬────────────────┘
+                    │
+                    ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  STEP 1: Load & Parse  [main.py: load_input()]                   │
+│  ──────────────────────────────────────────────                  │
+│  • Reads JSON array or JSONL                                     │
+│  • Normalizes nested chunk maps (chunk_idN → heading dict)       │
+│  • Handles dict roots with 'chunks' or 'data' keys              │
+└──────────────────────────────────────────────────────────────────┘
+                    │
+                    ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  STEP 2: Normalize Headings  [main.py: normalize_chunk_with_llm()]│
+│  ──────────────────────────────────────────────────────────────  │
+│  • BFS walk to find 'Main Heading N' / 'Sub Heading N' keys      │
+│  • Extracts depth level from key prefix (Sub count)              │
+│  • Regex fallback for unnamed heading-like strings               │
+│  • LLM disambiguation for ambiguous chunks (optional)            │
+└──────────────────────────────────────────────────────────────────┘
+                    │
+                    ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  STEP 3: Collect & Adjust Heading Levels  [main.py]              │
+│  ─────────────────────────────────────────────────────          │
+│  • Collect unique headings in document order                     │
+│  • Bump dot-numbered sub-sections (e.g. "6.1 X" → child of "6") │
+│  • Bump numbered list runs under non-numbered parent headings    │
+└──────────────────────────────────────────────────────────────────┘
+                    │
+                    ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  STEP 4: Build Ancestry Map  [main.py: build_ancestry_with_llm()]│
+│  ──────────────────────────────────────────────────────────────  │
+│  • Sends headings in batches to Ollama with depth annotations    │
+│  • LLM returns {heading: [ancestors...]} JSON                    │
+│  • Validates output: ≥50% of non-root headings must have parents │
+│  • Falls back to rule-based heading stack on validation failure  │
+└──────────────────────────────────────────────────────────────────┘
+                    │
+                    ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  STEP 5: Annotate & Write Output  [main.py]                      │
+│  ─────────────────────────────────────────                       │
+│  • Injects ancestral_headings into each chunk's heading dict     │
+│  • Preserves original JSON structure                             │
+│  • Writes to output/without_markdown.json or output/with_markdown.json │
+└──────────────────────────────────────────────────────────────────┘
+                    │
+                    ▼
+    ┌──────────────────────────────────────────┐
+    │  output/without_markdown.json            │
+    │  output/with_markdown.json               │
+    └──────────────────────────────────────────┘
 ```
 
 ---
@@ -205,9 +204,9 @@ All settings are in `config/config.json`:
 ```json
 "paths": {
     "outputs_dir": "outputs",
-    "structured2_out": "outputs/structured2_chunks.json",
-    "ancestry_exact_out": "outputs/sales_analysis_report4_ancestry_exact.json",
-    "run5_processed_out": "outputs/sales_report_gemma8_processed.json"
+    "structured2_out": "outputs/summary_chunks.json",
+    "ancestry_exact_out": "outputs/without_markdown.json",
+    "run5_processed_out": "outputs/with_markdown.json"
 }
 ```
 
@@ -221,74 +220,70 @@ set OLLAMA_MODEL=llama3:8b                   # Windows
 
 ## Usage
 
-### Run ancestry extraction (default input)
+### Run ancestry extraction on without-markdown input
 
 ```bash
 cd Task2
-python main.py
+python main.py data/without_markdown.json
 ```
 
-Processes `data/sales_analysis_report4.json` and writes `output/sales_analysis_report4_ancestry_exact.json`.
+Processes `data/without_markdown.json` and writes `output/without_markdown.json`.
 
-### Custom input file
+### Run ancestry extraction on with-markdown input
 
 ```bash
-python main.py data/sales_report_gemma8.json
+python main.py data/with_markdown.json
 ```
+
+Processes `data/with_markdown.json` and writes `output/with_markdown.json`.
 
 ### Custom output path
 
 ```bash
-python main.py data/sales_analysis_report4.json --output output/my_output.json
+python main.py data/without_markdown.json --output output/my_output.json
 ```
 
 ### Override document title
 
 ```bash
-python main.py data/sales_analysis_report4.json --title "Sales Analysis Report"
+python main.py data/without_markdown.json --title "Sales Analysis Report"
 ```
 
 ### Disable LLM (rule-based ancestry only)
 
 ```bash
-python main.py data/sales_analysis_report4.json --no-llm
+python main.py data/without_markdown.json --no-llm
 ```
 
 ### Hybrid mode (LLM only for ambiguous chunks)
 
 ```bash
-python main.py data/sales_analysis_report4.json --hybrid
+python main.py data/without_markdown.json --hybrid
 ```
 
 ### Use a different Ollama model
 
 ```bash
-python main.py data/sales_analysis_report4.json --model llama3:8b
-```
-
-### Suppress progress output
-
-```bash
-python main.py data/sales_analysis_report4.json --progress-interval 0
+python main.py data/without_markdown.json --model llama3:8b
 ```
 
 ### Run the cascading extractor
 
 ```bash
-python utils/summary_metadata.py data/sales_report_gemma8.json output/structured2_chunks.json
+python utils/summary_metadata.py data/without_markdown.json output/summary_chunks.json
 ```
 
 ### Run the deterministic normalizer
 
 ```bash
-python utils/without_markdown.py data/sales_report_gemma8.json output/sales_report_gemma8_processed.json
+python utils/without_markdown.py data/with_markdown.json output/with_markdown.json
 ```
 
 ### CLI arguments (`main.py`)
 
 | Argument | Default | Description |
 |---|---|---|
-| `input_file` | `data/sales_analysis_report4.json` | Path to input JSON file |
+| `input_file` | positional | Path to input JSON file |
 | `--output / -o` | `<input_basename>_ancestry_exact.json` | Output file path |
 | `--no-llm` | off | Disable Ollama; use rule-based ancestry only |
 | `--hybrid` | off | Rule-based first; LLM only for ambiguous chunks |
@@ -300,7 +295,7 @@ python utils/without_markdown.py data/sales_report_gemma8.json output/sales_repo
 
 ## Output Format
 
-### Ancestry-Annotated JSON (`output/*_ancestry_exact.json`)
+### Ancestry-Annotated JSON (`output/without_markdown.json` / `output/with_markdown.json`)
 
 The output preserves the original input structure with an injected `ancestral_headings` key inside each chunk's heading map. `ancestral_headings` maps each heading text to its ordered list of ancestors from the document root down to the immediate parent.
 
@@ -337,7 +332,7 @@ The output preserves the original input structure with an injected `ancestral_he
 
 **Key details:**
 
-- **`ancestral_headings`**  Injected inside the chunk's heading map dict (the nested `chunk_idN` object). Maps each heading string to a list of ancestor headings ordered outermost (root) to innermost (immediate parent).
+- **`ancestral_headings`** — Injected inside the chunk's heading map dict (the nested `chunk_idN` object). Maps each heading string to a list of ancestor headings ordered outermost (root) to innermost (immediate parent).
 - **Root headings** (Level 0 / `Main Heading N`) map to `[]`.
 - **Non-root headings** list their full ancestor chain, e.g. `["Root", "Parent"]`.
 - **Original fields** (`Text`, `Metadata`, heading keys) are preserved unchanged.
@@ -356,9 +351,9 @@ The output preserves the original input structure with an injected `ancestral_he
 
 ## Dependencies
 
-- `ollama`  Local LLM Python client for Ollama runtime
-- `requests`  HTTP calls to Ollama `/api/generate` endpoint
-- `langextract`  LLM-based extraction framework (used in cascading extractor)
+- `ollama` — Local LLM Python client for Ollama runtime
+- `requests` — HTTP calls to Ollama `/api/generate` endpoint
+- `langextract` — LLM-based extraction framework (used in cascading extractor)
 
 Install all dependencies:
 
