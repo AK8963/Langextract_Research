@@ -1,9 +1,17 @@
 import re
 import json
+import os
 import requests
 from typing import List, Tuple, Dict, Any, Optional
 from pathlib import Path
-from config.config import OLLAMA_BASE_URL, OLLAMA_MODEL
+
+# Load config from config.json
+_CONFIG_PATH = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.json')
+with open(_CONFIG_PATH, 'r', encoding='utf-8') as _f:
+    _CONFIG = json.load(_f)
+
+OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", _CONFIG["ollama"]["base_url"])
+OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", _CONFIG["ollama"]["model"])
 
 
 def call_ollama(prompt: str, max_tokens: int = 400) -> str:
