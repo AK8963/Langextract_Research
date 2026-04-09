@@ -108,8 +108,28 @@ def is_false_heading(text: str) -> bool:
         return True
     
     # Contains sentence-ending punctuation mid-text (likely body text)
-    if re.search(r'[.!?]\s+[A-Z]', text):
-        return True
+    # Exception: short numbered HEADINGS like "1. OVERVIEW" have ". " + capital,
+    # but numbered STEPS like "9. At the 3rd pop-up enter..." should be rejected.
+    if re.search(r'[.!?]\s*[A-Z]', text):
+        num_match = re.match(r'^\d+(\.\d+)*\.?\s*(.+)$', text)
+        if num_match:
+            content = num_match.group(2).lstrip('. ').strip()
+            # A true numbered heading is SHORT, does NOT end with a full-stop,
+            # and does NOT start with an article/preposition or verb phrase.
+            _sentence_starters = (
+                r'^(At|The|If|In|On|When|After|Before|Once|You|For|To|A|An|'
+                r'This|That|It|Click|Enter|Place|Scan|Remove|Pull|Open|Login|'
+                r'Close|Select|Press|Wait|Proceed|Ensure)\s'
+            )
+            is_heading_like = (
+                not text.rstrip().endswith('.')
+                and len(text.strip()) <= 70
+                and not re.match(_sentence_starters, content, re.IGNORECASE)
+            )
+            if not is_heading_like:
+                return True
+        else:
+            return True
     
     # Contains multiple commas (likely a list or body text)
     if text.count(',') > 2:
@@ -126,7 +146,12 @@ def is_false_heading(text: str) -> bool:
     # Contains "..." or excessive dots (TOC artifacts)
     if '...' in text or text.count('.') > 5:
         return True
-    
+
+    # Text ending with a period is a sentence, not a heading
+    # (exception: bare section numbers like "1." or "1.2.")
+    if text.endswith('.') and not re.match(r'^\d+(\. \d+)*\.$', text.strip()):
+        return True
+
     return False
 
 
@@ -213,6 +238,15 @@ def extract_headings_regex(chunk: str) -> list:
     markdown_heading_re = re.compile(
         r'^(#{1,6})\s+\*{0,2}\s*(.*?)\s*\*{0,2}\s*$'
     )
+    # Pre-build a set of line indices that are within 2 lines of an image reference
+    # (captions often appear one blank line after the image tag)
+    image_re = re.compile(r'^!\[.*?\]\(.*?\)\s*$')
+    lines_after_image = set()
+    for idx, ln in enumerate(lines):
+        if image_re.match(ln.strip()):
+            for offset in (1, 2):
+                if idx + offset < len(lines):
+                    lines_after_image.add(idx + offset)
     heading_patterns = [
         (r'^(\d+)\s+([A-Z][A-Za-z][A-Za-z\s\-&()]+)$', 2),
         (r'^(\d+\.)\s*([A-Z][A-Za-z][A-Za-z\s\-&()]+)$', 2),
@@ -226,19 +260,27 @@ def extract_headings_regex(chunk: str) -> list:
         (r'^([A-Z][A-Z][A-Z\s]{1,37})$', 2),
         (r'^([A-Z][a-z]+(?:\s+[A-Z][a-z]+){1,5})$', 2),
     ]
-    for line in lines:
+    for line_idx, line in enumerate(lines):
         raw_line = line
         line = line.strip()
         if not line or len(line) < 3:
             continue
 
+        # Skip lines that are image captions (immediately follow an image marker)
+        if line_idx in lines_after_image:
+            continue
+
         # Check for markdown heading first
         md_match = markdown_heading_re.match(line)
         if md_match:
-            hashes = md_match.group(1)
             heading_text = md_match.group(2).strip()
-            if heading_text and len(heading_text) >= 2:
-                level = len(hashes)
+            # Strip ALL ** bold markers (e.g. "1. **OVERVIEW**" → "1. OVERVIEW")
+            heading_text = re.sub(r'\*+', '', heading_text).strip()
+            if heading_text and len(heading_text) >= 2 and not is_false_heading(heading_text):
+                # Use content-based level determination: more reliable than
+                # markdown hash count when authors use inconsistent heading depths
+                # (e.g. #### for top-level numbered sections like "1. OVERVIEW")
+                level = determine_heading_level(heading_text)
                 headings.append({
                     "text": heading_text,
                     "level": level,
@@ -355,6 +397,127 @@ def print_step(step_num: int, text: str):
     """Print a step indicator."""
     print(f"\n[Step {step_num}] {text}")
     print("-" * 50)
+
+
+def extract_document_title_from_text(full_text: str) -> dict | None:
+    """
+    Extract the document title from a work-instruction style markdown table.
+
+    Handles two table formats used in Zebra work-instruction documents:
+
+      Format A (FetchRobotics style) – product name on SAME row as WORK INSTRUCTIONS:
+        | WORK INSTRUCTIONS<br>PRODUCT NAME | ... |
+        | –<br>ACTION1,<br>ACTION2<br>Work Instruction No. | ... |
+
+      Format B (PTO Kitting style) – product name on SEPARATE row:
+        | WORK INSTRUCTIONS | ... |
+        | PRODUCT<br>NAME   | ... |
+        | Work Instruction No. | ... |
+
+      Format C (inline heading style):
+        #### **WORK INSTRUCTIONS Org** PRODUCT TITLE **Work Instruction No. ...**
+
+    Returns a level-1 heading dict, e.g.:
+      {"text": "CART CONNECT100 – UNPACK, CHARGE, REPACK", "level": 1, ...}
+      {"text": "PTO KITTING PROCESS", "level": 1, ...}
+    """
+    lines = full_text.split('\n')
+
+    # Format C: inline markdown heading containing WORK INSTRUCTIONS
+    # e.g. #### **WORK INSTRUCTIONS Zebra Technologies** ROLLERTOP (RT)100 – UNPACK, CHARGE, REPACK **Work Instruction No. ...
+    for line in lines:
+        stripped = line.strip()
+        if re.match(r'^#{1,6}\s*\*\*WORK\s+INSTRUCTIONS', stripped, re.IGNORECASE):
+            m = re.search(
+                r'\*\*WORK\s+INSTRUCTIONS[^*]*\*\*\s+(.+?)\s+\*\*Work\s+Instruction',
+                stripped, re.IGNORECASE
+            )
+            if m:
+                title = m.group(1).strip()
+                if title:
+                    return {"text": title, "level": 1, "source": "title_parse", "chunk_index": 0}
+    product_name = None
+    action_parts = []
+    in_title_table = False
+
+    for line in lines:
+        stripped = line.strip()
+
+        if not stripped.startswith('|'):
+            if in_title_table and product_name:
+                break
+            continue
+
+        # Skip separator rows like |---|---|
+        if re.match(r'^\|[-| :]+\|$', stripped):
+            continue
+
+        # Isolate the first cell
+        first_cell_match = re.match(r'^\|([^|]+)', stripped)
+        if not first_cell_match:
+            continue
+        first_cell = first_cell_match.group(1).strip()
+
+        # Expand <br> into parts
+        br_parts = [p.strip() for p in re.split(r'<br\s*/?>', first_cell, flags=re.IGNORECASE)]
+        br_parts = [p for p in br_parts if p]
+
+        if not in_title_table:
+            # Detect the WORK INSTRUCTIONS row (it may be any br_part on the row)
+            wi_idx = None
+            for idx, part in enumerate(br_parts):
+                if re.match(r'^WORK\s+INSTRUCTIONS?$', part, re.IGNORECASE):
+                    wi_idx = idx
+                    break
+            if wi_idx is not None:
+                in_title_table = True
+                # Format A: product name is the next br_part on the same row
+                if wi_idx + 1 < len(br_parts):
+                    product_name = br_parts[wi_idx + 1].strip()
+            continue
+
+        # --- Inside the title table ---
+
+        # Skip rows that are clearly header/metadata labels
+        if br_parts and re.match(
+            r'^(CONFIDENTIAL|Work Instruction No\.?|Revision No\.?|WORK INSTRUCTIONS?)',
+            br_parts[0], re.IGNORECASE
+        ):
+            continue
+
+        # Subtitle row (Format A): first br_part is a dash variant
+        if br_parts and re.match(r'^[\-\u2013\u2014\u2212]$', br_parts[0]):
+            for part in br_parts[1:]:
+                if re.match(r'Work Instruction', part, re.IGNORECASE):
+                    break
+                clean = part.rstrip(',').strip()
+                if clean:
+                    action_parts.append(clean)
+            break  # fully captured
+
+        # Format B: product name is on a separate row — capture it
+        if product_name is None:
+            name_parts = []
+            for part in br_parts:
+                if re.match(r'^(Work Instruction No\.?|Revision No\.?)', part, re.IGNORECASE):
+                    break
+                name_parts.append(part)
+            if name_parts:
+                product_name = ' '.join(name_parts)
+            continue
+
+        # product_name found and no subtitle row → this is a Format-B doc, stop here
+        if re.match(r'^(Work Instruction No\.?|Revision No\.?)', br_parts[0] if br_parts else '', re.IGNORECASE):
+            break
+
+    if product_name and action_parts:
+        title = f"{product_name} \u2013 {', '.join(action_parts)}"
+        return {"text": title, "level": 1, "source": "title_parse", "chunk_index": 0}
+
+    if product_name:
+        return {"text": product_name, "level": 1, "source": "title_parse", "chunk_index": 0}
+
+    return None
 
 
 def print_metrics_table(metrics: dict):

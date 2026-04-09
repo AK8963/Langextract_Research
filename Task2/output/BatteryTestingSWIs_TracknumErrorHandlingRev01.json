@@ -1,0 +1,28 @@
+[
+  {
+    "chunk_id1": {
+      "Main Heading 1": "TRACKNUM ERROR HANDLING .....",
+      "Sub Heading 1": "1. OVERVIEW .....",
+      "Sub Heading 2": "2. TRACKNUM ERROR .....",
+      "Sub Heading 3": "3. REFERENCES .....",
+      "Sub Heading 4": "4. REVISION HISTORY .....",
+      "ancestral_headings": {
+        "TRACKNUM ERROR HANDLING": [],
+        "1. OVERVIEW": [
+          "TRACKNUM ERROR HANDLING"
+        ],
+        "2. TRACKNUM ERROR": [
+          "TRACKNUM ERROR HANDLING"
+        ],
+        "3. REFERENCES": [
+          "TRACKNUM ERROR HANDLING"
+        ],
+        "4. REVISION HISTORY": [
+          "TRACKNUM ERROR HANDLING"
+        ]
+      }
+    },
+    "Text": "# Confidential Information\n\n| WORK INSTRUCTIONS                               |                      |                    |\n|-------------------------------------------------|----------------------|--------------------|\n| TRACKNUM ERROR HANDLING<br>Work Instruction No. |                      |                    |\n| 01<br>WI03<br>Revision No.<br>Site Code         | 1<br>2<br>OF<br>Page | Zebra Technologies |\n\n### 1. OVERVIEW\n\nThe following procedure walks you through the process of correcting test errors.\n\n#### 2. TRACKNUM ERROR\n\n**1.** Test Result Error.\n\n![](_page_0_Picture_6.jpeg)\n\n**2.** Proceed to the path below.\n\n![](_page_0_Picture_8.jpeg)\n\n**3.** Copy the TEST.nsb file into the tracknums folder.\n\n![](_page_0_Picture_10.jpeg)\n\n*This document contains proprietary information which is the exclusive property of Zebra Technologies Corp.*\n\n**4.** Click OK and try to run the test again.\n\n## 3. REFERENCES\n\n| Document # | Document Title |  |  |\n|------------|----------------|--|--|\n|            |                |  |  |\n\n# 4. REVISION HISTORY\n\nThe following table lists all revisions (including the original document) to this procedure, the date, and the reason for the revision.\n\n| Rev. | Rev. Date | Description of Change | Revised By |\n|------|-----------|-----------------------|------------|\n| 01   | 09/19/23  | Original issue        | A.Cabrera  |",
+    "Metadata": "\"Sub heading\": \"1. OVERVIEW: ........The following procedure walks you through the process of correcting test errors..........\", \"Sub heading\": \"2. TRACKNUM ERROR: ........**1.** Test Result Error. ![](_page_0_Picture_6.jpeg) **2.** Proceed to the path below. ![](_page_0_Picture_8.jpeg) **3.** Copy the TEST.nsb file into the tracknums folder. ![](_page_0_Picture_10.jpeg............\", \"Sub heading\": \"3. REFERENCES: ........| Document # | Document Title |  |  |.........\", \"Sub heading\": \"4. REVISION HISTORY: ........The following table lists all revisions (including the original document) to this procedure, the date, and the reason for the revision. | Rev. | Rev. Date | Description of Change | Revised By | | 01............\""
+  }
+]

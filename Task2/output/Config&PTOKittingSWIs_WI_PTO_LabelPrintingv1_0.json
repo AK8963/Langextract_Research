@@ -1,0 +1,28 @@
+[
+  {
+    "chunk_id1": {
+      "Sub Heading 1": "LABEL PRINTING (PTO) .....",
+      "Sub Heading 2": "Step 2: Enter the selection criteria: .....",
+      "ancestral_headings": {
+        "LABEL PRINTING (PTO)": [],
+        "Step 2: Enter the selection criteria:": [
+          "LABEL PRINTING (PTO)"
+        ]
+      }
+    },
+    "Text": "![](_page_0_Picture_2.jpeg)\n\n## **LABEL PRINTING (PTO)**\n\nThe Labels used in the PTO Kitting process are all automatically triggered as part of the process.\n\nIf a PTO Kit or Overpack Label is damaged (or missing), the label can be reprinted from the Label Printing option on the scangun (MWA).\n\nThe following PTO labels can be generated:\n\n| Label<br>Type | Format            | Label Description                                             | Preview |\n|---------------|-------------------|---------------------------------------------------------------|---------|\n| LPN           | EU_KIT_LABEL      | Kit label for the individual kit                              |         |\n| LPN           | EU_KIT_BABY_LABEL | Small kit label for the individual kit – with limited<br>data |         |\n| LPN           | EU_OVERPACK_LABEL | Overpack label for multiple kits packed into a<br>single LPN  |         |\n\n**Step 1:** Using the Mobile Application, select the Responsibility 'ZTC Warehouse System Packer Mobile' and navigate to 'Labels'\n\n**Step 2:** Select option 'Printer Sign-on' to log into the printer\n\n- Scan or enter the printer's name\n- Select 'All Labels' as the Label Type\n\nClick on the 'Sign On' button\n\nThe message 'Sign on successful' will be displayed at the bottom\n\n*Please note: If you are already signed on to another printer, then use* \n\n*the 'Sign-Off' option first*\n\n![](_page_0_Picture_16.jpeg)\n\n*Note: To login to the printer for the PTO labels, you only have to complete steps 1 and 2*\n\n**Step 3:** Select option 'Label Request' to print a label\n\n- Select the correct Label Type (using the search icon)\n- Select the correct Format (using the search icon)\n- LPN: Enter the Kit LPN\n\n*Note: You do not have to scan the printer's name again*\n\n- Enter the number of labels ('Copies') you want to print (default = 1)\n\nClick on 'More' to print more labels or 'Done' if you are finished printing\n\n![](_page_0_Picture_25.jpeg)\n\nDocument: WI - PTO - Label Printing v1.0.docx Page 1 of 2 June 29, 2023\n\n![](_page_0_Picture_28.jpeg)\n\n![](_page_1_Picture_1.jpeg)\n\nThe labels can also be reprinted from the 'Label History' program in Oracle Forms.\n\n**Step 1:** Using responsibility 'ZTC Warehouse System Packer' navigate to 'WMS Inquiries' -> 'View Label Requests'\n\n![](_page_1_Picture_4.jpeg)\n\n## **Step 2:** Enter the selection criteria:",
+    "Metadata": "\"Sub heading\": \"LABEL PRINTING (PTO): ........The Labels used in the PTO Kitting process are all automatically triggered as part of the process. If a PTO Kit or Overpack Label is damaged (or missing), the label can be reprinted from the Label Pri............\", \"Sub heading\": \"Step 2: Enter the selection criteria:\""
+  },
+  {
+    "chunk_id2": {
+      "Sub Heading 1": "Please note: .....",
+      "ancestral_headings": {
+        "Please note:": [
+          "LABEL PRINTING (PTO)"
+        ]
+      }
+    },
+    "Text": "- User: Enter the user ID of the person that originally printed the label (optional)\n- Printer\n- Label Type: 'LPN'\n- Label Format: Enter the correct Label format:\n  - o Product Label: 'EU\\_KIT\\_LABEL' o Pack Label: 'EU\\_KIT\\_BABY\\_LABEL' o Overpack Label: 'EU\\_OVERPACK\\_LABEL'\n- Request Date: Select the date the labels were originally Printed\n\n*Please note: Under the 'Label Info' tab there is also an option to specify the item number or an LPN number* \n\nClick on the 'Find' button\n\n![](_page_1_Picture_14.jpeg)\n\n![](_page_1_Picture_15.jpeg)\n\n**Step 3:** The system will now show the list of labels that can be reprinted\n\n## *Please note:*\n\n*In the details under 'Label Content' you can find Kit number or Overpack number*\n\nSelect the line with the label that you want to reprint There is no need to enter the printer or quantity, the reprint will always be done to the original printer\n\n![](_page_1_Figure_20.jpeg)\n\n![](_page_1_Picture_21.jpeg)\n\nThe Labels have been reprinted to the original printer\n\nDocument: WI - PTO - Label Printing v1.0.docx Page 2 of 2 June 29, 2023",
+    "Metadata": ""
+  }
+]

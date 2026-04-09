@@ -1,0 +1,40 @@
+[
+  {
+    "chunk_id1": {
+      "Main Heading 1": "CREATE AND PRINT SERIAL .....",
+      "Sub Heading 1": "1. OVERVIEW .....",
+      "Sub Heading 2": "2. CREATE SERIAL LABEL .....",
+      "ancestral_headings": {
+        "CREATE AND PRINT SERIAL": [],
+        "1. OVERVIEW": [
+          "CREATE AND PRINT SERIAL"
+        ],
+        "2. CREATE SERIAL LABEL": [
+          "CREATE AND PRINT SERIAL"
+        ]
+      }
+    },
+    "Text": "| CONFIDENTIAL INFORMATION                               |              |                    |  |  |\n|--------------------------------------------------------|--------------|--------------------|--|--|\n| WORK INSTRUCTIONS<br>CREATE AND PRINT SERIAL<br>LABELS |              |                    |  |  |\n| Work Instruction<br>No.                                |              |                    |  |  |\n| 01<br>WI03<br>Revision<br>No.<br>Site Code<br>Page     | 1<br>4<br>OF | Zebra Technologies |  |  |\n\n## 1. **OVERVIEW**\n\nThis work instruction provides instructions on how to create Serial labels using the Zebra system zDSS.\n\n## 2. **CREATE SERIAL LABEL**\n\n1. Log into Zebra- zDSS system.\n\n![](_page_0_Picture_5.jpeg)\n\n- 2. Scan the password that is displayed on the monitor (Welcomezebra2).\n  - ✓ The password changes yearly.\n- 3. Click on zDSS shortcut.\n\n![](_page_0_Picture_9.jpeg)\n\n4. In Scan SMART Login, scan the password also display on the monitor (03testmfg).\n\n![](_page_0_Picture_11.jpeg)\n\n![](_page_0_Picture_12.jpeg)\n\n5. Click on 2D Barcode Maker.\n\n![](_page_0_Picture_14.jpeg)\n\n✓ The Printer IP will auto-populate.\n\n#### **CONFIDENTIAL INFORMATION WORK INSTRUCTIONS** Zebra Technologies **CREATE AND PRINT SERIAL LABELS Work Instruction No. Revision No. 01 Site Code WI03 Page 2 OF 4**\n\n✓ If it does not auto-populate enter the IP number on the printer.\n\n![](_page_1_Picture_2.jpeg)\n\n**Ex**:\n\n6. In the Select Label field drop-down menu, select TX5 Carton.\n\n![](_page_1_Picture_5.jpeg)\n\n7. In the Delivery field, enter a generic delivery number.\n\n![](_page_1_Picture_7.jpeg)\n\n- 8. In the Part Number field, enter the SKU number\n  - ✓ Remove any extra digits that auto-populate when the Part # is scanned such as (1P).\n\n![](_page_1_Picture_10.jpeg)\n\n![](_page_1_Picture_11.jpeg)\n\n9. Serial Quantity for 2D barcode field, enter the # of serial(s) that will be on the label.\n\n![](_page_1_Picture_13.jpeg)\n\n✓ Max Serial Quantity is 14.\n\n# **CONFIDENTIAL INFORMATION WORK INSTRUCTIONS** Zebra Technologies **CREATE AND PRINT SERIAL LABELS Work Instruction No. Revision No. 01 Site Code WI03 Page 3 OF 4**\n\n10. Enter the COO - Country of Origin.\n\n![](_page_2_Figure_2.jpeg)\n\n![](_page_2_Picture_3.jpeg)\n\n- ✓ COO abbreviations are in Section 3.\n- ✓ **Country of Origin cannot be XX.**\n- 11. In the Select Format field, from the drop-down menu select the format for the serial # you need.\n\n![](_page_2_Picture_7.jpeg)\n\n![](_page_2_Picture_8.jpeg)",
+    "Metadata": "\"Sub heading\": \"1. OVERVIEW: ........This work instruction provides instructions on how to create Serial labels using the Zebra system zDSS..........\", \"Sub heading\": \"2. CREATE SERIAL LABEL: ........1. Log into Zebra- zDSS system. ![](_page_0_Picture_5.jpeg) - 2. Scan the password that is displayed on the monitor (Welcomezebra2). - ✓ The password changes yearly. - 3. Click on zDSS shortcut. ![](_............\""
+  },
+  {
+    "chunk_id2": {
+      "Sub Heading 1": "3. COUNTRY OF ORIGIN - COO .....",
+      "Sub Heading 2": "4. REFERENCES .....",
+      "Sub Heading 3": "5. REVISION HISTORY .....",
+      "ancestral_headings": {
+        "3. COUNTRY OF ORIGIN - COO": [
+          "CREATE AND PRINT SERIAL"
+        ],
+        "4. REFERENCES": [
+          "CREATE AND PRINT SERIAL"
+        ],
+        "5. REVISION HISTORY": [
+          "CREATE AND PRINT SERIAL"
+        ]
+      }
+    },
+    "Text": "- ✓ A is for the letters on the serial #\n- ✓ N is for the numbers on the serial #.\n- ✓ The number after the dash is for the # of characters.\n- . 12. Click Start\n\n![](_page_2_Picture_13.jpeg)\n\n- ✓ If the part number is scanned instead of the serial # that system will display a Bad Serial # Format error.\n- ✓ If the same serial # is scanned the system will not record it and the label will not print.\n\n13. Scan the Serial #(s).\n\n![](_page_2_Picture_18.jpeg)\n\n- 14. The Label Auto prints\n- 15. If you have more serial #s of the same format, click Yes at the pop-up.\n\n![](_page_2_Picture_21.jpeg)\n\n*This document contains proprietary information which is the exclusive property of Zebra Technologies Corp.*\n\n# **CONFIDENTIAL INFORMATION WORK INSTRUCTIONS** Zebra Technologies **CREATE AND PRINT SERIAL LABELS Work Instruction No. Revision No. 01 Site Code WI03 Page 4 OF 4**\n\n16. Click Clear and Close the Order Processing Form screen.\n\n![](_page_3_Picture_2.jpeg)\n\n## 3. **COUNTRY OF ORIGIN - COO**\n\n✓ Country of Origin referent list and abbreviations.\n\n![](_page_3_Picture_5.jpeg)\n\n## 4. **REFERENCES**\n\n| Document # | Document Title |\n|------------|----------------|\n| N/A        | N/A            |\n\n## 5. **REVISION HISTORY**\n\nThe following table lists all revisions (including the original document) to this procedure, the date, and the reason for the revision.\n\n| Rev. | Rev. Date  | Description of Change | Revised By |\n|------|------------|-----------------------|------------|\n| 01   | 04/12/2023 | Original issue        | A.Cabrera  |",
+    "Metadata": "\"Sub heading\": \"3. COUNTRY OF ORIGIN - COO: ........✓ Country of Origin referent list and abbreviations. ![](_page_3_Picture_5.jpeg).........\", \"Sub heading\": \"4. REFERENCES: ........| Document # | Document Title | | N/A        | N/A            |.........\", \"Sub heading\": \"5. REVISION HISTORY: ........The following table lists all revisions (including the original document) to this procedure, the date, and the reason for the revision. | Rev. | Rev. Date  | Description of Change | Revised By | | 01............\""
+  }
+]

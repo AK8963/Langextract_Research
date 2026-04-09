@@ -1,22 +1,22 @@
 {
     "model": {
-        "model_id": "gemma2:27b",
+        "model_id": "gemma2:9b",
         "timeout": 1200,
         "max_retries": 3,
         "retry_delay": 3
     },
-    "pdf_source": "data/book.pdf",
+    "pdf_source": "data/ancestral_heading_docs/GlobalTradeMgmtSWIs_CreatinganOfflineShipmentinGTMv1_1.pdf",
     "output": {
-        "markdown_path": "data/Markdowns/sales_analysis_report.md",
-        "output_file": "output/md_json_outputs/sales_analysis_report4.json"
+        "markdown_path": "data/Markdowns/GlobalTradeMgmtSWIs_CreatinganOfflineShipmentinGTMv1_1.md",
+        "output_file": "output/md_json_outputs/GlobalTradeMgmtSWIs_CreatinganOfflineShipmentinGTMv1_1.json"
     },
     "text_splitter": {
         "chunk_size": 2500,
         "chunk_overlap": 0
     },
     "settings": {
-        "verbose": false,
-        "use_fallback_regex": false,
+        "verbose": true,
+        "use_fallback_regex": true,
         "max_heading_length": 100
     },
     "heading_detection": {
@@ -26,6 +26,8 @@
             "acknowledgments", "preface", "foreword", "glossary", "index"
         ],
         "false_heading_patterns": [
+            "^Confidential Information$",
+            "^Confidential$",
             "^Figure\\s+\\d+",
             "^Fig\\.?\\s+\\d+",
             "^Table\\s+\\d+",
@@ -74,7 +76,8 @@
             "^\\d{4}[-–]\\d{4}$",
             "^[A-Z][a-z]+\\s+\\d{4}$",
             ".*·.*\\d{4}",
-            "^List of (figures|tables)$"
+            "^List of (figures|tables)$",
+            "^!\\["
         ]
     }
 }

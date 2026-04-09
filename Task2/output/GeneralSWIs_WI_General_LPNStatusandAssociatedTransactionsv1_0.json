@@ -1,0 +1,69 @@
+[
+  {
+    "chunk_id1": {
+      "Sub Heading 1": "LPN STATUS & ASSOCIATED TRANSACTIONS .....",
+      "ancestral_headings": {
+        "LPN STATUS & ASSOCIATED TRANSACTIONS": []
+      }
+    },
+    "Text": "![](_page_0_Picture_1.jpeg)\n\nWORK INSTRUCTION – GENERAL – LPN STATUS & ASSOCIATED TRANSACTIONS\n\n## **LPN STATUS & ASSOCIATED TRANSACTIONS**\n\nThroughout the lifecycle of an LPN, the LPN can go through different statuses. Below is a summary of the different statuses and the LPN transactions that can be done at each stage.",
+    "Metadata": "\"Sub heading\": \"LPN STATUS & ASSOCIATED TRANSACTIONS: ........Throughout the lifecycle of an LPN, the LPN can go through different statuses. Below is a summary of the different statuses and the LPN transactions that can be done at each stage..........\""
+  },
+  {
+    "chunk_id2": {
+      "ancestral_headings": {
+        "LPN STATUS & ASSOCIATED TRANSACTIONS": []
+      }
+    },
+    "Text": "| LPN Status<br>(Context<br>Value) | Description                                                 | Comments                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Transactions Allowed                                                                                           |\n|----------------------------------|-------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|\n| 1                                | Resides in<br>Inventory                                     | An LPN with a context of 1 indicates that material associated with this<br>LPN has been costed and accounted for in inventory                                                                                                                                                                                                                                                                                                                                                 | Standard or Inspection Routed<br>Receipt is not allowed<br>Direct Delivery Routed Receipt is                   |",
+    "Metadata": ""
+  },
+  {
+    "chunk_id3": {
+      "ancestral_headings": {
+        "LPN STATUS & ASSOCIATED TRANSACTIONS": []
+      }
+    },
+    "Text": "|                                  |                                                             |                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | allowed<br>All Inventory and Outbound<br>Picking and Packing Transactions<br>are allowed                       |\n| 2                                | Resides in WIP                                              | An LPN with a context of 2 indicates that material associated with this<br>LPN is currently being transacted in WIP (Work in Process). Therefore,<br>the associated material is not yet in inventory and has not been costed<br>to inventory.                                                                                                                                                                                                                                 | WIP Drops into inventory can be<br>performed on LPNs in this context.                                          |\n| 3                                | Resides in<br>Receiving                                     | An LPN with a context of 3 indicates that material associated with this<br>LPN have been received using a standard routing or inspection routing<br>receipt and have not been put away yet. Therefore, the associated<br>material is not yet in inventory and has not been costed to inventory.                                                                                                                                                                               | Used for Putaway from Receiving<br>into Inventory.                                                             |",
+    "Metadata": ""
+  },
+  {
+    "chunk_id4": {
+      "ancestral_headings": {
+        "LPN STATUS & ASSOCIATED TRANSACTIONS": []
+      }
+    },
+    "Text": "| 4                                | Issued out of<br>Stores                                     | LPNs with a context of 4 are no longer tracked by the system, and<br>hence, no longer associated with a locator within the warehouse. The<br>system does however retain history information pertaining to<br>transactions this LPN was involved in and material it was associated with<br>prior to leaving the warehouse. LPNs shipped out of inventory receive<br>this context and may not be re-received.                                                                   | Only stored for historical<br>transactions. This cannot be<br>reused in the system for any<br>transaction.     |\n| 5                                | Pre-generated                                               | When LPNs are pre-generated by Oracle WMS and have not been used<br>yet, they are not associated with any physical material. They can be<br>printed and used to identify material during any stage of the material<br>management process such as inbound, replenishment, outbound, and<br>so on. Essentially, this context refers to LPNs that are ready to be used.                                                                                                          | Can be used at any stage of the<br>material management process for<br>all operations                           |\n| 6                                | Resides in<br>Intransit                                     | An LPN with this context is an indication that it is currently moving from<br>one location to another. Possible uses for this are when an LPN is moved<br>from one organization to the next, for example while the LPN is on a<br>truck. The LPN is in an intermediary state but resides within the entire<br>system. This context is used only for inter-org transit or internal sales<br>orders where an indirect shipping network is defined between the<br>organizations. | Cannot be used for active<br>transactions unless received in<br>destination and/or returned to<br>source       |",
+    "Metadata": ""
+  },
+  {
+    "chunk_id5": {
+      "ancestral_headings": {
+        "LPN STATUS & ASSOCIATED TRANSACTIONS": []
+      }
+    },
+    "Text": "| 7                                | Resides in Vendor<br>Site                                   | When a vendor sends an Advanced Shipment Notice (ASN) to Oracle<br>WMS, the system internally generates LPNs and associates them with<br>material information on the ASN. These LPNs receive a context of 7.<br>Material associated with LPNs of this context are not on-hand or costed<br>until it is received.                                                                                                                                                              | Cannot be used for internal<br>warehouse transactions.<br>I do not believe Zebra uses LPNs in<br>this context. |\n| 8                                | Packing context,<br>used as a<br>temporary context<br>value | This context is temporary and used internally by the software as an<br>intermediary. It should not be used or referenced anywhere including<br>the setup of picking or put away rules                                                                                                                                                                                                                                                                                         | Cannot be used for any warehouse<br>transactions.                                                              |\n| 9                                | Loaded for<br>shipment                                      | An LPN loaded for shipment has just been loaded onto a carrier ready to<br>leave the warehouse. Once the entire carrier leaves the dock, the LPN<br>obtains a context of 6 Resides in Intransit or 4 Issued out of Stores.                                                                                                                                                                                                                                                    | These LPNs can be only shipped<br>out of the dock or unloaded. No<br>other transactions can be done.           |",
+    "Metadata": ""
+  },
+  {
+    "chunk_id6": {
+      "ancestral_headings": {
+        "LPN STATUS & ASSOCIATED TRANSACTIONS": []
+      }
+    },
+    "Text": "| 10                               | Prepack of WIP                                              | LPNs that reside in WIP and are associated with material that is pre<br>packed by WIP receive this context. This context adds an extra level of<br>granularity to an LPN's usage within WIP. This is used when the system<br>has associated the LPN with material and printed the labels, but the<br>material has not yet been physically packed.                                                                                                                             | I do not believe Zebra uses LPNs in<br>this context.                                                           |\n| 11                               | Picked                                                      | LPNs picked during the picking process receive this context. They are<br>intransit within the warehouse.                                                                                                                                                                                                                                                                                                                                                                      | These LPNs can be dropped in the<br>destination locator, but no other<br>transactions can be done.             |",
+    "Metadata": ""
+  },
+  {
+    "chunk_id7": {
+      "Sub Heading 1": "WORK INSTRUCTION – GENERAL – LPN STATUS & ASSOCIATED TRANSACTIONS .....",
+      "ancestral_headings": {
+        "WORK INSTRUCTION – GENERAL – LPN STATUS & ASSOCIATED TRANSACTIONS": [
+          "LPN STATUS & ASSOCIATED TRANSACTIONS"
+        ]
+      }
+    },
+    "Text": "Document: WI - General - LPN Status and Associated Transactions v1.0.docx\n\nPage 1 of 2 July 17, 2024\n\n![](_page_1_Picture_0.jpeg)\n\n## **CONFIDENTIAL INFORMATION**\n\nWORK INSTRUCTION – GENERAL – LPN STATUS & ASSOCIATED TRANSACTIONS\n\nDocument: WI - General - LPN Status and Associated Transactions v1.0.docx\n\nPage 2 of 2 July 17, 2024",
+    "Metadata": "\"Sub heading\": \"WORK INSTRUCTION – GENERAL – LPN STATUS & ASSOCIATED TRANSACTIONS: ........Document: WI - General - LPN Status and Associated Transactions v1.0.docx Page 2 of 2 July 17, 2024.........\""
+  }
+]

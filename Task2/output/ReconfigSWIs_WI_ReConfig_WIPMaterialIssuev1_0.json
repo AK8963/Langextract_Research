@@ -1,0 +1,21 @@
+[
+  {
+    "chunk_id1": {
+      "Sub Heading 1": "WORK INSTRUCTION – RECONFIG – WIP MATERIAL ISSUE .....",
+      "Sub Heading 2": "WIP MATERIAL ISSUE .....",
+      "Sub Heading 3": "Step 3: Enter the following details: .....",
+      "ancestral_headings": {
+        "WORK INSTRUCTION – RECONFIG – WIP MATERIAL ISSUE": [],
+        "WIP MATERIAL ISSUE": [
+          "WORK INSTRUCTION – RECONFIG – WIP MATERIAL ISSUE"
+        ],
+        "Step 3: Enter the following details:": [
+          "WORK INSTRUCTION – RECONFIG – WIP MATERIAL ISSUE",
+          "WIP MATERIAL ISSUE"
+        ]
+      }
+    },
+    "Text": "![](_page_0_Picture_1.jpeg)\n\n## WORK INSTRUCTION – RECONFIG – WIP MATERIAL ISSUE\n\n## **WIP MATERIAL ISSUE**\n\nNon-Standard Jobs are often created for assemblies that need to be reworked. For these jobs, the Assembly Item is the same as the main component item.\n\nFor such Non-Standard Jobs, the assembly that is being reworked cannot be automatically backflushed. So, these must be manually issued to the job first, before the Assembly Completions can be done.\n\nAny other components assigned to the job can follow the normal backflush process, so no manual issues required.\n\n**Step 1:** Use responsibility 'ZTC Reconfiguration Mobile Apps' And navigate to 'Issue'\n\n![](_page_0_Picture_8.jpeg)\n\n**Step 2:** Enter the correct Organization and press 'Enter' on the keypad\n\n![](_page_0_Picture_10.jpeg)\n\n## **Step 3:** Enter the following details:\n\n- Job: Scan or enter the Job number\n- Item: Scan or enter the component item\n- Op Seq: '10' (defaulted from the item number)\n- Sub: 'RMF1' (defaulted from the item number)\n- Loc: The locator is defaulted from the item number\n- Qty: The Job quantity is also defaulted, simply confirm the quantity\n\n![](_page_0_Picture_18.jpeg)\n\n**Step 4:** In the 'SN' field, scan the Serial Numbers for all the components (assemblies) that are being reworked.\n\nClick on the 'Save' button\n\n![](_page_0_Picture_21.jpeg)\n\nA 'Txn Success' message will be displayed at the bottom of the screen\n\nDocument: WI- ReConfig - WIP Material Issue v1.0.docx\n\nPage 1 of 2 July 18, 2024\n\n![](_page_1_Picture_0.jpeg)\n\n## **CONFIDENTIAL INFORMATION**\n\nWORK INSTRUCTION – RECONFIG – WIP MATERIAL ISSUE\n\n![](_page_1_Picture_3.jpeg)\n\nThe WIP Material issues are done, the job is now ready for the Assembly Completions.",
+    "Metadata": "\"Sub heading\": \"WORK INSTRUCTION – RECONFIG – WIP MATERIAL ISSUE\", \"Sub heading\": \"WIP MATERIAL ISSUE: ........Non-Standard Jobs are often created for assemblies that need to be reworked. For these jobs, the Assembly Item is the same as the main component item. For such Non-Standard Jobs, the assembly that is............\", \"Sub heading\": \"Step 3: Enter the following details:: ........- Job: Scan or enter the Job number - Item: Scan or enter the component item - Op Seq: '10' (defaulted from the item number) - Sub: 'RMF1' (defaulted from the item number) - Loc: The locator is defaul............\""
+  }
+]

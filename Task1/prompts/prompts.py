@@ -4,53 +4,63 @@ import langextract as lx
 
 # Main extraction prompt
 EXTRACTION_PROMPT = textwrap.dedent("""
-TASK: Extract ONLY true structural headings from this markdown document text. You will be given a chunk
-of the document. Extract only headings that are present verbatim as lines in this chunk.
+TASK: Extract ONLY true structural headings from this document text chunk.
 
-CRITICAL RULES (reduce false positives):
-1. ONLY extract headings that appear VERBATIM as their own line in the chunk—do NOT invent or hallucinate headings.
-2. Return the exact heading text as it appears (but strip leading `#` characters and surrounding `**` bold markers).
-3. If a heading line begins with `#` characters, the level is equal to the number of `#` characters.
-4. If the line is a numbered heading (e.g., "1.", "1.1"), set the level by numbering only when no `#` is present.
-5. DO NOT extract table rows, bullet items, code, captions, or inline sentences—only standalone heading lines.
-6. If unsure, do not extract.
+CRITICAL RULES:
+1. ONLY extract headings that appear VERBATIM as their own line in the chunk—do NOT invent headings.
+2. Return the exact heading text with any leading `#` characters and surrounding `**` bold markers stripped.
+3. Numbered single-digit sections like "1. OVERVIEW" or "3. UNPACK PROCESS" are MAIN SECTIONS → level 2.
+4. Sub-sections with x.y numbering like "1.1 Introduction" → level 3.
+5. Sub-sub-sections with x.y.z → level 4.
+6. NEVER extract table rows (lines containing |), bullet list items (lines starting with -, *, ✓, or **1.**),
+   body text sentences, image captions, cross-references, or page footers.
+7. Do NOT extract document-wide disclaimers like "Confidential Information" or proprietary notices.
+8. If uncertain, do not extract.
 
-MARKDOWN RULES:
-- `# Title` → level 1
-- `## Section` → level 2
-- `### Subsection` → level 3
-- `#### Sub-subsection` → level 4
-- `##### Deep section` → level 5
+WHAT COUNTS AS A HEADING:
+- A line beginning with one or more `#` markdown symbols (e.g., `#### 2. INSPECTION PROCESS`)
+- A standalone short line with a section prefix (e.g., "2. INSPECTION PROCESS", "1.1 Overview")
 
-OUTPUT FORMAT:
-- Return a JSON array (no surrounding text) where each item is an object with keys: `text` (string), `level` (integer).
-- `text` must be the heading as it appears in the document line, with any leading `#` and surrounding `**` removed.
-- `level` must reflect the number of `#` if present; otherwise a sensible numeric level based on numbering.
-- `confidence` (optional): a float between 0 and 1 indicating how confident you are that this is a true heading in the provided chunk. If included, higher values indicate higher confidence.
-
-EXTRA EXAMPLE (few-shot):
-Chunk input:
-'''
-# **Sales Analysis Report**
-
-### **Executive Summary**
-
-Some paragraph.
-
-## Methodology
-'''
-
-Desired JSON output (exact):
-[ {"text": "Sales Analysis Report", "level": 1, "confidence": 0.98},
-  {"text": "Executive Summary", "level": 3, "confidence": 0.95},
-  {"text": "Methodology", "level": 2, "confidence": 0.96} ]
-
-ONLY return headings you are CERTAIN are markdown heading lines in the chunk.
+LEVEL RULES:
+- Single-digit numbered sections (1., 2., 3. …) → level 2
+- Two-part numbered sections (1.1, 2.3 …) → level 3
+- Three-part numbered sections (1.1.1, 2.3.1 …) → level 4
+- If no numbering, use markdown `#` count as level
 """)
 
 
 # Example extractions for few-shot learning
 EXTRACTION_EXAMPLES = [
+    # Example 0: Work instruction document with numbered sections (mirrors the target doc type)
+    lx.data.ExampleData(
+        text="""#### 1. OVERVIEW
+
+The purpose of this work instruction is to provide the procedure.
+
+#### 2. INSPECTION PROCESS
+
+- **1.** Move the robot to the staging area.
+- **2.** Inspect the shipment.
+
+#### 3. UNPACK PROCESS
+
+- **1.** Move the freight crate to the charging area.
+
+## 5. REFERENCES
+
+| Document # | Document Title |
+
+### 6. REVISION HISTORY
+
+The following table lists all revisions.""",
+        extractions=[
+            lx.data.Extraction(extraction_class="heading", extraction_text="1. OVERVIEW", attributes={"level": 2, "confidence": 0.99}),
+            lx.data.Extraction(extraction_class="heading", extraction_text="2. INSPECTION PROCESS", attributes={"level": 2, "confidence": 0.99}),
+            lx.data.Extraction(extraction_class="heading", extraction_text="3. UNPACK PROCESS", attributes={"level": 2, "confidence": 0.99}),
+            lx.data.Extraction(extraction_class="heading", extraction_text="5. REFERENCES", attributes={"level": 2, "confidence": 0.98}),
+            lx.data.Extraction(extraction_class="heading", extraction_text="6. REVISION HISTORY", attributes={"level": 2, "confidence": 0.98}),
+        ],
+    ),
     # Example 1: Markdown report with mixed heading levels
     lx.data.ExampleData(
         text="""# **Sales Analysis Report**

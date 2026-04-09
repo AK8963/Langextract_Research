@@ -1,0 +1,62 @@
+{
+    "weaviate": {
+        "http_host": "localhost",
+        "http_port": 8080,
+        "grpc_host": "localhost",
+        "grpc_port": 51051
+    },
+    "ollama": {
+        "host": "http://localhost:11434",
+        "docker_endpoint": "http://host.docker.internal:11434",
+        "embed_model": "bge-m3",
+        "generative_model": "llama3:8b"
+    },
+    "db": {
+        "retrieval": {
+            "min_score_threshold": 0.45,
+            "w_text": 0.6,
+            "w_heading": 0.4,
+            "top_k_retrieve": 20,
+            "top_n": 5
+        },
+        "data_file": "C:\\Users\\AK8963\\OneDrive - Zebra Technologies\\Documents\\Langextract_run\\Task2\\output\\FetchRobotics_FlexShelfDual&SingleScreens_UnpackChargeRepackRev04.json",
+        "queries_md_file": "queries/FetchRobotics_FlexShelfDual&SingleScreens_UnpackChargeRepackRev04.md",
+        "excel_output_file": "output/FetchRobotics_FlexShelfDual&SingleScreens_UnpackChargeRepackRev04.xlsx",
+        "query": "In the PTO Kitting process, what action should be taken if the check for the LPNs and quantity does not pass?",
+        "metadata_filters": {
+            "doc_source": "",
+            "heading_level": "",
+            "top_section": "",
+            "has_code": null,
+            "has_images": null
+        }
+    },
+    "eval_multidoc": {
+        "retrieval": {
+            "w_text": 0.5,
+            "w_heading": 0.5,
+            "top_k_retrieve": 18,
+            "top_n": 9,
+            "precision_k": 9
+        },
+        "eval_data_file": "C:\\Users\\AK8963\\OneDrive - Zebra Technologies\\Documents\\Langextract_run\\Task2\\output\\combined_ancestry_exact.json",
+        "queries_file": "eval_queries.json",
+        "excel_output_file": "output/multidoc_eval_results3.xlsx"
+    },
+    "eval_per_doc": {
+        "retrieval": {
+            "w_text": 0.6,
+            "w_heading": 0.4,
+            "top_k_retrieve": 20,
+            "top_n": 10
+        },
+        "task2_output_dir": "C:\\Users\\AK8963\\OneDrive - Zebra Technologies\\Documents\\Langextract_run\\Task2\\output",
+        "exclude_files": [
+            "combined_ancestry_exact.json",
+            "notes_ancestry_exact.json",
+            "with_markdown.json",
+            "without_markdown.json"
+        ],
+        "excel_output_file": "output/per_doc_title_query_results3.xlsx"
+    }
+}

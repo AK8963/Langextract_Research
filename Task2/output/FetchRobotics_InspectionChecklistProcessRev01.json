@@ -1,0 +1,80 @@
+[
+  {
+    "chunk_id1": {
+      "Main Heading 1": "INSPECTION CHECKLIST PROCESS .....",
+      "Sub Heading 1": "1. OVERVIEW .....",
+      "Sub Heading 2": "2. INBOUND .....",
+      "Sub Heading 3": "Indicators Mishandled .....",
+      "ancestral_headings": {
+        "INSPECTION CHECKLIST PROCESS": [],
+        "1. OVERVIEW": [
+          "INSPECTION CHECKLIST PROCESS"
+        ],
+        "2. INBOUND": [
+          "INSPECTION CHECKLIST PROCESS"
+        ],
+        "Indicators Mishandled": [
+          "INSPECTION CHECKLIST PROCESS"
+        ]
+      }
+    },
+    "Text": "# Confidential Information\n\n| WORK INSTRUCTIONS                       |                      |                    |\n|-----------------------------------------|----------------------|--------------------|\n| INSPECTION CHECKLIST<br>PROCESS         |                      |                    |\n| Work Instruction No.                    |                      |                    |\n| 01<br>WI03<br>Revision No.<br>Site Code | 1<br>3<br>Page<br>OF | Zebra Technologies |\n\n## 1. OVERVIEW\n\nThe purpose of this work instruction is to provide the procedure for completing the Inspection Checklist and who to contact in the event the Robot was mishandled.\n\n### 2. INBOUND\n\n- **1.** Before releasing the driver ensure the bill of lading is marked accordingly if there were any signs of mishandling.\n- **2.** Obtain a copy of the *Fetch Robot Inspection Checklist Rev01*.\n- **3.** Write the date the Robot was received and the name of the receiver.\n- **4.** Write the Part number and the Serial # on the Checklist.\n- **5.** Enter your initials in the Accepted or Rejected columns when completing sections 1.1 1.3 of the Inspection Checklist.\n- **6.** Inspect the Crate and the indicators.\n  - ✓ The crate should be free of damage and hand-written elements.\n  - ✓ The ShockWatch label should not display red.\n  - ✓ The Tip 'N' Tell Indicators should not have any blue particles on the arrow tip.\n\n![](_page_0_Picture_14.jpeg)\n\n- **7.** If there are NO rejections, place Inspection Checklist Rev01 in a white pouch and affix it to the crate.\n- **8.** Follow regular receiving and put away process.\n\n#### **Indicators Mishandled**",
+    "Metadata": "\"Sub heading\": \"1. OVERVIEW: ........The purpose of this work instruction is to provide the procedure for completing the Inspection Checklist and who to contact in the event the Robot was mishandled..........\", \"Sub heading\": \"2. INBOUND: ........- **1.** Before releasing the driver ensure the bill of lading is marked accordingly if there were any signs of mishandling. - **2.** Obtain a copy of the *Fetch Robot Inspection Checklist Rev01*. - *............\", \"Sub heading\": \"Indicators Mishandled\""
+  },
+  {
+    "chunk_id2": {
+      "Sub Heading 1": "Missing Indicators .....",
+      "Sub Heading 2": "Indicators on the Crate .....",
+      "ancestral_headings": {
+        "Missing Indicators": [
+          "INSPECTION CHECKLIST PROCESS"
+        ],
+        "Indicators on the Crate": [
+          "INSPECTION CHECKLIST PROCESS"
+        ]
+      }
+    },
+    "Text": "- **9.** If the indicators show signs of mishandling, informed VAS, and QA, the Robot needs to be taken out and visually inspected. Reference *F100 & accessories - Cosmetic Surface Classification.*\n  - ✓ Mark the Bill of Lading accordingly, the logistics team might need to file a claim against the carrier.\n- **10.** If the Robot is damaged, take pictures of the damage and send an email to the logistics team **Eva Mireles** Logistics Analyst, and **Mike Alaimo** – Senior Mgr. Fetch Operations, **Shailesh Jaiswal** – Manufacturing Engineer, **Eloy Rodas** – Quality Engineer, **Christian Cox** – Test Engineer\n- **11.** Move the Material to MRB1 holding area and await disposition.\n- **12.** If the Robot is not damaged, remove the indicators that were activated with the mishandling.\n  - ✓ Apply 2 new Tip 'N' Tell and remove the pin holder to activate them.\n  - ✓ Ensure they are placed in perpendicular format, 1 on the side and 1 in the back.\n  - ✓ Do not place them on the door where the hinges are located.\n- **13.** Make a note in the comments section of the Inspection Checklist if the indicators were replaced.\n- **14.** Move units to stock.\n\n![](_page_0_Picture_28.jpeg)\n\n#### **Missing Indicators**\n\n- **15.** The Robot needs to be visually inspected if the Tip 'N' Tell and ShockWatch indicators are missing.\n- **16.** If there is no damage, apply new indicators and remove the pin holders to activate them.\n\n#### **Indicators on the Crate**\n\n- **17.** The Robot needs to be visually inspected if the pin holders are still in place.\n- **18.** Pull the pin holders to activate the indicators if there is NO damage. Make a note on the inspection checklist.\n- **19.** If the pin holders are not in perpendicular format remove the old ones and apply new ones.\n- **20.** There should be only 2 Tip 'N' Tell indicators on the perpendicular side of the crate.\n  - ✓ Remove any additional Tip 'N' Tell indicators.\n- **21.** If there are multiple indicators on the crate and only 2 are activated no visual inspection is needed, remove the additional indicators, ensure they are in a perpendicular format, and pull the pin holders.\n- **22.** For any damage that is not resolvable on-site send pictures of damages to contacts listed below\n\n**Mike Alaimo** – Senior Mgr. Fetch Operations, **Shailesh Jaiswal** – Manufacturing Engineer, **Eloy Rodas** – Quality Engineer, **Elba Maya** – SC Planner, and the onsite QA Team.",
+    "Metadata": "\"Sub heading\": \"Missing Indicators: ........- **15.** The Robot needs to be visually inspected if the Tip 'N' Tell and ShockWatch indicators are missing. - **16.** If there is no damage, apply new indicators and remove the pin holders to activa............\", \"Sub heading\": \"Indicators on the Crate: ........- **17.** The Robot needs to be visually inspected if the pin holders are still in place. - **18.** Pull the pin holders to activate the indicators if there is NO damage. Make a note on the inspection............\""
+  },
+  {
+    "chunk_id3": {
+      "Sub Heading 1": "3. PRE-CHARGING .....",
+      "Sub Heading 2": "Resolvable on-site: .....",
+      "Sub Heading 3": "4. POST-CHARGING .....",
+      "Sub Heading 4": "Resolvable on-site: .....",
+      "Sub Heading 5": "5. REFERENCES .....",
+      "Sub Heading 6": "6. REVISION HISTORY .....",
+      "ancestral_headings": {
+        "3. PRE-CHARGING": [
+          "INSPECTION CHECKLIST PROCESS"
+        ],
+        "Resolvable on-site:": [
+          "INSPECTION CHECKLIST PROCESS"
+        ],
+        "4. POST-CHARGING": [
+          "INSPECTION CHECKLIST PROCESS"
+        ],
+        "5. REFERENCES": [
+          "INSPECTION CHECKLIST PROCESS"
+        ],
+        "6. REVISION HISTORY": [
+          "INSPECTION CHECKLIST PROCESS"
+        ]
+      }
+    },
+    "Text": "- **23.** Move the material to MRB1 and await disposition from the Team listed above.\n- **24.** Place the checklist in the white pouch affixed to the crate's front.\n\n### 3. PRE-CHARGING\n\n- **1.** Pull the Inspection Checklist Rev01 from the pouch that is affixed to the crate.\n- **2.** Add the date that corresponds with the charging time instance.\n- **3.** Enter your initials in the Accepted or Rejected Columns when completing sections 2.1 2.7 of the Inspection Checklist.\n  - ✓ Initials will be needed every time we are charging the Robots.\n  - ✓ If we are charging the Robot more than 4 times a year, use another Checklist and staple it to the original.\n- **4.** For rejections that are not resolvable on site contact the individuals listed in Section 2.22.\n\n#### **Resolvable on-site:**\n\n- Cleaning fingerprints, wheels, dust, or particles and/or replacing the desiccant bags and/or the cover bag.\n- **5.** If Robot is not charged the same day, it was plugged in to be charged leave for overnight charging.\n- **6.** Ensure the charging status is verified if the Robot was left for overnight charging.\n\n## 4. POST-CHARGING\n\n- **1.** Pull the Inspection Checklist Rev01 from the pouch that is affixed to the crate.\n- **2.** Enter your initials in the Accepted or Rejected Columns when completing sections 3.1 3.7 of the Inspection Checklist.\n- **3.** For rejections that are not resolvable on site contact the individuals listed in Section 2.22.\n\n#### **Resolvable on-site:**\n\n- Cleaning fingerprints, wheels, dust, or particles and/or replacing the desiccant bags and/or the cover bag.\n- **4.** If need to clean the Robot with a Microfiber cloth to remove any fingerprints, dust, or particles.\n- **5.** When Robot is ready to be put away, contact an Inbound associate, and put a green cone on the crate.\n  - ✓ Only contact the Inbound associate when the Robot is ready to be put away to prevent idle time.\n\n### 5. REFERENCES\n\n| Document # | Document Title                                                    |  |  |\n|------------|-------------------------------------------------------------------|--|--|\n|            | Fetch Robot Inspection Checklist Rev01.pdf                        |  |  |\n|            | Process flow -<br>Tip N Tell Indicator issues Rev01.pdf           |  |  |\n|            | F100 & Accessories -<br>Cosmetic Surface Classification Rev01.pdf |  |  |\n|            | Specification, Cosmetic Standards Rev01.pdf                       |  |  |\n\n### 6. REVISION HISTORY",
+    "Metadata": "\"Sub heading\": \"3. PRE-CHARGING: ........- **1.** Pull the Inspection Checklist Rev01 from the pouch that is affixed to the crate. - **2.** Add the date that corresponds with the charging time instance. - **3.** Enter your initials in the Ac............\", \"Sub heading\": \"Resolvable on-site:\", \"Sub heading\": \"Resolvable on-site:: ........- Cleaning fingerprints, wheels, dust, or particles and/or replacing the desiccant bags and/or the cover bag. - **5.** If Robot is not charged the same day, it was plugged in to be charged leave for o............\", \"Sub heading\": \"4. POST-CHARGING: ........- **1.** Pull the Inspection Checklist Rev01 from the pouch that is affixed to the crate. - **2.** Enter your initials in the Accepted or Rejected Columns when completing sections 3.1 3.7 of the Inspe............\", \"Sub heading\": \"5. REFERENCES: ........| Document # | Document Title                                                    |  |  |.........\", \"Sub heading\": \"6. REVISION HISTORY\""
+  },
+  {
+    "chunk_id4": {
+      "ancestral_headings": {
+        "6. REVISION HISTORY": [
+          "INSPECTION CHECKLIST PROCESS"
+        ]
+      }
+    },
+    "Text": "The following table lists all revisions (including the original document) to this procedure, the date, and the reason for the revision.\n\n| Rev. | Rev. Date | Description of Change | Revised By |\n|------|-----------|-----------------------|------------|\n| 01   | 07/10/23  | Original issue        | A.Cabrera  |",
+    "Metadata": ""
+  }
+]

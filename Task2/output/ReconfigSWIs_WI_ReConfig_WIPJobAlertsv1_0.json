@@ -1,0 +1,35 @@
+[
+  {
+    "chunk_id1": {
+      "Sub Heading 1": "WIP JOB ALERTS .....",
+      "Sub Heading 2": "Alert: 'Base Printer SN Attributes Not Set' .....",
+      "Sub Heading 3": "Alert: 'Printer not re-serialized' .....",
+      "Sub Heading 4": "Notes: .....",
+      "ancestral_headings": {
+        "WIP JOB ALERTS": [],
+        "Alert: 'Base Printer SN Attributes Not Set'": [
+          "WIP JOB ALERTS"
+        ],
+        "Alert: 'Printer not re-serialized'": [
+          "WIP JOB ALERTS"
+        ],
+        "Notes:": [
+          "WIP JOB ALERTS"
+        ]
+      }
+    },
+    "Text": "![](_page_0_Picture_1.jpeg)\n\nWORK INSTRUCTION – RECONFIG – WIP JOB ALERTS\n\n# **WIP JOB ALERTS**\n\nThere are a few scheduled checks that validate the WIP Job Assembly Completion transactions. When a specific error is detected, an alert will be generated and e-mailed to the employees identified as recipients for that alert.\n\nTo resolve these errors, please follow the instructions below.\n\n## **Alert: 'Base Printer SN Attributes Not Set'**\n\nWhen an Assembly is completed the Country of Origin and Manufacturing Date are automatically transferred from the base printer (in the background). It can however occasionally happen that the Country of Origin and/or Manufacturing Date is missing for a Serial Number. In those cases, this alert will be triggered, so that the Serial Number attributes can be updated.\n\n**Step 1:** Using Oracle Forms, navigate to 'Inventory Management' -> 'Material Maintenance' -> 'Maintain Serial Numbers'\n\n**Step 2:** Enter the Serial Number from the alert and click on 'Find'\n\n**Step 3:** Select the 'Serial Info' tab and scroll to the right Click in the 'Attributes' field\n\n**Step 4:** Update the Country of Origin and/or Manufacturing Date\n\nClick on 'OK'\n\nClick on the 'Save' icon in the toolbar\n\n![](_page_0_Picture_15.jpeg)\n\n![](_page_0_Picture_16.jpeg)\n\n![](_page_0_Picture_17.jpeg)\n\nDocument: WI - ReConfig - WIP Job Alerts v1.0.docx\n\nPage 1 of 2 July 18, 2024\n\n![](_page_1_Picture_0.jpeg)\n\n### **CONFIDENTIAL INFORMATION**\n\nWORK INSTRUCTION – RECONFIG – WIP JOB ALERTS\n\nThe attributes for the Serial Number have been updated\n\n#### **Alert: 'Printer not re-serialized'**\n\nFor specific WIP Jobs it is required that the printers get a new Serial Number upon Assembly Completion. In those cases the 'Re-serialization' option is activated against the WIP Job and the newly assigned Serial Numbers will be printed on the Travelers. It can however occasionally happen that the re-serialization option is missed and that the new Assemblies are created using the original component Serial Numbers. In those cases, this alert will be triggered, so that the Assembly Completions can be corrected.\n\n#### *Notes:*",
+    "Metadata": "\"Sub heading\": \"WIP JOB ALERTS: ........There are a few scheduled checks that validate the WIP Job Assembly Completion transactions. When a specific error is detected, an alert will be generated and e-mailed to the employees identified as r............\", \"Sub heading\": \"Alert: 'Base Printer SN Attributes Not Set': ........When an Assembly is completed the Country of Origin and Manufacturing Date are automatically transferred from the base printer (in the background). It can however occasionally happen that the Country............\", \"Sub heading\": \"Alert: 'Printer not re-serialized': ........For specific WIP Jobs it is required that the printers get a new Serial Number upon Assembly Completion. In those cases the 'Re-serialization' option is activated against the WIP Job and the newly ass............\""
+  },
+  {
+    "chunk_id2": {
+      "ancestral_headings": {
+        "Notes:": [
+          "WIP JOB ALERTS"
+        ]
+      }
+    },
+    "Text": "- *The following steps must be executed by a Super User (using the 'ZTC Reconfiguration Super User' responsibility).*\n- *For this Work Instruction it is assumed that the Super User knows how to do an Assembly Completion and Return*\n- **Step 1:** Perform a 'WIP Completion Return' using the Assemblies with the incorrect Serial Numbers\n- **Step 2:** Perform the 'WIP Completions' again, now using the newly assigned Serial Numbers\n\nThe Assemblies are re-generated with the correct, new Serial Numbers\n\nDocument: WI - ReConfig - WIP Job Alerts v1.0.docx\n\nPage 2 of 2 July 18, 2024",
+    "Metadata": ""
+  }
+]

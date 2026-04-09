@@ -1,0 +1,16 @@
+[
+  {
+    "chunk_id1": {
+      "Sub Heading 1": "WORK INSTRUCTION – GENERAL – ORACLE REPORTS .....",
+      "Sub Heading 2": "GENERATING ORACLE REPORTS .....",
+      "ancestral_headings": {
+        "WORK INSTRUCTION – GENERAL – ORACLE REPORTS": [],
+        "GENERATING ORACLE REPORTS": [
+          "WORK INSTRUCTION – GENERAL – ORACLE REPORTS"
+        ]
+      }
+    },
+    "Text": "![](_page_0_Picture_1.jpeg)\n\n## WORK INSTRUCTION – GENERAL – ORACLE REPORTS\n\n## **GENERATING ORACLE REPORTS**\n\nThere are many different reports that can be generated in Oracle.\n\nThis instruction will show how you can generate a report and how to view/print the output.\n\n**Step 1:** From the Toolbar select 'View' -> 'Requests'\n\nThe 'Find Requests' screen will be displayed Click on 'Submit a New Request'\n\n**Step 2:** Select the Name of the report you want to generate in the 'Name' field. You can use the standard Oracle search options, for example the List of Values (…), searching using partial names in combination with the wildcard character (%).\n\n![](_page_0_Picture_9.jpeg)\n\nFill in the required parameters and click on 'OK'\n\n**Step 4:** Click on the button 'Submit'\n\nIn the pop-up box select 'Yes' if you want to generate another report, otherwise select 'No'\n\nOnce you have selected 'No', click on 'Find' in the pop-up screen 'Find Requests'\n\n**Step 5:** By default all your report requests from the previous 7 days will now be displayed\n\n> For each report you will see both the 'Phase' and 'Status' reported. When these show 'Completed' and 'Normal' the report generation is done successfully and the report is ready for you to view the output\n\n*Note: You can use the 'Refresh' button to refresh the screen.*\n\nTo view your report, select it first and click on the 'View Output' button. The report will be displayed, ready for printing\n\n![](_page_0_Picture_19.jpeg)\n\n![](_page_0_Picture_20.jpeg)\n\n![](_page_0_Picture_21.jpeg)\n\n![](_page_0_Picture_22.jpeg)\n\n![](_page_0_Figure_23.jpeg)\n\nPage 1 of 2 July 17, 2024\n\n![](_page_1_Picture_0.jpeg)\n\n## **CONFIDENTIAL INFORMATION**\n\nWORK INSTRUCTION – GENERAL – ORACLE REPORTS\n\n![](_page_1_Picture_3.jpeg)\n\nYour report has been generated",
+    "Metadata": "\"Sub heading\": \"WORK INSTRUCTION – GENERAL – ORACLE REPORTS\", \"Sub heading\": \"GENERATING ORACLE REPORTS: ........There are many different reports that can be generated in Oracle. This instruction will show how you can generate a report and how to view/print the output. **Step 1:** From the Toolbar select 'View'............\""
+  }
+]

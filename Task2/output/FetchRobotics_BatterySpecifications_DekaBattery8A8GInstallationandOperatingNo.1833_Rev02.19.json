@@ -1,0 +1,367 @@
+[
+  {
+    "chunk_id1": {
+      "Sub Heading 1": "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS .....",
+      "Sub Heading 2": "IN REFERENCE TO THIS MANUAL: .....",
+      "Sub Heading 3": "SAFETY PRECAUTIONS .....",
+      "Sub Heading 4": "Protective Equipment .....",
+      "Sub Heading 5": "Procedures .....",
+      "Sub Heading 6": "SAFETY PRECAUTIONS (con't) .....",
+      "ancestral_headings": {
+        "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS": [],
+        "IN REFERENCE TO THIS MANUAL:": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS"
+        ],
+        "SAFETY PRECAUTIONS": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS"
+        ],
+        "Protective Equipment": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "SAFETY PRECAUTIONS"
+        ],
+        "Procedures": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "SAFETY PRECAUTIONS"
+        ],
+        "SAFETY PRECAUTIONS (con't)": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "SAFETY PRECAUTIONS"
+        ]
+      }
+    },
+    "Text": "![](_page_0_Picture_0.jpeg)\n\n# 8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS\n\nThis manual is intended to be a guide to optimize battery performance for multiple cyclic & float applications. Consult applicable User Manuals for additional parameters for specific systems. This manual is not intended for SLI or Vehicle related applications.\n\nVehicle / Equipment Owner's Manual should be followed for SLI & Vehicle related applications.\n\n![](_page_0_Figure_3.jpeg)\n\n![](_page_0_Figure_4.jpeg)\n\n#### IN REFERENCE TO THIS MANUAL:\n\n- \"Battery\" is defined as an individual 12 or 6 volt unit.\n- \"Battery string\" is defined as a series connected electrical system comprised of batteries (individual 12 or 6 volt units).\n\n#### SAFETY PRECAUTIONS\n\nVRLA (Valve Regulated Lead-Acid) batteries have the electrolyte immobilized within the battery; however, electrical hazards associated with batteries still exists. Work performed on these batteries should be done with the tools and the protective equipment listed below. VRLA battery installations should be supervised by personnel familiar with batteries and battery safety precautions.\n\nWARNING: Risk of fire, explosion, or burns. Do not disassemble, heat above 40°C, or incinerate.\n\n#### **Protective Equipment**\n\nAlthough VRLA batteries can vent or leak small amounts of electrolyte, electrical safety is the principle but not the only concern for safe handling. Per IEEE 1188 recommendations, the following minimum set of equipment for safe handling of the battery and protection of personnel shall be available:\n\n- Safety glasses with side shields, or goggles, or face shields as appropriate. (Consult application specific requirements)\n- Electrically insulated gloves, appropriate for the installation.\n- · Protective aprons and safety shoes\n- Portable or stationary water facilities in the battery vicinity for rinsing eyes and skin in case of contact with acid electrolyte.\n\n## **SAFETY PRECAUTIONS** (con't)\n\n- · Class C fire extinguisher\n- · Acid neutralizing agent.\n- Adequately insulated tools (as defined by IEEE 1188).\n- · Lifting devices of adequate capacity, when required.\n\n#### **Procedures**\n\nConsult User Manual of specific application for additional Safety & Operating requirements.\n\nThe following safety procedures should be followed during installation: (Always wear safety glasses with side shields or face shield goggles when working on or near batteries.)",
+    "Metadata": "\"Sub heading\": \"8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS: ........This manual is intended to be a guide to optimize battery performance for multiple cyclic & float applications. Consult applicable User Manuals for additional parameters for specific systems. This man............\", \"Sub heading\": \"IN REFERENCE TO THIS MANUAL:: ........- \"Battery\" is defined as an individual 12 or 6 volt unit. - \"Battery string\" is defined as a series connected electrical system comprised of batteries (individual 12 or 6 volt units)..........\", \"Sub heading\": \"SAFETY PRECAUTIONS: ........VRLA (Valve Regulated Lead-Acid) batteries have the electrolyte immobilized within the battery; however, electrical hazards associated with batteries still exists. Work performed on these batteries sh............\", \"Sub heading\": \"Protective Equipment: ........Although VRLA batteries can vent or leak small amounts of electrolyte, electrical safety is the principle but not the only concern for safe handling. Per IEEE 1188 recommendations, the following minim............\", \"Sub heading\": \"SAFETY PRECAUTIONS (con't): ........- · Class C fire extinguisher - · Acid neutralizing agent. - Adequately insulated tools (as defined by IEEE 1188). - · Lifting devices of adequate capacity, when required..........\", \"Sub heading\": \"Procedures: ........Consult User Manual of specific application for additional Safety & Operating requirements. The following safety procedures should be followed during installation: (Always wear safety glasses with sid............\""
+  },
+  {
+    "chunk_id2": {
+      "Sub Heading 1": "SAFETY PRECAUTIONS (con't) .....",
+      "Sub Heading 2": "RECEIVING AND STORAGE .....",
+      "Sub Heading 3": "Receiving Inspection .....",
+      "Sub Heading 4": "Unpacking .....",
+      "Sub Heading 5": "RECEIVING AND STORAGE (con't) .....",
+      "Sub Heading 6": "Storage .....",
+      "ancestral_headings": {
+        "SAFETY PRECAUTIONS (con't)": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "SAFETY PRECAUTIONS"
+        ],
+        "RECEIVING AND STORAGE": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS"
+        ],
+        "Receiving Inspection": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "RECEIVING AND STORAGE"
+        ],
+        "Unpacking": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "RECEIVING AND STORAGE"
+        ],
+        "RECEIVING AND STORAGE (con't)": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS"
+        ],
+        "Storage": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "RECEIVING AND STORAGE",
+          "RECEIVING AND STORAGE (con't)"
+        ]
+      }
+    },
+    "Text": "1. These batteries are sealed and contain no free electrolyte. Under normal operating conditions, they do not present any acid danger. However, if the battery jar or cover is damaged, acid could be present. Sulfuric acid is harmful to the skin and eyes. Flush affected area with water immediately and consult a physician if splashed in the eyes. Consult SDS for additional precautions and first aid measures.\n\nConsult SDS for additional precautions and first aid measures.\n\nSDS sheets can be obtained at www.eastpennmanufacturing.com\n\n2. Prohibit smoking and open flames, and avoid arcing in the immediate vicinity of the battery.\n\n![](_page_1_Picture_0.jpeg)\n\n## **SAFETY PRECAUTIONS** *(con't)*\n\n- 3. Do not wear metallic objects, such as jewelry, while working on batteries. Do not store un-insulated tools in pockets or tool belt while working in vicinity of battery.\n- 4. Keep the top of the battery dry and clear of all tools and other foreign objects.\n- 5. Provide adequate ventilation **(per IEEE standard 1187 and / or as regulated by Federal, State and Local codes)** and follow recommended charging voltages.\n- 6. **Never** remove or tamper with pressure relief valves. Warranty void if vent valve is removed.\n- 7. Inspect all flooring and lifting equipment for functional adequacy.\n- 8. Adequately secure battery, racks or cabinets to the floor.\n- 9. Connect support structures to ground system in accordance with applicable codes.\n\n## **RECEIVING AND STORAGE**\n\n## **Receiving Inspection**\n\nUpon receipt, and at the time of actual unloading, each package should be visually inspected for any possible damage or electrolyte leakage. If either is evident, a more detailed inspection of the entire shipment should be conducted and noted on the bill of lading. Record receipt date, inspection data and notify carrier of any damage.\n\n## **Unpacking**\n\n- 1. **Always wear eye protection.**\n- 2. Check all batteries for visible defects such as cracked containers, loose terminal posts, or other unrepairable problems. Batteries with these defects must be replaced.\n- 3. Check the contents of the package against the packaging list. Report any missing parts or shipping damage to your East Penn agent or East Penn Mfg. Co. immediately.\n- 4. Never lift batteries by the terminal posts.\n- 5. Always lift batteries by the bottom or use the lifting handles.\n\n## **RECEIVING AND STORAGE** *(con't)*\n\n## **Storage**",
+    "Metadata": "\"Sub heading\": \"RECEIVING AND STORAGE\", \"Sub heading\": \"Receiving Inspection: ........Upon receipt, and at the time of actual unloading, each package should be visually inspected for any possible damage or electrolyte leakage. If either is evident, a more detailed inspection of the ent............\", \"Sub heading\": \"Unpacking: ........- 1. **Always wear eye protection.** - 2. Check all batteries for visible defects such as cracked containers, loose terminal posts, or other unrepairable problems. Batteries with these defects must be............\", \"Sub heading\": \"Storage\""
+  },
+  {
+    "chunk_id3": {
+      "Sub Heading 1": ">77°F (25°C) storage: .....",
+      "Sub Heading 2": "INSTALLATIONS .....",
+      "Sub Heading 3": "General .....",
+      "Sub Heading 4": "Grounding .....",
+      "Sub Heading 5": "BATTERY ASSEMBLY .....",
+      "Sub Heading 6": "(Always wear eye protection.) .....",
+      "ancestral_headings": {
+        ">77°F (25°C) storage:": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "RECEIVING AND STORAGE",
+          "RECEIVING AND STORAGE (con't)",
+          "Storage"
+        ],
+        "INSTALLATIONS": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS"
+        ],
+        "General": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "INSTALLATIONS"
+        ],
+        "Grounding": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "INSTALLATIONS"
+        ],
+        "BATTERY ASSEMBLY": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS"
+        ],
+        "(Always wear eye protection.)": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "BATTERY ASSEMBLY"
+        ]
+      }
+    },
+    "Text": "- 1. Batteries should be stored indoors in a clean, level, dry and cool location. Recommended storage temperature is 0°F to 90°F (– 18°C to 32°C).\n- 2. Stored lead-acid batteries self discharge and must be given a boost charge to prevent permanent performance degradation.  **0°F to 77°F (-18°C to 25°C) storage:**\n\n Batteries should be recharged six months from date of manufacture.\n\n#### **>77°F (25°C) storage:**\n\n Use the chart below for recharge intervals. Voltage read- ings should be taken on <sup>a</sup> monthly basis. Batteries that reach 12.60V per 12V battery (6.30V per 6V battery) should be recharged regardless of scheduled interval. Record dates and conditions for all charges during storage.\n\n- 3. If boost charge is required; the recommended charge is 24 hours at a constant voltage equal to 14.40V per 12V battery (7.20V for 6V battery).\n- 4. Do not store beyond 12 months.\n\n## **INSTALLATIONS**\n\n## **General**\n\nCaution should be taken when installing batteries to insure no damage occurs. The battery string cabinet, tray, rack, etc. shall be inspected for sharp edges that could cause damage to the battery casing. Batteries shall not be dropped, slid, placed on rough or uneven surfaces such as tray lips or grated flooring. Mishandling of batteries could result in equipment damage or human injury. East Penn will not be liable for damage or injury as a result of mishandling or misuse of the product.\n\n### **Grounding**\n\nWhen grounding the battery string, proper techniques should be applied per electrical standards, such as NEC and/or local codes, as well as User Manual of specific application.\n\n![](_page_1_Figure_32.jpeg)\n\n![](_page_2_Picture_0.jpeg)\n\n#### **BATTERY ASSEMBLY**\n\n#### (Always wear eye protection.)",
+    "Metadata": "\"Sub heading\": \">77°F (25°C) storage:: ........Use the chart below for recharge intervals. Voltage read- ings should be taken on <sup>a</sup> monthly basis. Batteries that reach 12.60V per 12V battery (6.30V per 6V battery) should be recharged reg............\", \"Sub heading\": \"INSTALLATIONS\", \"Sub heading\": \"General: ........Caution should be taken when installing batteries to insure no damage occurs. The battery string cabinet, tray, rack, etc. shall be inspected for sharp edges that could cause damage to the battery cas............\", \"Sub heading\": \"Grounding: ........When grounding the battery string, proper techniques should be applied per electrical standards, such as NEC and/or local codes, as well as User Manual of specific application. ![](_page_1_Figure_32.j............\", \"Sub heading\": \"BATTERY ASSEMBLY\", \"Sub heading\": \"(Always wear eye protection.)\""
+  },
+  {
+    "chunk_id4": {
+      "Sub Heading 1": "SYSTEM OPERATION .....",
+      "Sub Heading 2": "State of Charge .....",
+      "ancestral_headings": {
+        "SYSTEM OPERATION": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS"
+        ],
+        "State of Charge": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "SYSTEM OPERATION"
+        ]
+      }
+    },
+    "Text": "- Set up the batteries so that the positive post (+) of one battery is connected to the negative post (-) of the next battery for all series connections.\n- For future identification, individual batteries should be numbered in electrical connection sequence, beginning with number one (1) at the positive end of the battery string.\n- 3. All battery electrical contact surfaces shall be cleaned by rubbing gently with a non-metallic brush or pad before installing connectors. Oxide inhibitor grease can be used but is not required. Only approved oxide inhibitor: No-Ox-ID \"A\" from Sanchem, Inc. should be used on terminals and connectors.\n- Install all electrical connectors / cables and bolting hardware loosely to allow for final alignment of batteries.\n   Torque to manufacturer recommendations.\n- 5. After torquing, read the voltage of the battery string to ensure the individual batteries are connected correctly. The total voltage should be approximately equal to the number of batteries times the measured voltage of one battery (when connected in series). If the measurement is less, recheck the connections for proper voltage and polarity.\n- 6. Read and record connection resistance and note the method of measurement. This helps determine a satisfactory initial installation and can be used as a reference for future maintenance requirements. See Appendix B, recording forms, in the back of the manual. Clean, remake and remeasure any connection having a resistance measurement greater than 10% of the average of all the same type of connections.\n- Battery string performance is based on the output at the battery terminals. Therefore, the shortest electrical connections between the battery string and the operating equipment results in maximum total system performance.\n\nDo not select cable size on current carrying capability only. Cable size should not provide a greater voltage drop between the battery string and operating equipment than specified. Excess voltage drop will reduce the desired support time of the battery string.\n\n#### SYSTEM OPERATION\n\n#### State of Charge\n\nBattery state of charge can be determined by measuring the open circuit voltage. Consult the below table.\n\n#### State of Charge vs. Open Circuit Voltage\\*",
+    "Metadata": "\"Sub heading\": \"SYSTEM OPERATION\", \"Sub heading\": \"State of Charge: ........Battery state of charge can be determined by measuring the open circuit voltage. Consult the below table. #### State of Charge vs. Open Circuit Voltage\\*.........\""
+  },
+  {
+    "chunk_id5": {
+      "Sub Heading 1": "SYSTEM OPERATION (con't) .....",
+      "Sub Heading 2": "Charging .....",
+      "Sub Heading 3": "Charge Voltage .....",
+      "Sub Heading 4": "Charge / Absorption / Equalize .....",
+      "Sub Heading 5": "Float / Standby .....",
+      "Sub Heading 6": "TEMPERATURE COMPENSATION .....",
+      "Sub Heading 7": "Charge Current .....",
+      "Sub Heading 8": "Consult Voltage Compensation Chart in .....",
+      "ancestral_headings": {
+        "SYSTEM OPERATION (con't)": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS"
+        ],
+        "Charging": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "SYSTEM OPERATION",
+          "SYSTEM OPERATION (con't)"
+        ],
+        "Charge Voltage": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "SYSTEM OPERATION",
+          "SYSTEM OPERATION (con't)",
+          "Charging"
+        ],
+        "Charge / Absorption / Equalize": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "SYSTEM OPERATION",
+          "SYSTEM OPERATION (con't)",
+          "Charging"
+        ],
+        "Float / Standby": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "SYSTEM OPERATION",
+          "SYSTEM OPERATION (con't)",
+          "Charging"
+        ],
+        "TEMPERATURE COMPENSATION": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "SYSTEM OPERATION"
+        ],
+        "Charge Current": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "SYSTEM OPERATION",
+          "TEMPERATURE COMPENSATION"
+        ],
+        "Consult Voltage Compensation Chart in": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "SYSTEM OPERATION",
+          "TEMPERATURE COMPENSATION",
+          "Charge Current"
+        ]
+      }
+    },
+    "Text": "| % Charge | Gel             | AGM             |\n|----------|-----------------|-----------------|\n| 100      | 12.85 or higher | 12.80 or higher |\n| 75       | 12.65           | 12.60           |\n| 50       | 12.35           | 12.30           |\n| 25       | 12.00           | 12.00           |\n| 0        | 11.80           | 11.80           |\n\n#### NOTE: Divide values in half for 6-volt battery(ies)\n\n\\*The \"true\" O.C.V. of a battery can only be determined after the battery has been removed from the load (charge / discharge) for 24 hours.\n\n#### SYSTEM OPERATION (con't)\n\n#### Charging\n\nConsult Charger User Manual of specific application for Safety and Operating requirements.\n\nFor cyclic applications it is important that the battery(ies) be charged fully after each discharge. It is recommended that 108% to 115% of the Ah (Amp Hour) capacity removed from the battery(ies) be replaced after each discharge. This additional Ah is to compensate for any efficiency losses between the battery charger and the battery(ies)\n\n#### **Charge Voltage**\n\nFor both 8A & 8G batteries the following voltage settings should be followed:\n\n#### Charge / Absorption / Equalize\n\n13.80V to 14.60V @ 77°F (25°C)\n\nFloat / Standby\n\n13.50V + .06 @ 77°F (25°C)\n\nThe charger must be able to maintain the battery string voltage within  $\\pm 0.5\\%$  of the desired level at all times.\n\nNote: Divide values in half for 6-volt battery(ies).\n\n#### TEMPERATURE COMPENSATION\n\nBattery voltage should be adjusted for ambient temperature variations.\n\n3mV per °C (1.8°F) per cell 18mV per 12V battery 9mV per 6V battery\n\nFor temperatures above 77°F (25°C) subtract and for temperatures below 77°F (25°C) add.\n\n#### Consult Voltage Compensation Chart in\n\n**Appendix A** for temperature compensation voltage maximum and minimum limits.\n\nThe average battery operating temperature should not exceed 95°F (35°C) and should never exceed 105°F (40.5°C) for more than an eight-hour period. Operating at temperatures greater than 77°F (25°C) will reduce the operating life of the battery. If operating temperatures are expected to be in excess of 95°F (35°C), contact East Penn for recommendations.\n\nDischarging at temperatures less than 77°F (25°C) will reduce the capacity of the battery.\n\n#### **Charge Current**\n\nTo properly determine the amount of charge current required the following variables are to be considered:\n\n- · DoD (Depth of Discharge)\n- Temperature\n- Size & efficiency of the charger\n- · Age and condition of battery(ies)",
+    "Metadata": "\"Sub heading\": \"SYSTEM OPERATION (con't)\", \"Sub heading\": \"Charging: ........Consult Charger User Manual of specific application for Safety and Operating requirements. For cyclic applications it is important that the battery(ies) be charged fully after each discharge. It is re............\", \"Sub heading\": \"Charge Voltage: ........For both 8A & 8G batteries the following voltage settings should be followed:.........\", \"Sub heading\": \"Charge / Absorption / Equalize: ........13.80V to 14.60V @ 77°F (25°C).........\", \"Sub heading\": \"Float / Standby: ........13.50V + .06 @ 77°F (25°C) The charger must be able to maintain the battery string voltage within  $\\pm 0.5\\%$  of the desired level at all times. Note: Divide values in half for 6-volt battery(ies)..........\", \"Sub heading\": \"TEMPERATURE COMPENSATION: ........Battery voltage should be adjusted for ambient temperature variations. 3mV per °C (1.8°F) per cell 18mV per 12V battery 9mV per 6V battery For temperatures above 77°F (25°C) subtract and for temperatu............\", \"Sub heading\": \"Consult Voltage Compensation Chart in: ........**Appendix A** for temperature compensation voltage maximum and minimum limits. The average battery operating temperature should not exceed 95°F (35°C) and should never exceed 105°F (40.5°C) for more............\", \"Sub heading\": \"Charge Current: ........To properly determine the amount of charge current required the following variables are to be considered: - · DoD (Depth of Discharge) - Temperature - Size & efficiency of the charger - · Age and cond............\""
+  },
+  {
+    "chunk_id6": {
+      "Sub Heading 1": "BATTERY OPERATION .....",
+      "Sub Heading 2": "RECTIFIER RIPPLE VOLTAGE .....",
+      "Sub Heading 3": "Frequency .....",
+      "Sub Heading 4": "TEMPERATURE COMPENSATION (con't) .....",
+      "Sub Heading 5": "Discharge Voltage Curve .....",
+      "ancestral_headings": {
+        "BATTERY OPERATION": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS"
+        ],
+        "RECTIFIER RIPPLE VOLTAGE": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "BATTERY OPERATION"
+        ],
+        "Frequency": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "BATTERY OPERATION",
+          "RECTIFIER RIPPLE VOLTAGE"
+        ],
+        "TEMPERATURE COMPENSATION (con't)": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "BATTERY OPERATION"
+        ],
+        "Discharge Voltage Curve": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "BATTERY OPERATION",
+          "TEMPERATURE COMPENSATION (con't)"
+        ]
+      }
+    },
+    "Text": "Maximum charge current should be limited to 30% of the C20 Ah rate for the battery(ies) being used in the battery string.\n\n**Example:** 8G24 C20 rate - 73.6Ah\n\nMax. recharge rate:  $73.6Ah \\times 0.3 = 22.1A$ \n\nConsult Charging Current vs Charging Time chart in Appendix A as a guide line to determine recharge time from 0% to 90% state of charge at an initial charge current.\n\n![](_page_3_Picture_0.jpeg)\n\n## **TEMPERATURE COMPENSATION** (con't)\n\n#### Discharge Voltage Curve\n\nTo estimate battery voltage during a constant current discharge at various DoD (Depth of Discharge) consult chart **Discharge Voltage Curve in Appendix A.** \n\nNOTE: Battery voltage can vary depending on temperature, age, and condition of battery.\n\n#### **BATTERY OPERATION**\n\nBattery operating temperature will effect battery string capacity and operating life.\n\nTemperatures greater than 77°F (25°C) will reduce the operating life of the battery. For every 13°F (7°C) increase in operating temperature above 77°F (25°C), the warranty period will be proportionally reduced by 50% as shown below:\n\n| Operating 1 | Temperature | Proportional<br>Percentage (%) |\n|-------------|-------------|--------------------------------|\n| °F          | °C          | of Life                        |\n| 77          | 25          | 100%                           |\n| 81          | 27          | 80%                            |\n| 87          | 30          | 60%                            |\n| 90          | 32          | 50%                            |\n\nThe average cell operating temperature should not exceed 95°F (35°C) and should never exceed 105°F (40.5°C) for more than an eight-hour period. If operating temperatures are expected to be in excess of 95°F (35°C), contact East Penn for recommendations.\n\nDischarging at temperatures less than 77°F (25°C) will reduce the capacity of the battery.\n\nBatteries [cells] must not be continuously operated below 50°F (10°C). If operating temperatures are expected to be less than 50°F (10°C), contact East Penn for recommendations.\n\nThe battery string must be located in a manner that the individual cells do not vary by more than 5°F (2.8°C) between the lowest and highest individual cell temperatures.\n\n#### RECTIFIER RIPPLE VOLTAGE\n\n#### Frequency\n\nRipple that has a frequency greater than 667Hz (duration less than 1.5ms) is acceptable, unless it is causing additional battery heating.",
+    "Metadata": "\"Sub heading\": \"TEMPERATURE COMPENSATION (con't)\", \"Sub heading\": \"Discharge Voltage Curve: ........To estimate battery voltage during a constant current discharge at various DoD (Depth of Discharge) consult chart **Discharge Voltage Curve in Appendix A.** NOTE: Battery voltage can vary depending on............\", \"Sub heading\": \"BATTERY OPERATION: ........Battery operating temperature will effect battery string capacity and operating life. Temperatures greater than 77°F (25°C) will reduce the operating life of the battery. For every 13°F (7°C) increase............\", \"Sub heading\": \"RECTIFIER RIPPLE VOLTAGE\", \"Sub heading\": \"Frequency: ........Ripple that has a frequency greater than 667Hz (duration less than 1.5ms) is acceptable, unless it is causing additional battery heating..........\""
+  },
+  {
+    "chunk_id7": {
+      "Sub Heading 1": "Voltage Specification .....",
+      "Sub Heading 2": "RECORD KEEPING .....",
+      "Sub Heading 3": "Voltages, Temperatures & Ohmic Readings .....",
+      "Sub Heading 4": "MAINTENANCE .....",
+      "Sub Heading 5": "Annual Inspection .....",
+      "ancestral_headings": {
+        "Voltage Specification": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "BATTERY OPERATION",
+          "TEMPERATURE COMPENSATION (con't)"
+        ],
+        "RECORD KEEPING": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS"
+        ],
+        "Voltages, Temperatures & Ohmic Readings": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "RECORD KEEPING"
+        ],
+        "MAINTENANCE": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS"
+        ],
+        "Annual Inspection": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "MAINTENANCE"
+        ]
+      }
+    },
+    "Text": "Ripple that has a frequency less than 667Hz (duration greater than1.5ms), must meet the following voltage specification to be acceptable.\n\n## **Voltage Specification**\n\nRipple voltage shall be less than .5% peak to peak of the manufacturer's recommended string voltage.\n\nFailure to comply can void the warranty.\n\n#### RECORD KEEPING\n\n#### **Voltages, Temperatures & Ohmic Readings**\n\nRecord keeping is an important part of battery maintenance and warranty coverage. This information will help in establishing a life history of the battery string and inform the user if and when corrective action needs to be taken. Consult Battery Maintenance Report (Pg.8 – Appendix B).\n\nWhile it is acceptable to operate at temperatures less than 77°F (25°C), it will require longer charging time to become fully recharged. Also, the capacity will be less at operating temperatures below 77°F (25°C).\n\nAfter installation and when the battery string has been on float charge for one week, the following data should be recorded:\n\n- 1. Battery string voltage at battery terminals while battery is on float charge.\n- 2. Charger voltage at charger panel meter.\n- 3. Individual battery float voltages.\n- 4. Ambient temperatures within area of battery string.\n- Terminal connections should be checked to verify that the installer did torque all connections are properly torqued. Micro-ohm readings should be taken across every\n\nconnection. Refer to meter manufacturer's instructions for proper placement of probes. If any reading differs by more than 20% from its initial installation value, re-torque the connection, to  $100 \\pm 5$  in lb (11.3  $\\pm$  .5 newton meters) for proper torque values. If reading remains high, clean contact surfaces according to Step 2 under Battery Assembly.\n\nFailure to maintain proper records including information as detailed above may result in voiding any applicable warranty.\n\n#### **MAINTENANCE**\n\nAlways wear eye protection when working on or near batteries. Keep sparks and open flames away from batteries at all times.\n\nConsult User Manual of specific application for additional Safety & Operating requirements.\n\n#### Annual Inspection\n\nDepending on the application, some of the following recommendations may not apply.",
+    "Metadata": "\"Sub heading\": \"Voltage Specification: ........Ripple voltage shall be less than .5% peak to peak of the manufacturer's recommended string voltage. Failure to comply can void the warranty..........\", \"Sub heading\": \"RECORD KEEPING\", \"Sub heading\": \"Voltages, Temperatures & Ohmic Readings: ........Record keeping is an important part of battery maintenance and warranty coverage. This information will help in establishing a life history of the battery string and inform the user if and when correc............\", \"Sub heading\": \"MAINTENANCE: ........Always wear eye protection when working on or near batteries. Keep sparks and open flames away from batteries at all times. Consult User Manual of specific application for additional Safety & Operatin............\", \"Sub heading\": \"Annual Inspection: ........Depending on the application, some of the following recommendations may not apply..........\""
+  },
+  {
+    "chunk_id8": {
+      "Sub Heading 1": "Battery Cleaning .....",
+      "Sub Heading 2": "Capacity Testing .....",
+      "Sub Heading 3": "Voltage Compensation Chart .....",
+      "Sub Heading 4": "MAINTENANCE (con't) .....",
+      "ancestral_headings": {
+        "Battery Cleaning": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "MAINTENANCE"
+        ],
+        "Capacity Testing": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+          "MAINTENANCE"
+        ],
+        "Voltage Compensation Chart": [
+          "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS"
+        ],
+        "MAINTENANCE (con't)": []
+      }
+    },
+    "Text": "- 1. Conduct a visual inspection of the battery(ies).\n- 2. Record battery and /or battery string voltage. The accuracy of the DMM (Digital Multimeter) must be 0.05% (on dc scale) or better. The DMM must be calibrated to NIST traceable standards. Because voltage readings are affected by discharge and recharges, for cyclic applications, the battery(ies) must be in a fully charged condition prior to taking readings. Batteries should be within ± 0.30 volts (+ 0.15 volts for 6V) of the average battery float voltage.\n- 3. Record charger voltage at charger panel meter.\n- 4. Record the ambient temperature.\n\n![](_page_4_Picture_0.jpeg)\n\n## **MAINTENANCE** *(con't)*\n\n- 5. Record the battery string temperature at the negative terminal\n- 6. Record individual battery ohmic readings.\\*\\*\\*\n- 7. Record all interunit and terminal connection resistances. Micro-ohm readings should be taken during this inspection. If any reading is greater than 20% from initial readings, retorque the connection. Recheck the microohm reading. If the reading remains high, clean contact surface according to installation portion of this manual.\n  - **\\*\\*\\* Note: To provide accurate / consistent values, battery(ies) must be fully charged, at same temperature and probes placed at same location each time readings are taken.**\n\n## **Battery Cleaning**\n\nBatteries, cabinets, and racks should be cleaned with clean water, a mixture of baking soda and water or East Penn Mfg. supplied battery cleaner (part # 00321\n\n**Never use solvents to clean the battery(ies).**\n\n## **Capacity Testing**\n\nCapacity testing is used to trend battery aging. The result of a capacity test is a calculation of the capacity of the battery. The calculated capacity is also used to determine if the battery requires replacement.\n\n**NOTE: When discharging at higher rates, extra connectors may need to be added to prevent excessive voltage drop and / or excessive temperature rise.**\n\nShould it be determined any individual battery(ies) or cell(s) need to be replaced, contact your nearest East Penn agent or East Penn Mfg. Co.\n\n![](_page_5_Picture_1.jpeg)\n\n## **Voltage Compensation Chart**",
+    "Metadata": "\"Sub heading\": \"Battery Cleaning: ........Batteries, cabinets, and racks should be cleaned with clean water, a mixture of baking soda and water or East Penn Mfg. supplied battery cleaner (part # 00321 **Never use solvents to clean the battery............\", \"Sub heading\": \"Capacity Testing: ........Capacity testing is used to trend battery aging. The result of a capacity test is a calculation of the capacity of the battery. The calculated capacity is also used to determine if the battery require............\", \"Sub heading\": \"Voltage Compensation Chart\""
+  },
+  {
+    "chunk_id9": {
+      "Sub Heading 1": "DISChARGE VOLTAGE CURVE .....",
+      "Sub Heading 2": "BATTERY MAINTENANCE REPORT .....",
+      "ancestral_headings": {
+        "DISChARGE VOLTAGE CURVE": [
+          "MAINTENANCE (con't)"
+        ],
+        "BATTERY MAINTENANCE REPORT": [
+          "MAINTENANCE (con't)"
+        ]
+      }
+    },
+    "Text": "| ºC  | Float | Charge/Absorption | ºF    |      |\n|-----|-------|-------------------|-------|------|\n|     |       | Min.              | Max.  |      |\n| ≥35 | 13.32 | 13.62             | 14.40 | ≥95  |\n| 34  | 13.34 | 13.64             | 14.42 | 93.2 |\n| 33  | 13.36 | 13.66             | 14.44 | 91.4 |\n| 32  | 13.37 | 13.67             | 14.45 | 89.6 |\n| 31  | 13.39 | 13.69             | 14.47 | 87.8 |\n| 30  | 13.41 | 13.71             | 14.49 | 86.0 |\n| 29  | 13.43 | 13.73             | 14.51 | 84.2 |\n| 28  | 13.45 | 13.75             | 14.53 | 82.4 |\n| 27  | 13.46 | 13.76             | 14.54 | 80.6 |\n| 26  | 13.48 | 13.78             | 14.56 | 78.8 |\n| 25  | 13.50 | 13.80             | 14.58 | 77.0 |\n| 24  | 13.52 | 13.82             | 14.60 | 75.2 |\n| 23  | 13.54 | 13.84             | 14.62 | 73.4 |\n| 22  | 13.55 | 13.85             | 14.63 | 71.6 |\n| 21  | 13.57 | 13.87             | 14.65 | 69.8 |\n| 20  | 13.59 | 13.89             | 14.67 | 68.0 |\n| 19  | 13.61 | 13.91             | 14.69 | 66.2 |\n| 18  | 13.63 | 13.93             | 14.71 | 64.4 |\n| 17  | 13.64 | 13.94             | 14.72 | 62.6 |\n| 16  | 13.66 | 13.96             | 14.74 | 60.8 |\n| ≤15 | 13.68 | 13.98             | 14.76 | ≤59  |\n\n**Note: 1. Above values based on 12-volt battery.**\n\n **2. Divide above values in half for 6-volt battery.**\n\n![](_page_6_Picture_1.jpeg)\n\n## **ChARGING CURRENT VS. ChARGING TIME\\***\n\n![](_page_6_Figure_3.jpeg)\n\n# **DISChARGE VOLTAGE CURVE**\n\n![](_page_6_Figure_6.jpeg)\n\n![](_page_7_Picture_1.jpeg)\n\n# **BATTERY MAINTENANCE REPORT**",
+    "Metadata": "\"Sub heading\": \"DISChARGE VOLTAGE CURVE: ........![](_page_6_Figure_6.jpeg) ![](_page_7_Picture_1.jpeg).........\", \"Sub heading\": \"BATTERY MAINTENANCE REPORT\""
+  },
+  {
+    "chunk_id10": {
+      "ancestral_headings": {
+        "BATTERY MAINTENANCE REPORT": [
+          "MAINTENANCE (con't)"
+        ]
+      }
+    },
+    "Text": "|                                   |       | Inspection Date                |          |                                                       |                 |              |       |                                        |              |       | No. of Units/String |\n|-----------------------------------|-------|--------------------------------|----------|-------------------------------------------------------|-----------------|--------------|-------|----------------------------------------|--------------|-------|---------------------|\n|                                   |       |                                |          |                                                       |                 |              |       |                                        |              |       | Type                |\n| Company<br>Address<br>Date New    |       |                                |          |                                                       |                 |              |       |                                        |              |       |                     |\n|                                   |       |                                |          |                                                       |                 |              |       |                                        |              |       |                     |\n|                                   |       | Battery location and/or number |          |                                                       |                 |              |       |                                        |              |       | Date Installed      |\n| Individual<br>Battery<br>Readings |       |                                |          | Charger Output<br>Amp<br>Total Battery String Voltage |                 |              |       | Air Temperature°F<br>Panel Meter Volts |              |       |                     |\n| Unit                              |       | Year<br>Ohms or                | Unit     |                                                       | Year<br>Ohms or | Unit         |       | Year<br>Ohms or                        | Unit         |       | Year<br>Ohms or     |\n| Number                            | Volts | Mhos                           | Number   | Volts                                                 | Mhos            | Number       | Volts | Mhos                                   | Number       | Volts | Mhos                |",
+    "Metadata": ""
+  },
+  {
+    "chunk_id11": {
+      "ancestral_headings": {
+        "BATTERY MAINTENANCE REPORT": [
+          "MAINTENANCE (con't)"
+        ]
+      }
+    },
+    "Text": "| 1                                 |       |                                | 1        |                                                       |                 | 1            |       |                                        | 1            |       |                     |\n| 2                                 |       |                                | 2        |                                                       |                 | 2            |       |                                        | 2            |       |                     |\n| 3                                 |       |                                | 3        |                                                       |                 | 3            |       |                                        | 3            |       |                     |\n| 4<br>5                            |       |                                | 4<br>5   |                                                       |                 | 4<br>5       |       |                                        | 4<br>5       |       |                     |\n| 6                                 |       |                                | 6        |                                                       |                 | 6            |       |                                        | 6            |       |                     |\n| 7                                 |       |                                | 7        |                                                       |                 | 7            |       |                                        | 7            |       |                     |\n| 8                                 |       |                                | 8        |                                                       |                 | 8            |       |                                        | 8            |       |                     |\n| 9                                 |       |                                | 9        |                                                       |                 | 9            |       |                                        | 9            |       |                     |\n| 10                                |       |                                | 10       |                                                       |                 | 10           |       |                                        | 10           |       |                     |",
+    "Metadata": ""
+  },
+  {
+    "chunk_id12": {
+      "ancestral_headings": {
+        "BATTERY MAINTENANCE REPORT": [
+          "MAINTENANCE (con't)"
+        ]
+      }
+    },
+    "Text": "| 11                                |       |                                | 11       |                                                       |                 | 11           |       |                                        | 11           |       |                     |\n| 12                                |       |                                | 12       |                                                       |                 | 12           |       |                                        | 12           |       |                     |\n| 13                                |       |                                | 13       |                                                       |                 | 13           |       |                                        | 13           |       |                     |\n| 14                                |       |                                | 14       |                                                       |                 | 14           |       |                                        | 14           |       |                     |\n| 15                                |       |                                | 15       |                                                       |                 | 15           |       |                                        | 15           |       |                     |\n| 16<br>17                          |       |                                | 16<br>17 |                                                       |                 | 16<br>17     |       |                                        | 16<br>17     |       |                     |\n| 18                                |       |                                | 18       |                                                       |                 | 18           |       |                                        | 18           |       |                     |\n| 19                                |       |                                | 19       |                                                       |                 | 19           |       |                                        | 19           |       |                     |\n| 20                                |       |                                | 20       |                                                       |                 | 20           |       |                                        | 20           |       |                     |",
+    "Metadata": ""
+  },
+  {
+    "chunk_id13": {
+      "ancestral_headings": {
+        "BATTERY MAINTENANCE REPORT": [
+          "MAINTENANCE (con't)"
+        ]
+      }
+    },
+    "Text": "| 21                                |       |                                | 21       |                                                       |                 | 21           |       |                                        | 21           |       |                     |\n| 22                                |       |                                | 22       |                                                       |                 | 22           |       |                                        | 22           |       |                     |\n| 23                                |       |                                | 23       |                                                       |                 | 23           |       |                                        | 23           |       |                     |\n| 24                                |       |                                | 24       |                                                       |                 | 24           |       |                                        | 24           |       |                     |\n| 25                                |       |                                | 25       |                                                       |                 | 25           |       |                                        | 25           |       |                     |\n| 26                                |       |                                | 26       |                                                       |                 | 26           |       |                                        | 26           |       |                     |\n| 27                                |       |                                | 27       |                                                       |                 | 27           |       |                                        | 27           |       |                     |\n| 28                                |       |                                | 28       |                                                       |                 | 28           |       |                                        | 28           |       |                     |\n| 29                                |       |                                | 29       |                                                       |                 | 29           |       |                                        | 29           |       |                     |",
+    "Metadata": ""
+  },
+  {
+    "chunk_id14": {
+      "ancestral_headings": {
+        "BATTERY MAINTENANCE REPORT": [
+          "MAINTENANCE (con't)"
+        ]
+      }
+    },
+    "Text": "| 30<br>31                          |       |                                | 30<br>31 |                                                       |                 | 30<br>31     |       |                                        | 30<br>31     |       |                     |\n| 32                                |       |                                | 32       |                                                       |                 | 32           |       |                                        | 32           |       |                     |\n| 33                                |       |                                | 33       |                                                       |                 | 33           |       |                                        | 33           |       |                     |\n| 34                                |       |                                | 34       |                                                       |                 | 34           |       |                                        | 34           |       |                     |\n| 35                                |       |                                | 35       |                                                       |                 | 35           |       |                                        | 35           |       |                     |\n| 36                                |       |                                | 36       |                                                       |                 | 36           |       |                                        | 36           |       |                     |\n| 37                                |       |                                | 37       |                                                       |                 | 37           |       |                                        | 37           |       |                     |\n| 38                                |       |                                | 38       |                                                       |                 | 38           |       |                                        | 38           |       |                     |\n| 39                                |       |                                | 39       |                                                       |                 | 39           |       |                                        | 39           |       |                     |",
+    "Metadata": ""
+  },
+  {
+    "chunk_id15": {
+      "ancestral_headings": {
+        "BATTERY MAINTENANCE REPORT": [
+          "MAINTENANCE (con't)"
+        ]
+      }
+    },
+    "Text": "| 40                                |       |                                | 40       |                                                       |                 | 40           |       |                                        | 40           |       |                     |\n| Avg. Voltage                      |       |                                |          | Avg. Voltage                                          |                 | Avg. Voltage |       |                                        | Avg. Voltage |       |                     |",
+    "Metadata": ""
+  },
+  {
+    "chunk_id16": {
+      "ancestral_headings": {
+        "BATTERY MAINTENANCE REPORT": [
+          "MAINTENANCE (con't)"
+        ]
+      }
+    },
+    "Text": "| Readings Taken By Remarks/Recommendations |\n|-------------------------------------------|\n|                                           |\n\n![](_page_7_Picture_5.jpeg)\n\n*Readings should be taken at installation and annually thereafter.* \\_\\_\n\n**DISTRIBUTED BY:**\n\nLyon Station, PA 19536-0147 • Phone: 610-682-6361 • Fax: 610-682-4781 **Order Department Hotline: 610-682-4231**",
+    "Metadata": ""
+  }
+]

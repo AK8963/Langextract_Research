@@ -10,7 +10,7 @@ services:
     image: cr.weaviate.io/semitechnologies/weaviate:1.36.6
     ports:
     - 8080:8080
-    - 50051:50051
+    - 51051:50051
     volumes:
     - weaviate_data:/var/lib/weaviate
     restart: on-failure:0
