@@ -1,0 +1,52 @@
+[
+  {
+    "chunk_id1": {
+      "Main Heading 1": "SCALE COUNTING .....",
+      "Sub Heading 1": "1. OVERVIEW .....",
+      "Sub Heading 2": "2. BALANCE THE SCALE .....",
+      "Sub Heading 3": "3. COUNTING PROCESS .....",
+      "ancestral_headings": {
+        "SCALE COUNTING": [],
+        "1. OVERVIEW": [
+          "SCALE COUNTING"
+        ],
+        "2. BALANCE THE SCALE": [
+          "SCALE COUNTING"
+        ],
+        "3. COUNTING PROCESS": [
+          "SCALE COUNTING"
+        ]
+      }
+    },
+    "Text": "| CONFIDENTIAL INFORMATION |           |      |      |              |                    |  |\n|--------------------------|-----------|------|------|--------------|--------------------|--|\n| WORK INSTRUCTIONS        |           |      |      |              |                    |  |\n| SCALE COUNTING           |           |      |      |              |                    |  |\n| Work Instruction<br>No.  |           |      |      |              |                    |  |\n| 01<br>Revision<br>No.    | Site Code | WI03 | Page | 1<br>5<br>OF | Zebra Technologies |  |\n\n# 1. **OVERVIEW**\n\nThis work instruction provides instructions on how to count small TX5 parts using the Scale Counter.\n\n# 2. **BALANCE THE SCALE**\n\n**1.** Calibrate the scale by centering the scale bubble.\n\n![](_page_0_Picture_5.jpeg)\n\n**2.** Use the 2 black turning knobs in front of the scale to adjust.\n\n![](_page_0_Picture_7.jpeg)\n\n✓ Balanced Scale\n\n![](_page_0_Picture_9.jpeg)\n\n**3.** Click Zero to reset the Scale.\n\n![](_page_0_Picture_11.jpeg)\n\n| CONFIDENTIAL INFORMATION |           |      |      |              |                    |  |\n|--------------------------|-----------|------|------|--------------|--------------------|--|\n| WORK INSTRUCTIONS        |           |      |      |              |                    |  |\n| SCALE COUNTING           |           |      |      |              |                    |  |\n| Work Instruction<br>No.  |           |      |      |              |                    |  |\n| 01<br>Revision<br>No.    | Site Code | WI03 | Page | 2<br>5<br>OF | Zebra Technologies |  |\n\n# 3. **COUNTING PROCESS**\n\n- **1.** Place counting bowl on the scale.\n  - ✓ Do not put any items directly on scale, always use bowl!\n  - ✓ Make sure the bowl does not touch the edges of the scale.\n\n![](_page_1_Picture_5.jpeg)\n\n![](_page_1_Picture_6.jpeg)\n\n- **2.** The scale will display the bowl weight, click Zero to reset.\n- **3.** Click on Sample size until you reach one of the sample quantities below.\n\n![](_page_1_Picture_9.jpeg)\n\n- ✓ Bigger units sample size is 10\n- ✓ Small units sample size is 25, 50 or 100\n- ✓ Samples limit 25 units.\n\n![](_page_1_Picture_13.jpeg)\n\n![](_page_1_Picture_14.jpeg)",
+    "Metadata": "\"Sub heading\": \"1. OVERVIEW: ........This work instruction provides instructions on how to count small TX5 parts using the Scale Counter..........\", \"Sub heading\": \"2. BALANCE THE SCALE: ........**1.** Calibrate the scale by centering the scale bubble. ![](_page_0_Picture_5.jpeg) **2.** Use the 2 black turning knobs in front of the scale to adjust. ![](_page_0_Picture_7.jpeg) ✓ Balanced Scale............\", \"Sub heading\": \"3. COUNTING PROCESS: ........- **1.** Place counting bowl on the scale. - ✓ Do not put any items directly on scale, always use bowl! - ✓ Make sure the bowl does not touch the edges of the scale. ![](_page_1_Picture_5.jpeg) ![](_p............\""
+  },
+  {
+    "chunk_id2": {
+      "Sub Heading 1": "4. SCALE COMPONENTS .....",
+      "ancestral_headings": {
+        "4. SCALE COMPONENTS": [
+          "SCALE COUNTING"
+        ]
+      }
+    },
+    "Text": "| CONFIDENTIAL INFORMATION |           |      |      |              |                    |\n|--------------------------|-----------|------|------|--------------|--------------------|\n| WORK INSTRUCTIONS        |           |      |      |              |                    |\n| SCALE COUNTING           |           |      |      |              |                    |\n| Work Instruction<br>No.  |           |      |      |              |                    |\n| 01<br>Revision<br>No.    | Site Code | WI03 | Page | 3<br>5<br>OF | Zebra Technologies |\n\n- ✓ Most of the parts can be counted using a sample size of 10. If the light next to \"OK\" doesn't light, a larger sample is needed.\n- **4.** Press count when parts are placed, the scale will display the sample size weight. Ensure the light next to \"OK\" turns green. This indicates that the scale has successfully average the weight of the parts.\n\n![](_page_2_Picture_3.jpeg)\n\n**5.** Add the required number of parts to the bowl. The scale will capture the count of the parts.\n\n![](_page_2_Picture_5.jpeg)\n\n- ✓ Add a piece or two to make sure the quantity increased.\n- ✓ Do not dump all the items at once, sprinkle around to try to even the items in the bowl.\n- ✓ If there is a pile in the middle of the scale, with your finger even it out.\n\n#### **CONFIDENTIAL INFORMATION WORK INSTRUCTIONS** Zebra Technologies **SCALE COUNTING Work Instruction No. Revision No. 01 Site Code WI03 Page 4 OF 5**\n\n**6.** Scale will display count\n\n![](_page_3_Picture_2.jpeg)\n\n**7.** When done, click zero to reset\n\n![](_page_3_Picture_4.jpeg)\n\n**8.** Placed the parts into a poly bag and seal it twice to make sure the seal is closed.\n\n![](_page_3_Picture_6.jpeg)\n\n**9.** Placed a \"Partial\" label on the packaging from which parts were picked.\n\n![](_page_3_Picture_8.jpeg)\n\n| CONFIDENTIAL INFORMATION                  |           |      |      |              |                    |\n|-------------------------------------------|-----------|------|------|--------------|--------------------|\n| WORK INSTRUCTIONS                         |           |      |      |              |                    |\n| SCALE COUNTING<br>Work Instruction<br>No. |           |      |      |              |                    |\n| 01<br>Revision<br>No.                     | Site Code | WI03 | Page | 5<br>5<br>OF | Zebra Technologies |\n\n**10.** Print and attached the new label to the poly bag.\n\n*Refer to Printing TX5 Bulk Parts Label* \n\n# 4. **SCALE COMPONENTS**",
+    "Metadata": "\"Sub heading\": \"4. SCALE COMPONENTS\""
+  },
+  {
+    "chunk_id3": {
+      "Sub Heading 1": "5. REFERENCES .....",
+      "Sub Heading 2": "6. REVISION HISTORY .....",
+      "ancestral_headings": {
+        "5. REFERENCES": [
+          "SCALE COUNTING"
+        ],
+        "6. REVISION HISTORY": [
+          "SCALE COUNTING"
+        ]
+      }
+    },
+    "Text": "- ✓ When scale is not in use do not leave the metal plate uncovered.\n- ✓ Ensure ALL its components (glass cover and lid with funnel) are back to starting point.\n\n![](_page_4_Picture_6.jpeg)\n\n![](_page_4_Picture_7.jpeg)\n\n![](_page_4_Picture_8.jpeg)\n\n# 5. **REFERENCES**\n\n| Document # | Document Title                                  |  |  |  |\n|------------|-------------------------------------------------|--|--|--|\n| N/A        | Create and Print TX5 Bulk Parts Label Rev01.pdf |  |  |  |\n\n# 6. **REVISION HISTORY**\n\nThe following table lists all revisions (including the original document) to this procedure, the date, and the reason for the revision.\n\n| Rev. | Rev. Date  | Description of Change | Revised By |\n|------|------------|-----------------------|------------|\n| 01   | 03/06/2023 | Original issue        | A.Cabrera  |",
+    "Metadata": "\"Sub heading\": \"5. REFERENCES: ........| Document # | Document Title                                  |  |  |  | | N/A        | Create and Print TX5 Bulk Parts Label Rev01.pdf |  |  |  |.........\", \"Sub heading\": \"6. REVISION HISTORY: ........The following table lists all revisions (including the original document) to this procedure, the date, and the reason for the revision. | Rev. | Rev. Date  | Description of Change | Revised By | | 01............\""
+  }
+]

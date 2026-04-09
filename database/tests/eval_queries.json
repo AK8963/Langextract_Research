@@ -1,0 +1,56 @@
+[
+    {
+        "query_id": "Q1",
+        "target_doc": "PTO KITTING PROCESS",
+        "target_chunk_ids": ["chunk_id3"],
+        "question": "In the PTO KITTING PROCESS, when the stager is gathering items, do they need to scan the two barcodes or check the battery part number before moving the LPNs?"
+    },
+    {
+        "query_id": "Q2",
+        "target_doc": "PTO KITTING PROCESS",
+        "target_chunk_ids": ["chunk_id4"],
+        "question": "Before starting the PTO KITTING PROCESS, if the PCR inspection finds an error with the Country of Origin, is the item highlighted in red on the summary screen?"
+    },
+    {
+        "query_id": "Q3",
+        "target_doc": "PTO KITTING PROCESS",
+        "target_chunk_ids": ["chunk_id5"],
+        "question": "During the PTO KITTING PROCESS, after completing the stage move for the overpack carton, does the associate need to repack it with wood-backed foam inserts?"
+    },
+    {
+        "query_id": "Q4",
+        "target_doc": "CART CONNECT100 – UNPACK, CHARGE, REPACK",
+        "target_chunk_ids": ["chunk_id8"],
+        "question": "When executing the CART CONNECT100 – UNPACK, CHARGE, REPACK procedure, should the associate cut open the heat-sealed bag the same way they cut open an LPN carton?"
+    },
+    {
+        "query_id": "Q5",
+        "target_doc": "CART CONNECT100 – UNPACK, CHARGE, REPACK",
+        "target_chunk_ids": ["chunk_id9"],
+        "question": "For the CART CONNECT100 – UNPACK, CHARGE, REPACK workflow, after folding out the ramp and rolling the unit, do you execute a stage move to place the crate on a pallet?"
+    },
+    {
+        "query_id": "Q6",
+        "target_doc": "CART CONNECT100 – UNPACK, CHARGE, REPACK",
+        "target_chunk_ids": ["chunk_id8"],
+        "question": "During the CART CONNECT100 – UNPACK, CHARGE, REPACK process, if the foam pieces detach and you cannot reattach them, should you escalate the problem to the Lead or Supervisor?"
+    },
+    {
+        "query_id": "Q7",
+        "target_doc": "BATTERY MANAGEMENT TESTING",
+        "target_chunk_ids": ["chunk_id12"],
+        "question": "In the BATTERY MANAGEMENT TESTING scannable path, if there are two barcodes on the item, are they located on the printed sheet at the workstation like the zDss/Oracle barcodes?"
+    },
+    {
+        "query_id": "Q8",
+        "target_doc": "BATTERY MANAGEMENT TESTING",
+        "target_chunk_ids": ["chunk_id13"],
+        "question": "During BATTERY MANAGEMENT TESTING manual entry, if the part number is unreadable, does the operator perform a Country of Origin check before informing the supervisor?"
+    },
+    {
+        "query_id": "Q9",
+        "target_doc": "BATTERY MANAGEMENT TESTING",
+        "target_chunk_ids": ["chunk_id17"],
+        "question": "After the BATTERY MANAGEMENT TESTING summary screen appears with red and tan highlights, do you need to plug the red units back in to charge them fully?"
+    }
+]

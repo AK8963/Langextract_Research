@@ -1,0 +1,27 @@
+[
+  {
+    "chunk_id1": {
+      "Sub Heading 1": "PRINT TRAVELERS .....",
+      "Sub Heading 2": "Step 4: Click on the button 'Submit' .....",
+      "ancestral_headings": {
+        "PRINT TRAVELERS": [],
+        "Step 4: Click on the button 'Submit'": [
+          "PRINT TRAVELERS"
+        ]
+      }
+    },
+    "Text": "## **CONFIDENTIAL INFORMATION**\n\nWORK INSTRUCTION – RECONFIG – PRINT TRAVELERS\n\n## **PRINT TRAVELERS**\n\nIn preparation for the actual Assembly process, the so-called 'Travelers' need to be printed.\n\nThe 'Travelers' contain important information about the Assembly itself and the Components required to complete the Assembly.\n\n**Step 1:** From the Oracle Forms Toolbar select 'View' -> 'Requests'\n\nClick on 'Submit a New Request' in the pop-up screen 'Find Requests'\n\n**Step 2:** Select the report 'Zebra WIP Traveler Printing'\n\n**Step 3:** In the 'Parameters' section enter the following details:\n\n- Organization Code: 'TX4'\n- Item Category: 'All'\n- Specific WIP Job Number: Scan or enter the Job Number\n- Specific Qty: If this field is left blank, then the system will print 1 Traveler for each unit in the job (so matching the quantity for the job). If only 1 Traveler is required, enter '1' in this field\n- Destination Printer: Scan or enter the correct printer\n- Print Primary BOM: 'No'\n\nClick on 'OK'\n\n*Please note:*\n\n*Travelers can only be printed so long as there is still an open quantity against the job (job is not completed) If the Travelers fail to print, ensure that the Item Category shows 'All'*\n\n## **Step 4:** Click on the button 'Submit'\n\nIn the pop-up box select 'Yes' if you want to generate another report, otherwise select 'No'\n\n![](_page_0_Picture_21.jpeg)\n\nOnce you have selected 'No', click on 'Find' in the pop-up screen 'Find Requests' to view progress of the request\n\n**Step 5:** Once the request is completed, the Travelers will be printed\n\nPlease note following settings for the Component details:",
+    "Metadata": "\"Sub heading\": \"PRINT TRAVELERS: ........In preparation for the actual Assembly process, the so-called 'Travelers' need to be printed. The 'Travelers' contain important information about the Assembly itself and the Components required to com............\", \"Sub heading\": \"Step 4: Click on the button 'Submit': ........In the pop-up box select 'Yes' if you want to generate another report, otherwise select 'No' ![](_page_0_Picture_21.jpeg) Once you have selected 'No', click on 'Find' in the pop-up screen 'Find Reques............\""
+  },
+  {
+    "chunk_id2": {
+      "ancestral_headings": {
+        "Step 4: Click on the button 'Submit'": [
+          "PRINT TRAVELERS"
+        ]
+      }
+    },
+    "Text": "| Setting | Description/<br>Supply Type                      | Comments                                                                                                                              |\n|---------|--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|\n| BL      | Bulk                                             | This item does not require any inventory transactions                                                                                 |\n| BF      | Backflush/<br>Assembly Pull or<br>Operation Pull | The inventory transactions are automatically generated upon<br>completing an Assembly ('Assembly Pull' or 'Operation Pull')           |\n| IS      | Issue/<br>Push                                   | The inventory transactions must be manually generated                                                                                 |\n| PH      | Phantom                                          | Phantom item in the Bill of Material (This Supply Type should not<br>be assigned to Work Orders, please ask a Planner to update this) |\n| SU      | Supplier                                         | Generally used for Outside Processing; no material issues<br>required (This Supply Type should not be assigned to Work                |\n\n![](_page_0_Picture_26.jpeg)\n\n![](_page_0_Figure_27.jpeg)\n\n![](_page_0_Figure_28.jpeg)\n\nDocument: WI - ReConfig - Print Travelers 1.0.docx\n\nPage 1 of 2 July 18, 2024\n\n![](_page_1_Picture_0.jpeg)\n\n## **CONFIDENTIAL INFORMATION**\n\n|                                                                            | WORK INSTRUCTION – RECONFIG – PRINT TRAVELERS |\n|----------------------------------------------------------------------------|-----------------------------------------------|\n| Orders without an Outside Process, please ask a Planner to<br>update this) |                                               |\n|                                                                            |                                               |\n\nDocument: WI - ReConfig - Print Travelers 1.0.docx\n\nPage 2 of 2 July 18, 2024",
+    "Metadata": ""
+  }
+]

@@ -17,7 +17,8 @@ from utils.utils import (
     preprocess_chunk, extract_headings_regex,
     is_page_marker, is_false_heading, is_likely_body_text,
     is_valid_heading_in_text, determine_heading_level, normalize_for_dedup,
-    find_heading_position, find_heading_in_original
+    find_heading_position, find_heading_in_original,
+    extract_document_title_from_text
 )
 MIN_LLM_CONFIDENCE = 0.55
 
@@ -102,7 +103,12 @@ def extract_headings_from_chunks(text_chunks: list, adaptive_chunk_size: int, me
                     if not raw_text or not raw_text.strip():
                         continue
                     clean_text = re.sub(r'^#{1,6}\s*', '', raw_text.strip())
-                    clean_text = re.sub(r'^\*{1,2}|\*{1,2}$', '', clean_text).strip()
+                    # Strip ALL ** bold markers (handles "1. **OVERVIEW**" → "1. OVERVIEW")
+                    clean_text = re.sub(r'\*+', '', clean_text).strip()
+
+                    # Reject obvious false headings immediately (pure numbers, captions, etc.)
+                    if is_false_heading(clean_text):
+                        continue
 
                     # If confidence is present and below threshold, skip extraction.
                     conf_attr = getattr(ext, 'attributes', {}).get('confidence')
@@ -115,29 +121,29 @@ def extract_headings_from_chunks(text_chunks: list, adaptive_chunk_size: int, me
                     if conf_val is not None and conf_val < MIN_LLM_CONFIDENCE:
                         continue
 
-                    # LLM-only mode: accept LLM-extracted headings without requiring
-                    # a verbatim in-chunk match. For debugging, when verbose, log a
-                    # warning if the heading text isn't found verbatim in the chunk.
-                    if VERBOSE:
-                        pattern = re.compile(r'^(?:#{1,6}\s*)?\*{0,2}\s*' + re.escape(clean_text) + r'\s*\*{0,2}\s*$', re.MULTILINE)
-                        if not pattern.search(chunk):
-                            print(f"    Warning: LLM heading not found verbatim in chunk: '{clean_text[:60]}'")
+                    # Require the heading to appear as a standalone line in the chunk.
+                    # Handles both plain and **bold** forms: "1. **OVERVIEW**" also matches "1. OVERVIEW".
+                    _escaped = re.escape(clean_text)
+                    standalone_re = re.compile(
+                        r'^(?:#{1,6}\s*)?\*{0,2}\s*' + _escaped + r'\s*\*{0,2}\s*$'
+                        r'|^(?:#{1,6}\s*)?\d+\.\s+\*{1,2}' + re.escape(clean_text.split('. ', 1)[-1]) + r'\*{0,2}\s*$',
+                        re.MULTILINE
+                    )
+                    if not standalone_re.search(chunk):
+                        if VERBOSE:
+                            print(f"    Rejected (not standalone): '{clean_text[:60]}'")
+                        continue
 
-                    # Determine level: prefer actual markdown hashes in the chunk line if present,
-                    # otherwise use LLM-provided level attribute, fallback to heuristic.
-                    level = None
-                    md_line_match = re.search(r'^(#{1,6})\s*\*{0,2}\s*' + re.escape(clean_text) + r'\s*\*{0,2}\s*$', chunk, re.MULTILINE)
-                    if md_line_match:
-                        level = len(md_line_match.group(1))
-                    else:
+                    # Determine level: prefer content-based heuristic (matches what
+                    # the regex fallback uses) so levels are consistent across sources.
+                    # Fall back to LLM-provided level attribute if heuristic returns None.
+                    level = determine_heading_level(clean_text)
+                    if level is None:
                         level_attr = getattr(ext, 'attributes', {}).get('level')
                         try:
-                            level = int(level_attr) if level_attr is not None else None
+                            level = int(level_attr) if level_attr is not None else 2
                         except Exception:
-                            level = None
-
-                    if level is None:
-                        level = determine_heading_level(clean_text)
+                            level = 2
 
                     chunk_headings.append({
                         "text": clean_text,
@@ -174,8 +180,7 @@ def extract_headings_from_chunks(text_chunks: list, adaptive_chunk_size: int, me
                 if attempt < MAX_RETRIES - 1:
                     time.sleep(RETRY_DELAY)
                 else:
-                    if VERBOSE:
-                        print(f"  Chunk {i+1:2d}/{len(text_chunks)}: LLM failed - {error_msg[:50]}")
+                    print(f"  Chunk {i+1:2d}/{len(text_chunks)}: LLM failed - {error_msg[:80]}")
         
         # Fallback to regex extraction if LLM failed
         if not extraction_success:
@@ -190,6 +195,31 @@ def extract_headings_from_chunks(text_chunks: list, adaptive_chunk_size: int, me
                 print(f"  Chunk {i+1:2d}/{len(text_chunks)}: {len(regex_headings):2d} headings [REGEX fallback]")
             else:
                 print(f"  Chunk {i+1:2d}/{len(text_chunks)}: LLM failed — 0 headings extracted (no fallback)")
+
+        # ── Supplementary regex pass ──────────────────────────────────────────
+        # Always scan for markdown #-headings that neither the LLM nor the
+        # explicit fallback captured.  This recovers headings when the LLM
+        # hallucinated wrong text (e.g. wrong numbering) or returned 0 results.
+        _found_lower = {h['text'].lower() for h in all_headings if h.get('chunk_index') == i}
+        _supp_re = re.compile(r'^(#{1,6})\s+\*{0,2}\s*(.+?)\s*\*{0,2}\s*$', re.MULTILINE)
+        _supp_count = 0
+        for _m in _supp_re.finditer(chunk):
+            _htext = re.sub(r'\*+', '', _m.group(2).strip()).strip()  # strip ALL ** bold
+            if not _htext or is_false_heading(_htext) or _htext.lower() in _found_lower:
+                continue
+            _level = determine_heading_level(_htext)
+            all_headings.append({
+                "text": _htext,
+                "level": _level,
+                "chunk_index": i,
+                "source": "regex_supplement",
+            })
+            _found_lower.add(_htext.lower())
+            _supp_count += 1
+            if VERBOSE:
+                print(f"    Supplementary regex: '{_htext}' [L{_level}]")
+        if _supp_count > 0:
+            print(f"  Chunk {i+1:2d}/{len(text_chunks)}: {_supp_count:2d} additional heading(s) recovered [supplementary]")
 
     if failed_chunks:
         print(f"\n  ⚠  {len(failed_chunks)} chunk(s) had LLM extraction failures: {failed_chunks}")

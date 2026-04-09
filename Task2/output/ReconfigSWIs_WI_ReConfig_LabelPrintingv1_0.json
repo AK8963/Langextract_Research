@@ -1,0 +1,12 @@
+[
+  {
+    "chunk_id1": {
+      "Sub Heading 1": "LABEL PRINTING (RECONFIG) .....",
+      "ancestral_headings": {
+        "LABEL PRINTING (RECONFIG)": []
+      }
+    },
+    "Text": "![](_page_0_Picture_1.jpeg)\n\nWORK INSTRUCTION – RECONFIG – LABEL PRINTING\n\n## **LABEL PRINTING (RECONFIG)**\n\nThe following Inventory labels can be generated directly from the scangun:\n\n| Label<br>Type | Format            | Label Description                                                                                                                                             | Preview |\n|---------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|\n| LPN           | EU_PICKDROP_AUDIT | Audit Label that is used in the Drop Zone to validate the items<br>and quantities picked before they are dropped to the<br>Consolidation Locators for packing |         |\n\n**Step 1:** Using the Mobile Application, select the Responsibility 'ZTC Warehouse Ops Mobile NALA' and navigate to 'Label Printing'\n\n**Step 2:** Select option 'Printer Sign-on' to log into the printer\n\n- Scan or enter the printer name\n- Select 'All Labels' as the Label Type\n\nClick on the 'Sign On' button\n\nThe message 'Sign on successful' will be displayed at the bottom\n\n*Please note: If you are already signed on to another printer, then use the 'Sign-Off' option first*\n\n**Step 3:** Select option 'Label Request' to print a label\n\n- Select the correct Label Type (using the search icon)\n- Select the correct Format (using the search icon) Depending on the chosen Format, additional parameters may be displayed *Note: You do not have to scan the printer name again*\n- Enter the number of labels ('Copies') you want to print (default = 1)\n\nClick on 'More' to print more labels or 'Done' if you are finished printing\n\n![](_page_0_Picture_18.jpeg)\n\n![](_page_0_Picture_19.jpeg)\n\n![](_page_0_Picture_20.jpeg)\n\n*Note: To login to the printer for the Common Cradle labels, you only have to complete steps 1 and 2*\n\nThe labels will be printed on the printer you have signed onto (step 2)\n\nDocument: WI - ReConfig - Label Printing v1.0.docx\n\nPage 1 of 1 July 18, 2024",
+    "Metadata": "\"Sub heading\": \"LABEL PRINTING (RECONFIG): ........The following Inventory labels can be generated directly from the scangun: | Label<br>Type | Format            | Label Description............\""
+  }
+]

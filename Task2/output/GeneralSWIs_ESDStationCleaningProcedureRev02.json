@@ -1,0 +1,39 @@
+[
+  {
+    "chunk_id1": {
+      "Main Heading 1": "ESD .....",
+      "Sub Heading 1": "1. OVERVIEW .....",
+      "Sub Heading 2": "2. ESD STATIONS CLEANING PROCEDURE .....",
+      "Sub Heading 3": "3. REFERENCES .....",
+      "Sub Heading 4": "4. REVISION HISTORY .....",
+      "ancestral_headings": {
+        "ESD": [],
+        "1. OVERVIEW": [
+          "ESD"
+        ],
+        "2. ESD STATIONS CLEANING PROCEDURE": [
+          "ESD"
+        ],
+        "3. REFERENCES": [
+          "ESD"
+        ],
+        "4. REVISION HISTORY": [
+          "ESD"
+        ]
+      }
+    },
+    "Text": "| CONFIDENTIAL INFORMATION                               |                      |                    |  |  |  |\n|--------------------------------------------------------|----------------------|--------------------|--|--|--|\n| WORK INSTRUCTIONS<br>ESD<br>STATION CLEANING PROCEDURE |                      |                    |  |  |  |\n| Work Instruction<br>No.                                |                      |                    |  |  |  |\n| 02<br>WI03<br>Revision<br>No.<br>Site Code             | 1<br>2<br>OF<br>Page | Zebra Technologies |  |  |  |\n\n## 1. **OVERVIEW**\n\nThis work instruction describes the procedure of cleaning the ESD workstations.\n\n## 2. **ESD STATIONS CLEANING PROCEDURE**\n\n- 1. The ESD station needs to be cleaned daily at the end of every shift. The procedure is included in the daily 5S activity for the verification area.\n- 2. Start the cleaning by removing the trash, extra supplies, and debris from the tables and the floor.\n- 3. After removing the trash, empty the trash bins and return them to the designated spots, marked with white tape on the floor.\n\n![](_page_0_Picture_7.jpeg)\n\n- 4. Place all the equipment used at the stations to their designated locations (ESD tape, scanners, supplies, vacuum pen, scissors, ESD wrist ties, tape guns).\n- 5. Refill the supplies at each station if they are low/empty.\n\n![](_page_0_Picture_10.jpeg)\n\n| CONFIDENTIAL INFORMATION                               |                      |                    |  |  |  |\n|--------------------------------------------------------|----------------------|--------------------|--|--|--|\n| WORK INSTRUCTIONS<br>ESD<br>STATION CLEANING PROCEDURE |                      |                    |  |  |  |\n| Work Instruction<br>No.                                |                      |                    |  |  |  |\n| 02<br>WI03<br>Revision<br>No.<br>Site Code             | 2<br>2<br>OF<br>Page | Zebra Technologies |  |  |  |\n\n- 6. Refill the printers with media/ribbons if necessary.\n- 7. Spray and wipe the workstation area with the ESD spray.\n\n![](_page_1_Picture_3.jpeg)\n\n8. Make sure that the vacuum sealer, compressor, and reel counter are powered off.\n\n## 3. **REFERENCES**\n\n| Document # | Document Title |\n|------------|----------------|\n| N/A        | N/A            |\n\n## 4. **REVISION HISTORY**\n\nThe following table lists all revisions (including the original document) to this procedure, the date, and the reason for the revision.",
+    "Metadata": "\"Sub heading\": \"1. OVERVIEW: ........This work instruction describes the procedure of cleaning the ESD workstations..........\", \"Sub heading\": \"2. ESD STATIONS CLEANING PROCEDURE: ........- 1. The ESD station needs to be cleaned daily at the end of every shift. The procedure is included in the daily 5S activity for the verification area. - 2. Start the cleaning by removing the trash, e............\", \"Sub heading\": \"3. REFERENCES: ........| Document # | Document Title | | N/A        | N/A            |.........\", \"Sub heading\": \"4. REVISION HISTORY: ........The following table lists all revisions (including the original document) to this procedure, the date, and the reason for the revision..........\""
+  },
+  {
+    "chunk_id2": {
+      "ancestral_headings": {
+        "4. REVISION HISTORY": [
+          "ESD"
+        ]
+      }
+    },
+    "Text": "| Rev. | Rev. Date | Description of Change | Revised By   |\n|------|-----------|-----------------------|--------------|\n| 01   | 10/17/22  | Original issue        | P. Eroshenko |\n| 02   | 03/07/23  | Rebranded             | A.Cabrera    |",
+    "Metadata": ""
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "chunk_id1": {
+      "Sub Heading 1": "DROP LOADED LPN AFTER PICKING .....",
+      "ancestral_headings": {
+        "DROP LOADED LPN AFTER PICKING": []
+      }
+    },
+    "Text": "![](_page_0_Picture_0.jpeg)\n\n![](_page_0_Picture_1.jpeg)\n\nWORK INSTRUCTION – RECONFIG – DROP LPN AFTER PICKING\n\n## **DROP LOADED LPN AFTER PICKING**\n\nOnce the Pick Tasks have been completed and the LPNs are loaded, these LPNs can be dropped into the Line Locators in the Config Department.\n\n![](_page_0_Picture_5.jpeg)\n\nPlease ensure that you are logged into the mobile printer to enable printing of the Pick-Drop Label\n\n- **Step 1:** Using the Mobile Application, navigate to 'Picking'-> 'Drop Loaded LPNs'\n- **Step 2:** Enter the correct Organization and press 'Enter' on the keypad\n- **Step 3:** In the 'Current Tasks' field, scan the LPN and click on 'Drop'\n\n![](_page_0_Picture_10.jpeg)\n\n![](_page_0_Figure_11.jpeg)\n\nIf the items & quantities are correct, you can proceed with dropping the LPN by scanning the Config Line Locator that is shown on your scangun and select the 'Done' button.\n\nA 'Task Complete' message will be displayed at the bottom of the screen.\n\n![](_page_0_Picture_14.jpeg)\n\nThe LPN is now dropped into the Config Line Locator, ready for the (Re)Configuration process.\n\n![](_page_0_Figure_16.jpeg)\n\n![](_page_0_Figure_17.jpeg)\n\nDocument: WI - ReConfig - Drop LPN after Picking v1.0.docx\n\nPage 1 of 1 July 18, 2024",
+    "Metadata": "\"Sub heading\": \"DROP LOADED LPN AFTER PICKING: ........Once the Pick Tasks have been completed and the LPNs are loaded, these LPNs can be dropped into the Line Locators in the Config Department. ![](_page_0_Picture_5.jpeg) Please ensure that you are logge............\""
+  }
+]

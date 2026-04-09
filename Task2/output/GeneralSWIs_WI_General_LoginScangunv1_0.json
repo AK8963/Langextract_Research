@@ -1,0 +1,28 @@
+[
+  {
+    "chunk_id1": {
+      "Sub Heading 1": "LOG-IN TO SCANGUN .....",
+      "Sub Heading 2": "Important! .....",
+      "Sub Heading 3": "Step 1: Power up the Scangun .....",
+      "Sub Heading 4": "Step 3: The 'Main' Warehouse Management menu will now be shown .....",
+      "Sub Heading 5": "Please note the following useful commands: .....",
+      "ancestral_headings": {
+        "LOG-IN TO SCANGUN": [],
+        "Important!": [
+          "LOG-IN TO SCANGUN"
+        ],
+        "Step 1: Power up the Scangun": [
+          "LOG-IN TO SCANGUN"
+        ],
+        "Step 3: The 'Main' Warehouse Management menu will now be shown": [
+          "LOG-IN TO SCANGUN"
+        ],
+        "Please note the following useful commands:": [
+          "LOG-IN TO SCANGUN"
+        ]
+      }
+    },
+    "Text": "![](_page_0_Picture_1.jpeg)\n\nWORK INSTRUCTION – GENERAL – LOG-IN TO SCANGUN\n\n# **LOG-IN TO SCANGUN**\n\nTo access the Oracle Mobile Warehouse Application (MWA) you need to log in to the scangun first.\n\n#### **Step 1:** Power up the Scangun\n\nClick on the 'Express Client' icon\n\nThe Express Client will be opened and will show the Intellinum connection information. Click on the button 'Connect'\n\n![](_page_0_Picture_8.jpeg)\n\n**Step 2:** The Oracle Login screen will be displayed to enter your 'User Name' and 'Password'\n\n## **Important!**\n\nAlways use 'Enter' when you type any information into a field on the scangun\n\n![](_page_0_Picture_12.jpeg)\n\n### **Step 3:** The 'Main' Warehouse Management menu will now be shown\n\n From the Main Menu you can access the different sub-menus: For each Department you will see a separate sub-menu (identified by numbers 1-5 and 8)\n\nThe remaining sub-menus cover the following:\n\n- 6. Inquiry: All Inquiry options\n- 7. Label Printing: The menu-options required to print labels\n- 9. Other: This sub-menu contains the menu-options that are not often used\n\n![](_page_0_Picture_19.jpeg)\n\nYou are now ready to start working with the Mobile Application.\n\n### *Please note the following useful commands:*\n\n![](_page_0_Figure_22.jpeg)\n\n![](_page_0_Figure_23.jpeg)\n\nDocument: WI - General - Login Scangun v1.0.docx\n\nPage 1 of 1 July 17, 2024",
+    "Metadata": "\"Sub heading\": \"LOG-IN TO SCANGUN: ........To access the Oracle Mobile Warehouse Application (MWA) you need to log in to the scangun first..........\", \"Sub heading\": \"Step 1: Power up the Scangun: ........Click on the 'Express Client' icon The Express Client will be opened and will show the Intellinum connection information. Click on the button 'Connect' ![](_page_0_Picture_8.jpeg) **Step 2:** The Orac............\", \"Sub heading\": \"Important!: ........Always use 'Enter' when you type any information into a field on the scangun ![](_page_0_Picture_12.jpeg).........\", \"Sub heading\": \"Step 3: The 'Main' Warehouse Management menu will now be shown: ........From the Main Menu you can access the different sub-menus: For each Department you will see a separate sub-menu (identified by numbers 1-5 and 8) The remaining sub-menus cover the following: - 6. Inqu............\""
+  }
+]

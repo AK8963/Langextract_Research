@@ -1,0 +1,29 @@
+[
+  {
+    "chunk_id1": {
+      "Sub Heading 1": "WIP JOB ASSEMBLY COMPLETION (PRINTERS – AIT) .....",
+      "Sub Heading 2": "Please note: .....",
+      "Sub Heading 3": "The next screen will show the 'Serial Attributes': .....",
+      "Sub Heading 4": "Click on the 'Done' button .....",
+      "Sub Heading 5": "Please note: .....",
+      "Sub Heading 6": "Click on the 'Done' button again .....",
+      "ancestral_headings": {
+        "WIP JOB ASSEMBLY COMPLETION (PRINTERS – AIT)": [],
+        "Please note:": [
+          "WIP JOB ASSEMBLY COMPLETION (PRINTERS – AIT)"
+        ],
+        "The next screen will show the 'Serial Attributes':": [
+          "WIP JOB ASSEMBLY COMPLETION (PRINTERS – AIT)"
+        ],
+        "Click on the 'Done' button": [
+          "WIP JOB ASSEMBLY COMPLETION (PRINTERS – AIT)"
+        ],
+        "Click on the 'Done' button again": [
+          "WIP JOB ASSEMBLY COMPLETION (PRINTERS –AIT)"
+        ]
+      }
+    },
+    "Text": "![](_page_0_Picture_1.jpeg)\n\nWORK INSTRUCTION – RECONFIG – WIP JOB ASSEMBLY COMPLETION (AIT)\n\n## **WIP JOB ASSEMBLY COMPLETION (PRINTERS – AIT)**\n\nAs part of the physical assembly process, it is required to perform an 'Assembly Completion' in Oracle for each assembly that is (re)configured.\n\n**Step 1:** Use responsibility 'ZTC Reconfiguration Mobile Apps' And navigate to 'ZBR Assy Completion'\n\n**Step 2:** Enter the correct Organization and press 'Enter' on the keypad\n\n**Step 3:** Enter the following details:\n\n- LPN: Scan a new (pre-generated) LPN\n- Job: Scan or enter the Job number\n- Qty: '1' (defaulted)\n\n*Please note:* \n\n*Serialized items must be completed 1 at a time.*\n\n*However, if the WIP Job is for a non-serialized Assembly item, then you can enter the entire job quantity instead. Or alternatively the number of cartons that can fit on a single LPN (pallet)*\n\n**Step 4:** In the 'SN' Scan the Serial Number from the device being completed.\n\nThe next screen will show the 'Serial Attributes':\n\n- Click on the 'Accept Defaults' button to attach the default values to the Serial Number for the assembly.\n- If you do not want to use the default values, then you can enter the details in the fields for 'COO' (Country of Origin), the 'Mfg Dt' (Manufacturing Date) and/or the 'Printer Key'\n\nClick on the 'Done' button\n\n**Step 5:** Click on the 'Components' button to scan the Serial Numbers for the components\n\nThe serial number for each serialized component must be recorded. There will be at least 1 serialized component (the base printer) but there may be more.\n\n*Please note:*\n\n*For the base printer, the component Serial Number must match the assembly (parent) Serial Number.* \n\n*For certain Work Orders, the Serial Number for the base printer will already be defaulted in the scangun (thus eliminating the need to scan this SN again).*\n\nClick on the 'Done' button again\n\nA 'Txn Success' message will be displayed at the bottom of the screen\n\n![](_page_0_Picture_26.jpeg)\n\nThe Assembly Completion transaction is done, the quantity completed for the job\n\n![](_page_0_Figure_28.jpeg)\n\nDocument: WI- ReConfig - WIP Job Assembly Completion AIT v1.0.docx\n\nPage 1 of 2 July 18, 2024\n\n![](_page_1_Picture_0.jpeg)\n\n## **CONFIDENTIAL INFORMATION**\n\nWORK INSTRUCTION – RECONFIG – WIP JOB ASSEMBLY COMPLETION (AIT)\n\nis increased by 1\n\nDocument: WI- ReConfig - WIP Job Assembly Completion AIT v1.0.docx\n\nPage 2 of 2 July 18, 2024",
+    "Metadata": "\"Sub heading\": \"WIP JOB ASSEMBLY COMPLETION (PRINTERS – AIT): ........As part of the physical assembly process, it is required to perform an 'Assembly Completion' in Oracle for each assembly that is (re)configured. **Step 1:** Use responsibility 'ZTC Reconfiguration Mob............\", \"Sub heading\": \"The next screen will show the 'Serial Attributes':: ........- Click on the 'Accept Defaults' button to attach the default values to the Serial Number for the assembly. - If you do not want to use the default values, then you can enter the details in the fields............\", \"Sub heading\": \"Click on the 'Done' button: ........**Step 5:** Click on the 'Components' button to scan the Serial Numbers for the components The serial number for each serialized component must be recorded. There will be at least 1 serialized compone............\", \"Sub heading\": \"Click on the 'Done' button again: ........A 'Txn Success' message will be displayed at the bottom of the screen ![](_page_0_Picture_26.jpeg) The Assembly Completion transaction is done, the quantity completed for the job ![](_page_0_Figure_28............\""
+  }
+]

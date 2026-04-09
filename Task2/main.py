@@ -201,7 +201,16 @@ def normalize_chunk_with_llm(chunk_object: dict, use_llm: bool = True) -> dict:
 
     if use_llm and ollama is not None:
         try:
-            chunk_str = json.dumps(chunk_object, ensure_ascii=False)
+            # Strip Text/Metadata — the LLM only needs heading keys, not body content.
+            # Sending the full text makes the prompt huge and the LLM response very slow.
+            heading_only = {
+                k: v for k, v in chunk_object.items()
+                if k.lower() not in ('text', 'metadata')
+            }
+            # If nothing left after stripping, there are truly no headings to extract
+            if not heading_only:
+                return {'headings': [], 'heading_levels': [], 'raw_text': raw_text, 'ambiguous': False}
+            chunk_str = json.dumps(heading_only, ensure_ascii=False)
             prompt = (
                 "Analyze the following JSON chunk and return a JSON object with keys 'headings' (list) and 'raw_text' (string).\n\n"
                 + chunk_str
@@ -301,14 +310,23 @@ def build_ancestry_with_llm(
             "3. Sub-questions/exercises (e.g. 'Ques1:', 'Example:', 'Exercise N') are children of the nearest preceding topic.\n"
             "4. A heading that is clearly more specific than the preceding heading → treat as child.\n"
             "5. Use the CLOSEST preceding heading of logically higher scope as parent.\n"
-            "6. Use heading text EXACTLY as provided — do not paraphrase.\n\n"
+            "6. Use heading text EXACTLY as provided — do not paraphrase.\n"
+            "7. Numbered sections forming a SEQUENTIAL SERIES (1. X, 2. Y, 3. Z, ...) are SIBLINGS "
+            "at the same level — assign them ALL the same ancestor(s) regardless of their suggested Level label.\n"
+            "8. An un-numbered heading (e.g. a document title like 'Confidential Information', "
+            "'WORK INSTRUCTIONS', or any title-case/all-caps title) that appears BEFORE a sequential "
+            "numbered series is the PARENT of every section in that series. "
+            "Do NOT assign ancestors=[] to those numbered sections just because their Level hint is 0 — "
+            "override the level hint and use the document title as their ancestor.\n\n"
             "LEVEL RULES (secondary, use when semantics are ambiguous):\n"
             "- Level 0: ancestors = []\n"
             "- Level 1: [nearest Level 0]\n"
             "- Level 2: [Level 0, Level 1]\n"
             "- Level 3: [Level 0, Level 1, Level 2]\n\n"
             "Return ONLY a valid JSON object. Example:\n"
-            '{"Chapter - 01": [], "Introduction to Python": ["Chapter - 01"], '
+            '{"Confidential Information": [], "1. OVERVIEW": ["Confidential Information"], '
+            '"2. VOLTAGE TESTING": ["Confidential Information"], '
+            '"Chapter - 01": [], "Introduction to Python": ["Chapter - 01"], '
             '"What is Python?": ["Chapter - 01"], '
             '"Ques1: Write a program": ["Chapter - 01", "What is Python?"]}'
         )
@@ -383,26 +401,41 @@ def process_document(original_data: list, override_title: str = None, use_llm: b
 
     print(f"Normalizing {total} chunks (use_llm={use_llm}, hybrid={hybrid})...")
 
-    if use_llm and hybrid:
-        for i, chunk in enumerate(original_data, 1):
+    # Pre-pass: identify which chunks need an LLM call (unstructured/ambiguous)
+    # Run those in parallel; structured chunks need no LLM and are instant.
+    def _normalize_one(args):
+        i, chunk = args
+        if use_llm and hybrid:
             det = normalize_chunk_with_llm(chunk, use_llm=False)
             if det.get('ambiguous'):
                 llm_res = normalize_chunk_with_llm(chunk, use_llm=True)
-                normalized_chunks.append(llm_res if llm_res.get('headings') else det)
-            else:
-                normalized_chunks.append(det)
-            if progress_interval and i % progress_interval == 0:
-                elapsed = time.time() - start
-                avg = elapsed / i
-                print(f"  processed {i}/{total} chunks — elapsed {elapsed:.1f}s, avg {avg:.2f}s/chunk")
-    else:
-        for i, chunk in enumerate(original_data, 1):
-            normalized_chunks.append(normalize_chunk_with_llm(chunk, use_llm=use_llm))
-            if progress_interval and i % progress_interval == 0:
-                elapsed = time.time() - start
-                avg = elapsed / i
-                print(f"  processed {i}/{total} chunks — elapsed {elapsed:.1f}s, avg {avg:.2f}s/chunk")
+                return i, (llm_res if llm_res.get('headings') else det)
+            return i, det
+        return i, normalize_chunk_with_llm(chunk, use_llm=use_llm)
 
+    # Run structured chunks instantly in the main thread;
+    # only truly ambiguous ones (needing LLM) go to the thread pool.
+    # Two-pass: first quick-check without LLM to find which chunks need it.
+    quick_results = [(i, normalize_chunk_with_llm(chunk, use_llm=False))
+                     for i, chunk in enumerate(original_data)]
+    ambiguous_indices = [i for i, r in quick_results if r.get('ambiguous')]
+
+    # Fill results array with quick (non-LLM) results first
+    norm_array = [r for _, r in quick_results]
+
+    if ambiguous_indices and use_llm and ollama is not None:
+        print(f"  {len(ambiguous_indices)} ambiguous chunk(s) → parallel LLM normalization...")
+        with ThreadPoolExecutor(max_workers=min(4, len(ambiguous_indices))) as ex:
+            futures = {
+                ex.submit(normalize_chunk_with_llm, original_data[i], True): i
+                for i in ambiguous_indices
+            }
+            for fut in as_completed(futures):
+                idx = futures[fut]
+                res = fut.result()
+                norm_array[idx] = res if res.get('headings') else quick_results[idx][1]
+
+    normalized_chunks = norm_array
     elapsed_total = time.time() - start
     print(f"Normalization complete: {total} chunks in {elapsed_total:.1f}s (avg {elapsed_total/ max(1,total):.2f}s/chunk)")
 
@@ -500,6 +533,49 @@ def process_document(original_data: list, override_title: str = None, use_llm: b
             adjusted3[i] = (h, 0)  # Force recognised chapter markers to root
     ordered_headings_leveled = adjusted3
 
+    # --- Phase 4: Equalize sequential numbered section levels ---
+    # When sequential numbered sections (1., 2., 3., ...) span multiple chunks,
+    # Task1 may label some as "Main Heading" (level=0) and others as "Sub Heading"
+    # (level=1) depending on each chunk's primary heading.  This detects a complete
+    # sequential run and normalises all members to the same level, then ensures the
+    # nearest preceding non-numbered heading becomes their level-0 parent.
+    _TOP_SECTION_RE = re.compile(r'^(\d+)[.)]\s')
+    numbered_by_seq: dict = {}
+    for idx, (h, lvl) in enumerate(ordered_headings_leveled):
+        m = _TOP_SECTION_RE.match(h)
+        if m and not _DOT_NUM_RE.match(h):   # exclude sub-sections like "6.1"
+            num = int(m.group(1))
+            numbered_by_seq.setdefault(num, []).append(idx)
+
+    full_seq = sorted(numbered_by_seq.keys())
+    if (
+        full_seq
+        and full_seq[0] == 1
+        and full_seq == list(range(1, len(full_seq) + 1))
+        and len(full_seq) >= 3
+    ):
+        # One representative index per sequence number (prefer first occurrence)
+        seq_indices = [numbered_by_seq[n][0] for n in full_seq]
+        seq_levels  = [ordered_headings_leveled[k][1] for k in seq_indices]
+        min_lvl, max_lvl = min(seq_levels), max(seq_levels)
+
+        if min_lvl != max_lvl:
+            # Inconsistent levels — normalise all numbered sections to the same level
+            target_lvl = max(max_lvl, 1)
+            adjusted4 = list(ordered_headings_leveled)
+            for k in seq_indices:
+                adjusted4[k] = (adjusted4[k][0], target_lvl)
+
+            # Find the nearest non-numbered heading before section "1." and
+            # force it to level 0 so it becomes their document-title parent.
+            first_sec_idx = seq_indices[0]
+            for j in range(first_sec_idx - 1, -1, -1):
+                ph, pl = adjusted4[j]
+                if not _TOP_SECTION_RE.match(ph):
+                    adjusted4[j] = (ph, 0)
+                    break
+            ordered_headings_leveled = adjusted4
+
     # Build heading_levels map for LLM hints and validation
     heading_levels_map = {h: lvl for h, lvl in ordered_headings_leveled}
 
@@ -512,6 +588,24 @@ def process_document(original_data: list, override_title: str = None, use_llm: b
             heading_levels=heading_levels_map,
         )
         print(f"LLM resolved {len(ancestry_map)} headings in {time.time()-t_llm:.1f}s (pure LLM).")
+
+        # --- Deterministic gap-fill ---
+        # The LLM may assign ancestors=[] to headings that span chunk boundaries
+        # (e.g. sections 3-7 in battery.json whose parent "Confidential Information"
+        # only appears in chunk 1).  After Phase 4 the level map is correct, so we
+        # apply _build_ancestry_stack as a fallback for any heading the LLM left
+        # empty but whose corrected level says it SHOULD have a parent.
+        rule_map = _build_ancestry_stack(ordered_headings_leveled)
+        gap_filled = 0
+        for h, lvl in heading_levels_map.items():
+            if lvl > 0 and not ancestry_map.get(h):
+                # LLM left this empty — use the rule-based answer
+                rule_ancestors = rule_map.get(h, [])
+                if rule_ancestors:
+                    ancestry_map[h] = rule_ancestors
+                    gap_filled += 1
+        if gap_filled:
+            print(f"  Gap-fill corrected {gap_filled} heading(s) the LLM left empty.")
     else:
         ancestry_map = _build_ancestry_stack(ordered_headings_leveled)
 
@@ -616,7 +710,7 @@ def load_input(path: str) -> List[Dict]:
 
 def main():
     parser = argparse.ArgumentParser(description='Add ancestral_headings to JSON chunks (uses Ollama optionally).')
-    parser.add_argument('input_file', nargs='?', default='data/sales_analysis_report4.json')
+    parser.add_argument('input_file', nargs='?', default='data/FetchRobotics_FlexShelfDual&SingleScreens_UnpackChargeRepackRev04.json')
     parser.add_argument('--title', type=str, default=None)
     parser.add_argument('--output', '-o', type=str, default=None)
     parser.add_argument('--no-llm', action='store_true')
@@ -655,6 +749,7 @@ def main():
     # Merge ancestral_headings back into the original raw JSON structure when possible
     output_obj = None
     if isinstance(raw_json, list) and len(raw_json) == len(final_data):
+        last_chunk_headings: list = []  # carry-forward for chunks with no heading keys
         for i, item in enumerate(raw_json):
             if isinstance(item, dict):
                 # Find the first dict-valued field (e.g. the inner headings map) and
@@ -668,6 +763,14 @@ def main():
                         break
                 if inner is not None:
                     chunk_headings = _extract_headings_from_obj(inner).get('headings', [])
+                    # If no headings found in this chunk (e.g. a continuation chunk
+                    # whose inner dict only contains an empty ancestral_headings key),
+                    # inherit only the LAST heading from the previous chunk — that is the
+                    # section still "open" when the page/chunk boundary occurred.
+                    if not chunk_headings and last_chunk_headings:
+                        chunk_headings = [last_chunk_headings[-1]]
+                    else:
+                        last_chunk_headings = chunk_headings
                     mapping = {h: heading_map.get(h, []) for h in chunk_headings}
                     inner['ancestral_headings'] = mapping
                     continue

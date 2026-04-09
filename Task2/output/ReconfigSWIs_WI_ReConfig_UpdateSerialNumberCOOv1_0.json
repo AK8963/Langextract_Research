@@ -1,0 +1,12 @@
+[
+  {
+    "chunk_id1": {
+      "Sub Heading 1": "UPDATE SERIAL NUMBER COO AFTER WIP COMPLETIONS .....",
+      "ancestral_headings": {
+        "UPDATE SERIAL NUMBER COO AFTER WIP COMPLETIONS": []
+      }
+    },
+    "Text": "![](_page_0_Picture_1.jpeg)\n\nWORK INSTRUCTION – RECONFIG – UPDATE SERIAL NUMBER COO\n\n## **UPDATE SERIAL NUMBER COO AFTER WIP COMPLETIONS**\n\nAs WIP Assembly Completions have been done onto a LPN, it may occasionally happen that the Country of Origin is missing for the Serial Numbers on that LPN.\n\nThe Team is usually aware of this issue when visually checking the LPN Content label (or via a check in Oracle).\n\n![](_page_0_Picture_6.jpeg)\n\nRather than manually updating the Country of Origin for each Serial Number separately, this can be done using a separate option on the scan-gun.\n\n*Please note: The Overpack LPNs must be dropped first before the update process can be done.*\n\n- **Step 1:** Sign on to the Oracle Mobile Application Select Responsibility 'ZTC Reconfiguration Mobile Apps' Navigate to 'Update SN COO by LPN'\n- **Step 2:** Enter the correct Organization and press 'Enter' on the keypad\n- **Step 3:** In the 'LPN' field scan the LPN for which the Serial Numbers need to be updated\n\nIn the 'COO' field scan or enter the correct Country of Origin Code\n\nThe Manufacturing Date ('Mfg.Dt') is optional\n\nSelect the 'Done' button complete the update\n\nAn 'Update Successful' message will be displayed at the bottom of the screen\n\n![](_page_0_Picture_16.jpeg)\n\n![](_page_0_Picture_17.jpeg)\n\n![](_page_0_Figure_18.jpeg)\n\n![](_page_0_Figure_19.jpeg)\n\n![](_page_0_Picture_20.jpeg)\n\nThe Country of Origin is now updated for the Serial Numbers\n\nA new 'LPN Content Label' (EU\\_2D\\_LPN\\_Contents\\_Detailed) must be printed to replace any LPN label without the Country of Origin\n\nDocument: WI - ReConfig - Update Serial Number COO v1.0.docx\n\nPage 1 of 1 July 18, 2024",
+    "Metadata": "\"Sub heading\": \"UPDATE SERIAL NUMBER COO AFTER WIP COMPLETIONS: ........As WIP Assembly Completions have been done onto a LPN, it may occasionally happen that the Country of Origin is missing for the Serial Numbers on that LPN. The Team is usually aware of this issue when............\""
+  }
+]

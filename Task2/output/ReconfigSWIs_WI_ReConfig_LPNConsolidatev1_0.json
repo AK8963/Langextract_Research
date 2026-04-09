@@ -1,0 +1,12 @@
+[
+  {
+    "chunk_id1": {
+      "Sub Heading 1": "LPN CONSOLIDATE AFTER WIP COMPLETIONS .....",
+      "ancestral_headings": {
+        "LPN CONSOLIDATE AFTER WIP COMPLETIONS": []
+      }
+    },
+    "Text": "![](_page_0_Picture_1.jpeg)\n\nWORK INSTRUCTION – RECONFIG – LPN CONSOLIDATE\n\n## **LPN CONSOLIDATE AFTER WIP COMPLETIONS**\n\nAs each Common Cradle Overpack is completed onto a separate LPN, these are typically packed onto pallets and thus the LPNs will need to be consolidated by pallet, prior to moving these units to main warehouse. This menu-option can also be used for other WIP Assemblies that are created in the ReConfig Department\n\n*Please note: The Overpack LPNs must be dropped first before the consolidation process can be done.*\n\n**Step 1:** Sign on to the Oracle Mobile Application Select Responsibility 'ZTC Warehouse Ops Mobile NALA' Navigate to 'Inventory' -> 'LPN Transactions'-> 'Consolidate'\n\n**Step 2:** Enter the correct Organization and press 'Enter' on the keypad\n\n**Step 3:** In the 'Parent LPN' field either scan a new LPN or one of the existing LPNs you want to consolidate the other Overpack LPNs into Press 'Enter' on the keypad\n\nIn the 'Next LPN' field scan or enter the first LPN for an Overpack\n\n![](_page_0_Picture_10.jpeg)\n\n![](_page_0_Picture_11.jpeg)\n\nSelect the 'More' button to consolidate more Overpack LPNs Select the 'Merge' button if you have scanned all the Overpack LPNs that you want to consolidate\n\nThis will close the window\n\n*Note: At this stage of the process the original LPNs still exist but have the new consolidated LPN as the parent LPN.*\n\n**Step 4:** From the menu select 'LPN Reconfig'\n\nScan the Parent LPN which you have used to consolidate the Overpack LPNs into.\n\nSelect the 'Merge-Up' button to complete the consolidation process This will complete the transaction.\n\n![](_page_0_Picture_18.jpeg)\n\n*Note: At this stage of the process the original Overpack LPNs no longer exist.*\n\nA 'Tx Success' message will be displayed at the bottom of the screen\n\nThe Overpack LPNs are now consolidated into a new LPN\n\nDocument: WI - ReConfig - LPN Consolidate v1.0.docx\n\nPage 1 of 1 July 18, 2024",
+    "Metadata": "\"Sub heading\": \"LPN CONSOLIDATE AFTER WIP COMPLETIONS: ........As each Common Cradle Overpack is completed onto a separate LPN, these are typically packed onto pallets and thus the LPNs will need to be consolidated by pallet, prior to moving these units to main w............\""
+  }
+]
