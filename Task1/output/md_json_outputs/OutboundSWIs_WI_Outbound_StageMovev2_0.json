@@ -1,9 +1,0 @@
-[
-    {
-        "chunk_id1": {
-            "Sub Heading 1": "WORK INSTRUCTION –OUTBOUND – STAGE MOVE ....."
-        },
-        "Text": "![](_page_0_Picture_0.jpeg)\n\n## **CONFIDENTIAL INFORMATION**\n\n## WORK INSTRUCTION –OUTBOUND – STAGE MOVE\n\n− Stage Move\n\nOnce packing for a specific Delivery has been completed, the LPNs can be 'Stage Moved' to free up the Consolidation Locator.\n\n**Step 1:** Using the Mobile Application, navigate to 'Packing'-> 'Staging Move'\n\n**Step 2:** Enter the correct Organization and press 'Enter' on the keypad\n\n**Step 3:** In the LPN field, scan the LPN and click on '**Drop'**\n\n![](_page_0_Picture_8.jpeg)\n\n![](_page_0_Picture_9.jpeg)\n\n**Step 4:** Scan the 'Stage Move' locator into the 'Confirm' field\n\nThe 'Stage Move' locators are the locators assigned to the Staging Lanes These are part of the following subinventories:\n\n- Subinventory 'STL1' for TX4\n- Subinventory 'STL6' for TX5\n- Subinventory 'STG9' for TX4 (PTO Kitting only)\n\n![](_page_0_Picture_15.jpeg)\n\nWhenever the 'Confirm' location is different from the suggested location Oracle will show the screen with the 'Override Reason Codes' Select 'Staging Move' as the Override Reason code\n\nClick on 'Done'\n\n![](_page_0_Figure_18.jpeg)\n\nPage 1 of 2 June 25, 2025\n\n![](_page_1_Picture_0.jpeg)\n\n## **CONFIDENTIAL INFORMATION**\n\nWORK INSTRUCTION –OUTBOUND – STAGE MOVE\n\nContinue with stage-moving all LPNs for the Delivery to ensure that the Consolidation Locator is available for a new Delivery again.\n\nPage 2 of 2 June 25, 2025",
-        "Metadata": "\"Sub heading\": \"WORK INSTRUCTION –OUTBOUND – STAGE MOVE: ........− Stage Move Once packing for a specific Delivery has been completed, the LPNs can be 'Stage Moved' to free up the Consolidation Locator. **Step 1:** Using the Mobile Application, navigate to 'Packing............\""
-    }
-]
