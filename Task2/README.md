@@ -54,10 +54,10 @@ Task2/
 │   ├── without_markdown.json
 │   └── with_markdown.json
 │
-└── output/                         # Generated output files
-    ├── summary_chunks.json                  # Cascading extractor output
-    ├── without_markdown.json                # Ancestry-annotated output (no-markdown input)
-    └── with_markdown.json                   # Normalizer/annotator output (markdown input)
+└── output/                         # ⚠ gitignored — not committed to the repo
+    ├── *_ancestry_exact.json            # Ancestry-annotated output per document
+    ├── combined_ancestry_exact.json     # All docs merged into one file
+    └── summary_chunks.json              # Cascading extractor output
 ```
 
 ---
@@ -102,13 +102,15 @@ Task2/
 
 ---
 
-### output/
+### output/  *(gitignored — local only)*
+
+> This folder is excluded from the repository. Generated files live locally only.
 
 | Path | Description |
 |------|-------------|
+| `output/<doc>_ancestry_exact.json` | Per-document ancestry-annotated output. One file per input JSON processed by `main.py`. |
+| `output/combined_ancestry_exact.json` | All per-document outputs merged into a single JSON array for multi-document evaluation. |
 | `output/summary_chunks.json` | Cascading-extractor output — chunks enriched with accumulated context metadata from `summary_metadata.py`. |
-| `output/without_markdown.json` | Ancestry-annotated output from processing `data/without_markdown.json` — each chunk enriched with `ancestral_headings`. |
-| `output/with_markdown.json` | Normalizer output from processing `data/with_markdown.json` — normalized and annotated chunks. |
 
 ---
 
