@@ -123,11 +123,13 @@ def run(cfg: dict) -> None:
     W_HEADING      = cfg["retrieval"]["w_heading"]
     TOP_K_RETRIEVE = cfg["retrieval"]["top_k_retrieve"]
     TOP_N          = cfg["retrieval"]["top_n"]
+    ALPHA          = cfg["retrieval"].get("alpha", 0.5)
 
     TASK2_OUTPUT_DIR = Path(cfg["task2_output_dir"])
     EXCLUDE_FILES    = set(cfg.get("exclude_files", []))
     EXCEL_OUTPUT     = cfg.get("excel_output_file", "output/per_doc_title_query_results.xlsx")
     excel_path       = BASE_DIR / EXCEL_OUTPUT
+    QUESTIONS_FILE   = BASE_DIR / cfg.get("questions_file", "tests/questions.json")
 
     # Bind config-dependent embed helper as a closure
     def embed_direct(text: str):
@@ -191,6 +193,28 @@ def run(cfg: dict) -> None:
         })
 
     print(f"Loaded {len(doc_meta)} documents, {len(all_inserts)} total chunks")
+
+    # ── Apply questions.json overrides ───────────────────────────────────────
+    questions_data: dict = {}
+    if QUESTIONS_FILE.exists():
+        with open(QUESTIONS_FILE, "r", encoding="utf-8") as fh:
+            questions_data = json.load(fh)
+        print(f"Loaded questions from {QUESTIONS_FILE} ({len(questions_data)} entries)")
+    else:
+        print(f"[INFO] No questions file found at {QUESTIONS_FILE}; using auto-derived title queries only")
+
+    for meta in doc_meta:
+        stem = meta["file_stem"]
+        if stem in questions_data:
+            qentry = questions_data[stem]
+            title_q = str(qentry.get("title_query", "")).strip()
+            if title_q and title_q != "UNKNOWN":
+                meta["root_heading"] = title_q
+            meta["extra_questions"] = [
+                str(q).strip() for q in qentry.get("extra_questions", []) if str(q).strip()
+            ]
+        else:
+            meta["extra_questions"] = []
 
     # Warn about colliding root headings
     _root_heading_counter = Counter(m["root_heading"] for m in doc_meta)
@@ -330,7 +354,7 @@ def run(cfg: dict) -> None:
                         query=query_text,
                         target_vector=TargetVectors.sum(["text_vector"]),
                         query_properties=["text"],
-                        alpha=0.7,
+                        alpha=ALPHA,
                         fusion_type=HybridFusion.RELATIVE_SCORE,
                         limit=TOP_K_RETRIEVE,
                         return_metadata=MetadataQuery(score=True),
@@ -348,7 +372,7 @@ def run(cfg: dict) -> None:
                             query=query_text,
                             target_vector=TargetVectors.sum(["heading_vector"]),
                             query_properties=["heading_path"],
-                            alpha=0.7,
+                            alpha=ALPHA,
                             fusion_type=HybridFusion.RELATIVE_SCORE,
                             limit=TOP_K_RETRIEVE,
                             return_metadata=MetadataQuery(score=True),
@@ -423,16 +447,23 @@ def run(cfg: dict) -> None:
         # ========================
         all_results: list[dict] = []
 
-        print(f"\nRunning per-document title queries ({len(doc_meta)} docs, TOP_N={TOP_N}) ...")
+        # Flatten doc_meta × queries into (meta, query, query_type) triples
+        query_triples: list[tuple[dict, str, str]] = []
+        for meta in doc_meta:
+            query_triples.append((meta, meta["root_heading"], "title"))
+            for qi, eq in enumerate(meta["extra_questions"], 1):
+                query_triples.append((meta, eq, f"extra_{qi}"))
+
+        total_q = len(query_triples)
+        print(f"\nRunning queries ({len(doc_meta)} docs, {total_q} total queries, TOP_N={TOP_N}) ...")
         print("-" * 70)
 
-        for sno, meta in enumerate(doc_meta, 1):
+        for sno, (meta, query, query_type) in enumerate(query_triples, 1):
             stem       = meta["file_stem"]
-            query      = meta["root_heading"]
             gt_ids     = meta["gt_chunk_ids"]
             gt_count   = meta["gt_count"]
 
-            print(f"[{sno}/{len(doc_meta)}] {stem}")
+            print(f"[{sno}/{total_q}] {stem}  [{query_type}]")
             print(f"  Query : {query}")
 
             exec_errors = ""
@@ -490,6 +521,10 @@ def run(cfg: dict) -> None:
             mrr_with    = _mrr(with_anc,    gt_ids)
             mrr_without = _mrr(without_anc, gt_ids)
 
+            relevancy_with    = round(overlap_with    / len(with_anc),    6) if with_anc    else 0.0
+            relevancy_without = round(overlap_without / len(without_anc), 6) if without_anc else 0.0
+            delta_relevancy   = round(relevancy_with - relevancy_without, 6)
+
             if delta_prec > 0:
                 anc_better = "YES"
             elif delta_prec == 0:
@@ -504,6 +539,7 @@ def run(cfg: dict) -> None:
 
             all_results.append({
                 "SNo":                    sno,
+                "query_type":             query_type,
                 "question":               query,
                 "document_source":        stem,
                 "ground_truth":           ground_truth_json,
@@ -535,6 +571,9 @@ def run(cfg: dict) -> None:
                 "delta_precision": delta_prec,
                 "MRR_with_anc":    mrr_with,
                 "MRR_without_anc": mrr_without,
+                "relevancy_with_anc":    relevancy_with,
+                "relevancy_without_anc": relevancy_without,
+                "delta_relevancy":       delta_relevancy,
                 "anc_better":  anc_better,
                 "executionErrors": exec_errors,
                 "Issue":           issue,
@@ -549,14 +588,19 @@ def run(cfg: dict) -> None:
         avg_recall_without = sum(r["recall_at_n_without_anc"] for r in all_results) / n if n else 0
         avg_mrr_with       = sum(r["MRR_with_anc"]    for r in all_results) / n if n else 0
         avg_mrr_without    = sum(r["MRR_without_anc"] for r in all_results) / n if n else 0
+        avg_relevancy_with    = sum(r["relevancy_with_anc"]    for r in all_results) / n if n else 0
+        avg_relevancy_without = sum(r["relevancy_without_anc"] for r in all_results) / n if n else 0
+        avg_delta_relevancy   = avg_relevancy_with - avg_relevancy_without
         count_yes = sum(1 for r in all_results if r["anc_better"] == "YES")
         count_tie = sum(1 for r in all_results if r["anc_better"] == "TIE")
         count_no  = sum(1 for r in all_results if r["anc_better"] == "NO")
 
-        print(f"\nSUMMARY ACROSS {n} DOCUMENTS:")
+        print(f"\nSUMMARY ACROSS {n} QUERIES ({len(doc_meta)} documents):")
+        print(f"  Config          : alpha={ALPHA}  w_text={W_TEXT}  w_heading={W_HEADING}  TOP_N={TOP_N}")
         print(f"  Avg Precision@{TOP_N}: With={avg_prec_with:.2%}  Without={avg_prec_without:.2%}  Delta={avg_delta:+.2%}")
         print(f"  Avg Recall@{TOP_N}   : With={avg_recall_with:.2%}  Without={avg_recall_without:.2%}")
         print(f"  Avg MRR         : With={avg_mrr_with:.4f}  Without={avg_mrr_without:.4f}")
+        print(f"  Avg Relevancy   : With={avg_relevancy_with:.2%}  Without={avg_relevancy_without:.2%}  Delta={avg_delta_relevancy:+.2%}")
         print(f"  Ancestral wins  : {count_yes} YES / {count_tie} TIE / {count_no} NO")
         print("-" * 70)
 
@@ -576,6 +620,9 @@ def run(cfg: dict) -> None:
             avg_delta=avg_delta,
             avg_mrr_with=avg_mrr_with,
             avg_mrr_without=avg_mrr_without,
+            avg_relevancy_with=avg_relevancy_with,
+            avg_relevancy_without=avg_relevancy_without,
+            avg_delta_relevancy=avg_delta_relevancy,
             count_yes=count_yes,
             count_tie=count_tie,
             count_no=count_no,
@@ -603,6 +650,9 @@ def _write_excel(
     avg_delta: float,
     avg_mrr_with: float,
     avg_mrr_without: float,
+    avg_relevancy_with: float,
+    avg_relevancy_without: float,
+    avg_delta_relevancy: float,
     count_yes: int,
     count_tie: int,
     count_no: int,
@@ -645,7 +695,7 @@ def _write_excel(
         c = ws1[ref]; c.font = hdr_font; c.fill = fill; c.alignment = ctr; c.border = thin_border
 
     sub_hdrs = [
-        "SNo", "Question (Doc Title Query)", "Document Source",
+        "SNo", "Question  [query_type: title / extra_N]", "Document Source",
         "GT Chunk Count", "Retrieved (W/Anc)", "Retrieved (W/o Anc)",
         "Rank", "Chunk ID", "Doc Source", "Correct?",
         "text_norm", "heading_norm", "combined", "Text Snippet",
@@ -667,7 +717,7 @@ def _write_excel(
         gt_ids_r = res["gt_ids"]
 
         ws1.cell(row=cur_row, column=1, value=res["SNo"])
-        ws1.cell(row=cur_row, column=2, value=res["question"])
+        ws1.cell(row=cur_row, column=2, value=f"[{res['query_type']}] {res['question']}")
         ws1.cell(row=cur_row, column=3, value=res["document_source"])
         ws1.cell(row=cur_row, column=4, value=res["Ground_truth_chunk_count"])
         ws1.cell(row=cur_row, column=5, value=res["retrieved_count_with_anc"])
@@ -730,7 +780,7 @@ def _write_excel(
     ws2 = wb.create_sheet("Summary")
 
     sum_col_groups = {
-        "Identity":           (1,  ["SNo", "Question (Doc Title Query)", "Document Source", "GT Chunk Count"]),
+        "Identity":           (1,  ["SNo", "Question  [query_type: title / extra_N]", "Document Source", "GT Chunk Count"]),
         "GT Presence":        (5,  ["Retrieved (W/Anc)", "Retrieved (W/o Anc)",
                                     "is_retrieved_with", "is_retrieved_without",
                                     "overlap_with", "overlap_without"]),
@@ -741,8 +791,9 @@ def _write_excel(
         "Ranking Metrics":    (20, ["first_rank_with", "first_rank_without",
                                     "recall@N_with", "recall@N_without"]),
         "Derived Metrics":    (24, [f"Prec@{TOP_N}_with", f"Prec@{TOP_N}_without",
-                                    "delta_precision", "MRR_with", "MRR_without"]),
-        "Result":             (29, ["anc_better", "executionErrors", "Issue"]),
+                                    "delta_precision", "MRR_with", "MRR_without",
+                                    "relevancy_with", "relevancy_without", "delta_relevancy"]),
+        "Result":             (32, ["anc_better", "executionErrors", "Issue"]),
     }
 
     fill_map = {
@@ -774,7 +825,7 @@ def _write_excel(
 
     for ri, res in enumerate(all_results, 3):
         vals = [
-            res["SNo"], res["question"], res["document_source"], res["Ground_truth_chunk_count"],
+            res["SNo"], f"[{res['query_type']}] {res['question']}", res["document_source"], res["Ground_truth_chunk_count"],
             res["retrieved_count_with_anc"], res["retrieved_count_without_anc"],
             "YES" if res["is_doc_retrieved_with_anc"]    else "no",
             "YES" if res["is_doc_retrieved_without_anc"] else "no",
@@ -790,6 +841,7 @@ def _write_excel(
             res["recall_at_n_with_anc"], res["recall_at_n_without_anc"],
             res["precision_at_k_with_anc"], res["precision_at_k_without_anc"],
             res["delta_precision"], res["MRR_with_anc"], res["MRR_without_anc"],
+            res["relevancy_with_anc"], res["relevancy_without_anc"], res["delta_relevancy"],
             res["anc_better"], res["executionErrors"], res["Issue"],
         ]
 
@@ -803,7 +855,7 @@ def _write_excel(
 
         row_fill = (green_fill if res["anc_better"] == "YES"
                     else (red_fill if res["anc_better"] == "NO" else gold_fill))
-        for col in range(11, 30):
+        for col in range(11, 33):
             ws2.cell(row=ri, column=col).fill = row_fill
 
     avg_row = len(all_results) + 4
@@ -825,7 +877,10 @@ def _write_excel(
         26: f"{avg_delta:+.2%}",
         27: f"{avg_mrr_with:.4f}",
         28: f"{avg_mrr_without:.4f}",
-        29: f"YES:{count_yes} TIE:{count_tie} NO:{count_no}",
+        29: f"{avg_relevancy_with:.2%}",
+        30: f"{avg_relevancy_without:.2%}",
+        31: f"{avg_delta_relevancy:+.2%}",
+        32: f"YES:{count_yes} TIE:{count_tie} NO:{count_no}",
     }
     for col, val in footer_vals.items():
         c = ws2.cell(row=avg_row, column=col, value=val)
@@ -839,7 +894,7 @@ def _write_excel(
         13, 14, 13, 14,
         11, 12, 14, 22, 22,
         13, 14, 12, 12,
-        13, 13, 14, 12, 12,
+        13, 13, 14, 12, 12, 13, 13, 14,
         10, 26, 10,
     ]
     for ci, w in enumerate(sum_col_widths, 1):

@@ -1,36 +1,36 @@
 [
   {
     "chunk_id1": {
+      "Main Heading 1": "FETCH ROBOT CLEANING GUIDE",
       "Sub Heading 1": "1. OVERVIEW .....",
       "Sub Heading 2": "2. CLEANING MATERIALS .....",
       "Sub Heading 3": "3. REFERENCES .....",
       "Sub Heading 4": "4. REVISION HISTORY .....",
-      "Main Heading 1": "Windex: .....",
       "Sub Heading 5": "IPA Alcohol: .....",
       "Sub Heading 6": "Soft, Less Lint Paper Towel: .....",
       "Sub Heading 7": "Microfiber Duster, Bench Brush Medium Bristle, or Small Vacuum: .....",
       "ancestral_headings": {
+        "FETCH ROBOT CLEANING GUIDE": [],
         "1. OVERVIEW": [
-          "Windex:"
+          "FETCH ROBOT CLEANING GUIDE"
         ],
         "2. CLEANING MATERIALS": [
-          "Windex:"
+          "FETCH ROBOT CLEANING GUIDE"
         ],
         "3. REFERENCES": [
-          "Windex:"
+          "FETCH ROBOT CLEANING GUIDE"
         ],
         "4. REVISION HISTORY": [
-          "Windex:"
+          "FETCH ROBOT CLEANING GUIDE"
         ],
-        "Windex:": [],
         "IPA Alcohol:": [
-          "Windex:"
+          "FETCH ROBOT CLEANING GUIDE"
         ],
         "Soft, Less Lint Paper Towel:": [
-          "Windex:"
+          "FETCH ROBOT CLEANING GUIDE"
         ],
         "Microfiber Duster, Bench Brush Medium Bristle, or Small Vacuum:": [
-          "Windex:"
+          "FETCH ROBOT CLEANING GUIDE"
         ]
       }
     },

@@ -1,0 +1,346 @@
+{
+  "BatteryTestingSWIs_BatteryManagementTestingRev01": {
+    "title_query": "BATTERY MANAGEMENT TESTING",
+    "extra_questions": []
+  },
+  "BatteryTestingSWIs_BatteryShopInstallationRev01": {
+    "title_query": "BATTERYSHOP INSTALLATION",
+    "extra_questions": []
+  },
+  "BatteryTestingSWIs_CadexTestingProcessRev01": {
+    "title_query": "CADEX TESTING",
+    "extra_questions": []
+  },
+  "BatteryTestingSWIs_OB_TE_01_Rev2": {
+    "title_query": "Battery Management Test Work Instruction ",
+    "extra_questions": []
+  },
+  "BatteryTestingSWIs_OB_WA_04_TX48_14_2023": {
+    "title_query": "TX4 Distribution Center Battery Management Process  ",
+    "extra_questions": []
+  },
+  "BatteryTestingSWIs_TracknumErrorHandlingRev01": {
+    "title_query": "TRACKNUM ERROR HANDLING",
+    "extra_questions": []
+  },
+  "BatteryTestingSWIs_TX4DCBatteryManagementProcessRev01": {
+    "title_query": "TX4 DC BATTERY MANAGEMENT PROCESS ",
+    "extra_questions": []
+  },
+  "BatteryTestingSWIs_ZebraCapTestInstallationRev01": {
+    "title_query": "ZEBRACAP TEST INSTALLATION",
+    "extra_questions": []
+  },
+  "C_TPAT_7_point_ocean_container_security_inspection_guide": {
+    "title_query": "7-Point Ocean Container Security Inspection Guide USDHS / USCBP / C-TPAT / BASC \"BEST PRACTICE\"",
+    "extra_questions": []
+  },
+  "C_TPAT_ZebraTrailerInspectionandReleaseFormRev02": {
+    "title_query": "Zebra Trailer Inspection and Release Verification Checklist",
+    "extra_questions": []
+  },
+  "Config&PTOKittingSWIs_KittingProcessRev01": {
+    "title_query": "PTO KITTING PROCESS",
+    "extra_questions": []
+  },
+  "Config&PTOKittingSWIs_PTOWorkStationSetUp_Heerenveen": {
+    "title_query": "PTO WORKSTATION SET UP",
+    "extra_questions": []
+  },
+  "Config&PTOKittingSWIs_Spanish_PTOKittingSWIs_WI_PTO_WorkStationSetupRev01": {
+    "title_query": "Información Confidencial",
+    "extra_questions": []
+  },
+  "Config&PTOKittingSWIs_USBscannerquicksetupbarcodes_PackingWorkbench": {
+    "title_query": "ENTER",
+    "extra_questions": []
+  },
+  "Config&PTOKittingSWIs_WI_Outbound_PTO_COOValidationv1_0": {
+    "title_query": "PTO DELIVERY – COUNTRY OF ORIGIN VALIDATION",
+    "extra_questions": []
+  },
+  "Config&PTOKittingSWIs_WI_Outbound_PTO_TroubleshootingErrorsv1_0": {
+    "title_query": "PTO – TROUBLESHOOTING ERRORS",
+    "extra_questions": []
+  },
+  "Config&PTOKittingSWIs_WI_PTO_ConsolidateDeliveriesv1_0": {
+    "title_query": "CONSOLIDATE DELIVERIES",
+    "extra_questions": []
+  },
+  "Config&PTOKittingSWIs_WI_PTO_KitCreationv1_0": {
+    "title_query": "PTO – KIT CREATION",
+    "extra_questions": []
+  },
+  "Config&PTOKittingSWIs_WI_PTO_LabelPrintingv1_0": {
+    "title_query": "LABEL PRINTING (PTO)",
+    "extra_questions": []
+  },
+  "Config&PTOKittingSWIs_WI_PTO_LPNConsolidatev1_0": {
+    "title_query": "LPN CONSOLIDATE AFTER PTO PICKS",
+    "extra_questions": []
+  },
+  "Config&PTOKittingSWIs_WI_PTO_OverpackBulkPrintingforWalMartandToshibaRev01": {
+    "title_query": "OVERPACK BULK PRINTING FOR WALMART AND TOSHIBA",
+    "extra_questions": []
+  },
+  "Config&PTOKittingSWIs_WI_PTO_OverpackCreationv1_1": {
+    "title_query": "PTO – OVERPACK CREATION",
+    "extra_questions": []
+  },
+  "Config&PTOKittingSWIs_WI_PTO_SplitDeliveryv1_0": {
+    "title_query": "SPLITTING A DELIVERY",
+    "extra_questions": []
+  },
+  "FetchRobotics_BatterySpecifications_Deka8A8GChargeRetention": {
+    "title_query": "Deka 8A/ 8G– Charge Retention",
+    "extra_questions": []
+  },
+  "FetchRobotics_BatterySpecifications_DekaBattery8A8GInstallationandOperatingNo.1833_Rev02.19": {
+    "title_query": "8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS",
+    "extra_questions": []
+  },
+  "FetchRobotics_BatterySpecifications_GelSLABattery_8G22NF_DEKARev5": {
+    "title_query": "What is 8G22NF-DEKA?",
+    "extra_questions": []
+  },
+  "FetchRobotics_CartConnect100_UnpackChargeRepackRev04": {
+    "title_query": "CART CONNECT100 – UNPACK, CHARGE, REPACK",
+    "extra_questions": []
+  },
+  "FetchRobotics_FetchRobotCleaningGuideRev01": {
+    "title_query": "FETCH ROBOT CLEANING GUIDE",
+    "extra_questions": []
+  },
+  "FetchRobotics_FetchRobotResetRev01": {
+    "title_query": "FETCH ROBOT RESET",
+    "extra_questions": []
+  },
+  "FetchRobotics_FlexShelfDual&SingleScreens_UnpackChargeRepackRev04": {
+    "title_query": "FLEXSHELF DUAL/SINGLE SCREENS – UNPACK, CHARGE, AND REPACK",
+    "extra_questions": []
+  },
+  "FetchRobotics_GettingStartedFreight100_basedCustomerdocumentRev01": {
+    "title_query": "FREIGHT100-BASED ROBOTS",
+    "extra_questions": []
+  },
+  "FetchRobotics_HMIUnit_UnpackChargeRepackRev04": {
+    "title_query": "HMI UNIT – UNPACK, CHARGE, AND REPACK ",
+    "extra_questions": []
+  },
+  "FetchRobotics_InspectionChecklistProcessRev01": {
+    "title_query": "INSPECTION CHECKLIST PROCESS",
+    "extra_questions": []
+  },
+  "FetchRobotics_LoosePanelReworkRev01": {
+    "title_query": "LOOSE PANEL REWORK",
+    "extra_questions": []
+  },
+  "FetchRobotics_ManualChargingProcedureRev03": {
+    "title_query": "MANUAL CHARGING PROCESS",
+    "extra_questions": []
+  },
+  "FetchRobotics_RollerTop_RT100_UnpackChargeRepackRev04": {
+    "title_query": "ROLLERTOP (RT)100 – UNPACK, CHARGE, REPACK",
+    "extra_questions": []
+  },
+  "FetchRobotics_SpecificationCosmeticStandardsRev01": {
+    "title_query": "SPECIFICATION, COSMETIC STANDARDS",
+    "extra_questions": []
+  },
+  "GeneralSWIs_5SLeadershipAuditRev01": {
+    "title_query": "5S LEADERSHIP AUDIT",
+    "extra_questions": []
+  },
+  "GeneralSWIs_CreateandPrintSerialLabelsRev01": {
+    "title_query": "CREATE AND PRINT SERIAL",
+    "extra_questions": []
+  },
+  "GeneralSWIs_CreateandPrintTX5BulkPartsLabelRev01": {
+    "title_query": "CREATE AND PRINT TX5",
+    "extra_questions": []
+  },
+  "GeneralSWIs_CubiScanCalibrationRev01": {
+    "title_query": "CUBISCAN CALIBRATION",
+    "extra_questions": []
+  },
+  "GeneralSWIs_DunnageDispenserMachineRev01": {
+    "title_query": "DUNNAGE DISPENSER MACHINE (RANPAK - WRAP PAK PT/FILL PAK TT)",
+    "extra_questions": []
+  },
+  "GeneralSWIs_ESDSensitivePartsHandlingRev02": {
+    "title_query": "ESD SENSITIVE PARTS HANDLING",
+    "extra_questions": []
+  },
+  "GeneralSWIs_ESDStationCleaningProcedureRev02": {
+    "title_query": "ESD STATION CLEANING PROCEDURE ",
+    "extra_questions": []
+  },
+  "GeneralSWIs_FetchOperationRev01": {
+    "title_query": "FETCH OPERATION",
+    "extra_questions": []
+  },
+  "GeneralSWIs_PalletWrappingRev01": {
+    "title_query": "PALLET WRAPPING",
+    "extra_questions": []
+  },
+  "GeneralSWIs_ReeltoReelCounterRev02": {
+    "title_query": "REEL TO REEL COUNTER (RRC-330)",
+    "extra_questions": []
+  },
+  "GeneralSWIs_ScaleCountingRev01": {
+    "title_query": "SCALE COUNTING",
+    "extra_questions": []
+  },
+  "GeneralSWIs_VacuumSealingOperationRev02": {
+    "title_query": "VACUUM SEALING OPERATION",
+    "extra_questions": []
+  },
+  "GeneralSWIs_VisualPackagingDamageCriteriaRev01": {
+    "title_query": "VISUAL PACKAGING DAMAGE CRITERIA ",
+    "extra_questions": []
+  },
+  "GeneralSWIs_WI_General_DataLoaderv1_0": {
+    "title_query": "ENTERING DATA USING THE DATA LOADER TOOL",
+    "extra_questions": []
+  },
+  "GeneralSWIs_WI_General_LoginScangunv1_0": {
+    "title_query": "LOG-IN TO SCANGUN",
+    "extra_questions": []
+  },
+  "GeneralSWIs_WI_General_LPNInquiryv1_0": {
+    "title_query": "LPN INQUIRY",
+    "extra_questions": []
+  },
+  "GeneralSWIs_WI_General_LPNStatusandAssociatedTransactionsv1_0": {
+    "title_query": "LPN STATUS & ASSOCIATED TRANSACTIONS",
+    "extra_questions": []
+  },
+  "GeneralSWIs_WI_General_OperatingUnitsinTX4_TX5v1_0": {
+    "title_query": "OPERATING UNITS IN TX4-TX5",
+    "extra_questions": []
+  },
+  "GeneralSWIs_WI_General_OracleReportsv1_0": {
+    "title_query": "WORK INSTRUCTION – GENERAL – ORACLE REPORTS",
+    "extra_questions": []
+  },
+  "GeneralSWIs_WI_General_WildcardTestEnvironmentv1_0": {
+    "title_query": "ORACLE WILDCARD ENVIRONMENT",
+    "extra_questions": []
+  },
+  "GlobalTradeMgmtSWIs_CreatinganOfflineShipmentinGTMv1_1": {
+    "title_query": "Creating an Offline Shipment in GTM",
+    "extra_questions": []
+  },
+  "GlobalTradeMgmtSWIs_HTSRequestProcessRev01": {
+    "title_query": "HTS REQUEST PROCESS",
+    "extra_questions": []
+  },
+  "InboundSWIs_DockSafetyLoadingUnloadingRev02": {
+    "title_query": "DOCK SAFETY LOADING/UNLOADING",
+    "extra_questions": []
+  },
+  "OutboundSWIs_WI_Outbound_PickingExceptionsv1_0": {
+    "title_query": "WORK INSTRUCTION – OUTBOUND –PICKING EXCEPTIONS",
+    "extra_questions": []
+  },
+  "OutboundSWIs_WI_Outbound_SchedulingPickReleasev1_0": {
+    "title_query": "SCHEDULING THE DAILY PICK RELEASE",
+    "extra_questions": []
+  },
+  "OutboundSWIs_WI_Outbound_ShipConfirmv2_0": {
+    "title_query": "SHIP CONFIRM",
+    "extra_questions": []
+  },
+  "OutboundSWIs_WI_Outbound_StageMovev2_0": {
+    "title_query": "WORK INSTRUCTION –OUTBOUND – STAGE MOVE",
+    "extra_questions": []
+  },
+  "OutboundSWIs_WI_Outbound_UpdatingCOOv1_0": {
+    "title_query": "UPDATING THE COUNTRY OF ORIGIN FOR A DELIVERY",
+    "extra_questions": []
+  },
+  "OutboundSWIs_ZebraTrailerInspectionandReleaseFormRev01xls": {
+    "title_query": "Zebra Trailer Inspection and Release Verification Checklist",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_Archive_WI_ReConfig_WIPMaterialIssuev1_0": {
+    "title_query": "WIP MATERIAL ISSUE",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WI_ReConfig_AddingNewPrintersforCommonCradlev1_0": {
+    "title_query": "WORK INSTRUCTION – RECONFIG – ADDING NEW PRINTERS",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WI_ReConfig_AssignPickTasksv1_0": {
+    "title_query": "ASSIGN PICK TASKS",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WI_ReConfig_DiscretePickingv1_0": {
+    "title_query": "DISCRETE PICKING (JOBS)",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WI_ReConfig_DropLPNafterPickingv1_0": {
+    "title_query": "DROP LOADED LPN AFTER PICKING",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WI_ReConfig_LabelPrintingv1_0": {
+    "title_query": "LABEL PRINTING (RECONFIG)",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WI_ReConfig_LPNConsolidatev1_0": {
+    "title_query": "LPN CONSOLIDATE AFTER WIP COMPLETIONS",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WI_ReConfig_PickingExceptionsv1_0": {
+    "title_query": "PICKING EXCEPTIONS",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WI_ReConfig_PrintLaborLoadReportv1_0": {
+    "title_query": "PRINT LABOR LOAD REPORT",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WI_ReConfig_PrintTravelers1.0": {
+    "title_query": "PRINT TRAVELERS",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WI_ReConfig_ReprintCommonCradleLabelsv1_0": {
+    "title_query": "REPRINT COMMON CRADLE LABELS",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WI_ReConfig_UpdateSerialNumberCOOv1_0": {
+    "title_query": "UPDATE SERIAL NUMBER COO AFTER WIP COMPLETIONS",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WI_ReConfig_WIPJobAlertsv1_0": {
+    "title_query": "WIP JOB ALERTS",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WI_ReConfig_WIPJobAssemblyCompletionAITv1_0": {
+    "title_query": "WIP JOB ASSEMBLY COMPLETION (PRINTERS – AIT)",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WI_ReConfig_WIPJobAssemblyCompletionCommonCradlev1_0": {
+    "title_query": "WIP JOB ASSEMBLY COMPLETION (COMMON CRADLE)",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WI_ReConfig_WIPJobMoveTransactionv1_0": {
+    "title_query": "WORK INSTRUCTION – RECONFIG – WIP JOB MOVE TRANSACTION",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WI_ReConfig_WIPMaterialIssuev1_0": {
+    "title_query": "WORK INSTRUCTION – RECONFIG – WIP MATERIAL ISSUE",
+    "extra_questions": []
+  },
+  "ReconfigSWIs_WIPJob_BackflushRev01": {
+    "title_query": "WIP JOB - BACKFLUSH",
+    "extra_questions": []
+  },
+  "ZERT_ZERTCommunicationDevices": {
+    "title_query": "ZERT DEVICE",
+    "extra_questions": []
+  },
+  "ZERT_ZERTCommunicationDevicesProcessRev01": {
+    "title_query": "ZERT COMMUNICATION DEVICES PROCESS",
+    "extra_questions": []
+  }
+}

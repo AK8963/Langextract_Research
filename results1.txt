@@ -1,0 +1,579 @@
+(my_venv313) PS C:\Users\AK8963\OneDrive - Zebra Technologies\Documents\Langextract_run> python database/main.py --test per_doc
+Test    : per_doc
+Module  : tests/eval_per_doc.py
+Config  : C:\Users\AK8963\OneDrive - Zebra Technologies\Documents\Langextract_run\database\config\config.json  [section: eval_per_doc]
+======================================================================
+Discovered 86 document files in C:\Users\AK8963\OneDrive - Zebra Technologies\Documents\Langextract_run\Task2\output
+Loaded 86 documents, 260 total chunks
+Loaded questions from C:\Users\AK8963\OneDrive - Zebra Technologies\Documents\Langextract_run\database\tests\questions.json (86 entries)
+[WARN] 1 root heading(s) shared by multiple files — doc_chunks_in_topN metrics will use chunk_id ground-truth sets for accuracy:
+  'Zebra Trailer Inspection and Release Verification Checklist' appears in 2 files
+
+Connecting to Weaviate...
+Collection 'LangExtractEval' created.
+Inserted 260/260 chunks (0 skipped). Waiting for vectorization...
+
+Running queries (86 docs, 86 total queries, TOP_N=10) ...
+----------------------------------------------------------------------
+[1/86] BatteryTestingSWIs_BatteryManagementTestingRev01  [title]
+  Query : BATTERY MANAGEMENT TESTING
+  Prec@10: With=80%  Without=30%  Delta=+50%  → YES
+[2/86] BatteryTestingSWIs_BatteryShopInstallationRev01  [title]
+  Query : BATTERYSHOP INSTALLATION
+  Prec@10: With=20%  Without=10%  Delta=+10%  → YES
+[3/86] BatteryTestingSWIs_CadexTestingProcessRev01  [title]
+  Query : CADEX TESTING
+  Prec@10: With=30%  Without=10%  Delta=+20%  → YES
+[4/86] BatteryTestingSWIs_OB_TE_01_Rev2  [title]
+  Query : Battery Management Test Work Instruction
+  Prec@10: With=20%  Without=30%  Delta=-10%  → NO
+[5/86] BatteryTestingSWIs_OB_WA_04_TX48_14_2023  [title]
+  Query : TX4 Distribution Center Battery Management Process
+  Prec@10: With=0%  Without=70%  Delta=-70%  → NO
+[6/86] BatteryTestingSWIs_TracknumErrorHandlingRev01  [title]
+  Query : TRACKNUM ERROR HANDLING
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[7/86] BatteryTestingSWIs_TX4DCBatteryManagementProcessRev01  [title]
+  Query : TX4 DC BATTERY MANAGEMENT PROCESS
+  Prec@10: With=20%  Without=10%  Delta=+10%  → YES
+[8/86] BatteryTestingSWIs_ZebraCapTestInstallationRev01  [title]
+  Query : ZEBRACAP TEST INSTALLATION
+  Prec@10: With=20%  Without=10%  Delta=+10%  → YES
+[9/86] C_TPAT_7_point_ocean_container_security_inspection_guide  [title]
+  Query : 7-Point Ocean Container Security Inspection Guide USDHS / USCBP / C-TPAT / BASC "BEST PRACTICE"
+  Prec@10: With=30%  Without=30%  Delta=+0%  → TIE
+[10/86] C_TPAT_ZebraTrailerInspectionandReleaseFormRev02  [title]
+  Query : Zebra Trailer Inspection and Release Verification Checklist
+  Prec@10: With=70%  Without=20%  Delta=+50%  → YES
+[11/86] Config&PTOKittingSWIs_KittingProcessRev01  [title]
+  Query : PTO KITTING PROCESS
+  Prec@10: With=60%  Without=30%  Delta=+30%  → YES
+[12/86] Config&PTOKittingSWIs_PTOWorkStationSetUp_Heerenveen  [title]
+  Query : PTO WORKSTATION SET UP
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[13/86] Config&PTOKittingSWIs_Spanish_PTOKittingSWIs_WI_PTO_WorkStationSetupRev01  [title]
+  Query : Información Confidencial
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[14/86] Config&PTOKittingSWIs_USBscannerquicksetupbarcodes_PackingWorkbench  [title]
+  Query : ENTER
+  Prec@10: With=10%  Without=0%  Delta=+10%  → YES
+[15/86] Config&PTOKittingSWIs_WI_Outbound_PTO_COOValidationv1_0  [title]
+  Query : PTO DELIVERY – COUNTRY OF ORIGIN VALIDATION
+  Prec@10: With=50%  Without=40%  Delta=+10%  → YES
+[16/86] Config&PTOKittingSWIs_WI_Outbound_PTO_TroubleshootingErrorsv1_0  [title]
+  Query : PTO – TROUBLESHOOTING ERRORS
+  Prec@10: With=50%  Without=10%  Delta=+40%  → YES
+[17/86] Config&PTOKittingSWIs_WI_PTO_ConsolidateDeliveriesv1_0  [title]
+  Query : CONSOLIDATE DELIVERIES
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[18/86] Config&PTOKittingSWIs_WI_PTO_KitCreationv1_0  [title]
+  Query : PTO – KIT CREATION
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[19/86] Config&PTOKittingSWIs_WI_PTO_LabelPrintingv1_0  [title]
+  Query : LABEL PRINTING (PTO)
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[20/86] Config&PTOKittingSWIs_WI_PTO_LPNConsolidatev1_0  [title]
+  Query : LPN CONSOLIDATE AFTER PTO PICKS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[21/86] Config&PTOKittingSWIs_WI_PTO_OverpackBulkPrintingforWalMartandToshibaRev01  [title]
+  Query : OVERPACK BULK PRINTING FOR WALMART AND TOSHIBA
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[22/86] Config&PTOKittingSWIs_WI_PTO_OverpackCreationv1_1  [title]
+  Query : PTO – OVERPACK CREATION
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[23/86] Config&PTOKittingSWIs_WI_PTO_SplitDeliveryv1_0  [title]
+  Query : SPLITTING A DELIVERY
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[24/86] FetchRobotics_BatterySpecifications_Deka8A8GChargeRetention  [title]
+  Query : UNKNOWN
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[25/86] FetchRobotics_BatterySpecifications_DekaBattery8A8GInstallationandOperatingNo.1833_Rev02.19  [title]
+  Query : 8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS
+  Prec@10: With=80%  Without=50%  Delta=+30%  → YES
+[26/86] FetchRobotics_BatterySpecifications_GelSLABattery_8G22NF_DEKARev5  [title]
+  Query : SPECIFICATIONS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[27/86] FetchRobotics_CartConnect100_UnpackChargeRepackRev04  [title]
+  Query : CART CONNECT100 – UNPACK, CHARGE, REPACK
+  Prec@10: With=40%  Without=20%  Delta=+20%  → YES
+[28/86] FetchRobotics_FetchRobotCleaningGuideRev01  [title]
+  Query : Windex:
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[29/86] FetchRobotics_FetchRobotResetRev01  [title]
+  Query : FETCH ROBOT RESET
+  Prec@10: With=20%  Without=10%  Delta=+10%  → YES
+[30/86] FetchRobotics_FlexShelfDual&SingleScreens_UnpackChargeRepackRev04  [title]
+  Query : FLEXSHELF DUAL/SINGLE SCREENS – UNPACK, CHARGE, AND REPACK
+  Prec@10: With=40%  Without=30%  Delta=+10%  → YES
+[31/86] FetchRobotics_GettingStartedFreight100_basedCustomerdocumentRev01  [title]
+  Query : FREIGHT100-BASED ROBOTS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[32/86] FetchRobotics_HMIUnit_UnpackChargeRepackRev04  [title]
+  Query : HMI UNIT – UNPACK, CHARGE, AND REPACK
+  Prec@10: With=20%  Without=30%  Delta=-10%  → NO
+[33/86] FetchRobotics_InspectionChecklistProcessRev01  [title]
+  Query : INSPECTION CHECKLIST PROCESS
+  Prec@10: With=40%  Without=30%  Delta=+10%  → YES
+[34/86] FetchRobotics_LoosePanelReworkRev01  [title]
+  Query : LOOSE PANEL REWORK
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[35/86] FetchRobotics_ManualChargingProcedureRev03  [title]
+  Query : MANUAL CHARGING PROCESS
+  Prec@10: With=30%  Without=20%  Delta=+10%  → YES
+[36/86] FetchRobotics_RollerTop_RT100_UnpackChargeRepackRev04  [title]
+  Query : ROLLERTOP (RT)100 – UNPACK, CHARGE, REPACK
+  Prec@10: With=40%  Without=20%  Delta=+20%  → YES
+[37/86] FetchRobotics_SpecificationCosmeticStandardsRev01  [title]
+  Query : SPECIFICATION, COSMETIC STANDARDS
+  Prec@10: With=40%  Without=20%  Delta=+20%  → YES
+[38/86] GeneralSWIs_5SLeadershipAuditRev01  [title]
+  Query : 5S LEADERSHIP AUDIT
+  Prec@10: With=90%  Without=80%  Delta=+10%  → YES
+[39/86] GeneralSWIs_CreateandPrintSerialLabelsRev01  [title]
+  Query : CREATE AND PRINT SERIAL
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[40/86] GeneralSWIs_CreateandPrintTX5BulkPartsLabelRev01  [title]
+  Query : CREATE AND PRINT TX5
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[41/86] GeneralSWIs_CubiScanCalibrationRev01  [title]
+  Query : CUBISCAN CALIBRATION
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[42/86] GeneralSWIs_DunnageDispenserMachineRev01  [title]
+  Query : DUNNAGE DISPENSER MACHINE (RANPAK - WRAP PAK PT/FILL PAK TT)
+  Prec@10: With=30%  Without=20%  Delta=+10%  → YES
+[43/86] GeneralSWIs_ESDSensitivePartsHandlingRev02  [title]
+  Query : ESD SENSITIVE PARTS HANDLING
+  Prec@10: With=60%  Without=60%  Delta=+0%  → TIE
+[44/86] GeneralSWIs_ESDStationCleaningProcedureRev02  [title]
+  Query : ESD STATION CLEANING PROCEDURE
+  Prec@10: With=20%  Without=10%  Delta=+10%  → YES
+[45/86] GeneralSWIs_FetchOperationRev01  [title]
+  Query : FETCH OPERATION
+  Prec@10: With=30%  Without=30%  Delta=+0%  → TIE
+[46/86] GeneralSWIs_PalletWrappingRev01  [title]
+  Query : PALLET WRAPPING
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[47/86] GeneralSWIs_ReeltoReelCounterRev02  [title]
+  Query : REEL TO REEL COUNTER (RRC-330)
+  Prec@10: With=30%  Without=30%  Delta=+0%  → TIE
+[48/86] GeneralSWIs_ScaleCountingRev01  [title]
+  Query : SCALE COUNTING
+  Prec@10: With=30%  Without=30%  Delta=+0%  → TIE
+[49/86] GeneralSWIs_VacuumSealingOperationRev02  [title]
+  Query : VACUUM SEALING OPERATION
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[50/86] GeneralSWIs_VisualPackagingDamageCriteriaRev01  [title]
+  Query : VISUAL PACKAGING DAMAGE CRITERIA
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[51/86] GeneralSWIs_WI_General_DataLoaderv1_0  [title]
+  Query : ENTERING DATA USING THE DATA LOADER TOOL
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[52/86] GeneralSWIs_WI_General_LoginScangunv1_0  [title]
+  Query : LOG-IN TO SCANGUN
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[53/86] GeneralSWIs_WI_General_LPNInquiryv1_0  [title]
+  Query : LPN INQUIRY
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[54/86] GeneralSWIs_WI_General_LPNStatusandAssociatedTransactionsv1_0  [title]
+  Query : LPN STATUS & ASSOCIATED TRANSACTIONS
+  Prec@10: With=70%  Without=70%  Delta=+0%  → TIE
+[55/86] GeneralSWIs_WI_General_OperatingUnitsinTX4_TX5v1_0  [title]
+  Query : OPERATING UNITS IN TX4-TX5
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[56/86] GeneralSWIs_WI_General_OracleReportsv1_0  [title]
+  Query : WORK INSTRUCTION – GENERAL – ORACLE REPORTS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[57/86] GeneralSWIs_WI_General_WildcardTestEnvironmentv1_0  [title]
+  Query : ORACLE WILDCARD ENVIRONMENT
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[58/86] GlobalTradeMgmtSWIs_CreatinganOfflineShipmentinGTMv1_1  [title]
+  Query : Creating an Offline Shipment in GTM
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[59/86] GlobalTradeMgmtSWIs_HTSRequestProcessRev01  [title]
+  Query : HTS REQUEST PROCESS
+  Prec@10: With=60%  Without=40%  Delta=+20%  → YES
+[60/86] InboundSWIs_DockSafetyLoadingUnloadingRev02  [title]
+  Query : DOCK SAFETY LOADING/UNLOADING
+  Prec@10: With=50%  Without=40%  Delta=+10%  → YES
+[61/86] OutboundSWIs_WI_Outbound_PickingExceptionsv1_0  [title]
+  Query : WORK INSTRUCTION – OUTBOUND –PICKING EXCEPTIONS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[62/86] OutboundSWIs_WI_Outbound_SchedulingPickReleasev1_0  [title]
+  Query : SCHEDULING THE DAILY PICK RELEASE
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[63/86] OutboundSWIs_WI_Outbound_ShipConfirmv2_0  [title]
+  Query : SHIP CONFIRM
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[64/86] OutboundSWIs_WI_Outbound_StageMovev2_0  [title]
+  Query : WORK INSTRUCTION –OUTBOUND – STAGE MOVE
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[65/86] OutboundSWIs_WI_Outbound_UpdatingCOOv1_0  [title]
+  Query : UPDATING THE COUNTRY OF ORIGIN FOR A DELIVERY
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[66/86] OutboundSWIs_ZebraTrailerInspectionandReleaseFormRev01xls  [title]
+  Query : Zebra Trailer Inspection and Release Verification Checklist
+  Prec@10: With=10%  Without=20%  Delta=-10%  → NO
+[67/86] ReconfigSWIs_Archive_WI_ReConfig_WIPMaterialIssuev1_0  [title]
+  Query : WIP MATERIAL ISSUE
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[68/86] ReconfigSWIs_WI_ReConfig_AddingNewPrintersforCommonCradlev1_0  [title]
+  Query : WORK INSTRUCTION – RECONFIG – ADDING NEW PRINTERS
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[69/86] ReconfigSWIs_WI_ReConfig_AssignPickTasksv1_0  [title]
+  Query : ASSIGN PICK TASKS
+  Prec@10: With=40%  Without=20%  Delta=+20%  → YES
+[70/86] ReconfigSWIs_WI_ReConfig_DiscretePickingv1_0  [title]
+  Query : DISCRETE PICKING (JOBS)
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[71/86] ReconfigSWIs_WI_ReConfig_DropLPNafterPickingv1_0  [title]
+  Query : DROP LOADED LPN AFTER PICKING
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[72/86] ReconfigSWIs_WI_ReConfig_LabelPrintingv1_0  [title]
+  Query : LABEL PRINTING (RECONFIG)
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[73/86] ReconfigSWIs_WI_ReConfig_LPNConsolidatev1_0  [title]
+  Query : LPN CONSOLIDATE AFTER WIP COMPLETIONS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[74/86] ReconfigSWIs_WI_ReConfig_PickingExceptionsv1_0  [title]
+  Query : PICKING EXCEPTIONS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[75/86] ReconfigSWIs_WI_ReConfig_PrintLaborLoadReportv1_0  [title]
+  Query : PRINT LABOR LOAD REPORT
+  Prec@10: With=60%  Without=30%  Delta=+30%  → YES
+[76/86] ReconfigSWIs_WI_ReConfig_PrintTravelers1.0  [title]
+  Query : PRINT TRAVELERS
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[77/86] ReconfigSWIs_WI_ReConfig_ReprintCommonCradleLabelsv1_0  [title]
+  Query : REPRINT COMMON CRADLE LABELS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[78/86] ReconfigSWIs_WI_ReConfig_UpdateSerialNumberCOOv1_0  [title]
+  Query : UPDATE SERIAL NUMBER COO AFTER WIP COMPLETIONS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[79/86] ReconfigSWIs_WI_ReConfig_WIPJobAlertsv1_0  [title]
+  Query : WIP JOB ALERTS
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[80/86] ReconfigSWIs_WI_ReConfig_WIPJobAssemblyCompletionAITv1_0  [title]
+  Query : WIP JOB ASSEMBLY COMPLETION (PRINTERS – AIT)
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[81/86] ReconfigSWIs_WI_ReConfig_WIPJobAssemblyCompletionCommonCradlev1_0  [title]
+  Query : WIP JOB ASSEMBLY COMPLETION (COMMON CRADLE)
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[82/86] ReconfigSWIs_WI_ReConfig_WIPJobMoveTransactionv1_0  [title]
+  Query : WORK INSTRUCTION – RECONFIG – WIP JOB MOVE TRANSACTION
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[83/86] ReconfigSWIs_WI_ReConfig_WIPMaterialIssuev1_0  [title]
+  Query : WORK INSTRUCTION – RECONFIG – WIP MATERIAL ISSUE
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[84/86] ReconfigSWIs_WIPJob_BackflushRev01  [title]
+  Query : WIP
+  Prec@10: With=30%  Without=10%  Delta=+20%  → YES
+[85/86] ZERT_ZERTCommunicationDevices  [title]
+  Query : ZERT DEVICE
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[86/86] ZERT_ZERTCommunicationDevicesProcessRev01  [title]
+  Query : ZERT COMMUNICATION DEVICES PROCESS
+  Prec@10: With=30%  Without=20%  Delta=+10%  → YES
+----------------------------------------------------------------------
+
+SUMMARY ACROSS 86 QUERIES (86 documents):
+  Config          : alpha=0.4  w_text=0.4  w_heading=0.6  TOP_N=10
+  Avg Precision@10: With=24.30%  Without=19.53%  Delta=+4.77%
+  Avg Recall@10   : With=94.34%  Without=81.42%
+  Avg MRR         : With=0.9065  Without=0.9166
+  Avg Relevancy   : With=24.30%  Without=19.53%  Delta=+4.77%
+  Ancestral wins  : 27 YES / 55 TIE / 4 NO
+----------------------------------------------------------------------
+
+Excel saved to: C:\Users\AK8963\OneDrive - Zebra Technologies\Documents\Langextract_run\database\output\per_doc_title_query_results4.xlsx
+  Sheet 1 'Detailed Results': 860 result rows across 86 docs
+  Sheet 2 'Summary': 86 document rows + average footer
+Done.
+(my_venv313) PS C:\Users\AK8963\OneDrive - Zebra Technologies\Documents\Langextract_run> python database/main.py --test per_doc
+Test    : per_doc
+Module  : tests/eval_per_doc.py
+Config  : C:\Users\AK8963\OneDrive - Zebra Technologies\Documents\Langextract_run\database\config\config.json  [section: eval_per_doc]
+======================================================================
+Discovered 86 document files in C:\Users\AK8963\OneDrive - Zebra Technologies\Documents\Langextract_run\Task2\output
+Loaded 86 documents, 260 total chunks
+Loaded questions from C:\Users\AK8963\OneDrive - Zebra Technologies\Documents\Langextract_run\database\tests\questions.json (86 entries)
+[WARN] 1 root heading(s) shared by multiple files — doc_chunks_in_topN metrics will use chunk_id ground-truth sets for accuracy:
+  'Zebra Trailer Inspection and Release Verification Checklist' appears in 2 files
+
+Connecting to Weaviate...
+Collection 'LangExtractEval' created.
+Inserted 260/260 chunks (0 skipped). Waiting for vectorization...
+
+Running queries (86 docs, 86 total queries, TOP_N=10) ...
+----------------------------------------------------------------------
+[1/86] BatteryTestingSWIs_BatteryManagementTestingRev01  [title]
+  Query : BATTERY MANAGEMENT TESTING
+  Prec@10: With=80%  Without=30%  Delta=+50%  → YES
+[2/86] BatteryTestingSWIs_BatteryShopInstallationRev01  [title]
+  Query : BATTERYSHOP INSTALLATION
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[3/86] BatteryTestingSWIs_CadexTestingProcessRev01  [title]
+  Query : CADEX TESTING
+  Prec@10: With=30%  Without=10%  Delta=+20%  → YES
+[4/86] BatteryTestingSWIs_OB_TE_01_Rev2  [title]
+  Query : Battery Management Test Work Instruction
+  Prec@10: With=10%  Without=20%  Delta=-10%  → NO
+[5/86] BatteryTestingSWIs_OB_WA_04_TX48_14_2023  [title]
+  Query : TX4 Distribution Center Battery Management Process
+  Prec@10: With=0%  Without=70%  Delta=-70%  → NO
+[6/86] BatteryTestingSWIs_TracknumErrorHandlingRev01  [title]
+  Query : TRACKNUM ERROR HANDLING
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[7/86] BatteryTestingSWIs_TX4DCBatteryManagementProcessRev01  [title]
+  Query : TX4 DC BATTERY MANAGEMENT PROCESS
+  Prec@10: With=20%  Without=10%  Delta=+10%  → YES
+[8/86] BatteryTestingSWIs_ZebraCapTestInstallationRev01  [title]
+  Query : ZEBRACAP TEST INSTALLATION
+  Prec@10: With=20%  Without=10%  Delta=+10%  → YES
+[9/86] C_TPAT_7_point_ocean_container_security_inspection_guide  [title]
+  Query : 7-Point Ocean Container Security Inspection Guide USDHS / USCBP / C-TPAT / BASC "BEST PRACTICE"
+  Prec@10: With=30%  Without=30%  Delta=+0%  → TIE
+[10/86] C_TPAT_ZebraTrailerInspectionandReleaseFormRev02  [title]
+  Query : Zebra Trailer Inspection and Release Verification Checklist
+  Prec@10: With=70%  Without=30%  Delta=+40%  → YES
+[11/86] Config&PTOKittingSWIs_KittingProcessRev01  [title]
+  Query : PTO KITTING PROCESS
+  Prec@10: With=60%  Without=30%  Delta=+30%  → YES
+[12/86] Config&PTOKittingSWIs_PTOWorkStationSetUp_Heerenveen  [title]
+  Query : PTO WORKSTATION SET UP
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[13/86] Config&PTOKittingSWIs_Spanish_PTOKittingSWIs_WI_PTO_WorkStationSetupRev01  [title]
+  Query : Información Confidencial
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[14/86] Config&PTOKittingSWIs_USBscannerquicksetupbarcodes_PackingWorkbench  [title]
+  Query : ENTER
+  Prec@10: With=10%  Without=0%  Delta=+10%  → YES
+[15/86] Config&PTOKittingSWIs_WI_Outbound_PTO_COOValidationv1_0  [title]
+  Query : PTO DELIVERY – COUNTRY OF ORIGIN VALIDATION
+  Prec@10: With=50%  Without=40%  Delta=+10%  → YES
+[16/86] Config&PTOKittingSWIs_WI_Outbound_PTO_TroubleshootingErrorsv1_0  [title]
+  Query : PTO – TROUBLESHOOTING ERRORS
+  Prec@10: With=50%  Without=10%  Delta=+40%  → YES
+[17/86] Config&PTOKittingSWIs_WI_PTO_ConsolidateDeliveriesv1_0  [title]
+  Query : CONSOLIDATE DELIVERIES
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[18/86] Config&PTOKittingSWIs_WI_PTO_KitCreationv1_0  [title]
+  Query : PTO – KIT CREATION
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[19/86] Config&PTOKittingSWIs_WI_PTO_LabelPrintingv1_0  [title]
+  Query : LABEL PRINTING (PTO)
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[20/86] Config&PTOKittingSWIs_WI_PTO_LPNConsolidatev1_0  [title]
+  Query : LPN CONSOLIDATE AFTER PTO PICKS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[21/86] Config&PTOKittingSWIs_WI_PTO_OverpackBulkPrintingforWalMartandToshibaRev01  [title]
+  Query : OVERPACK BULK PRINTING FOR WALMART AND TOSHIBA
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[22/86] Config&PTOKittingSWIs_WI_PTO_OverpackCreationv1_1  [title]
+  Query : PTO – OVERPACK CREATION
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[23/86] Config&PTOKittingSWIs_WI_PTO_SplitDeliveryv1_0  [title]
+  Query : SPLITTING A DELIVERY
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[24/86] FetchRobotics_BatterySpecifications_Deka8A8GChargeRetention  [title]
+  Query : Deka 8A/ 8G– Charge Retention
+  Prec@10: With=10%  Without=0%  Delta=+10%  → YES
+[25/86] FetchRobotics_BatterySpecifications_DekaBattery8A8GInstallationandOperatingNo.1833_Rev02.19  [title]
+  Query : 8A & 8G BATTERY INSTALLATION AND OPERATING INSTRUCTIONS
+  Prec@10: With=80%  Without=50%  Delta=+30%  → YES
+[26/86] FetchRobotics_BatterySpecifications_GelSLABattery_8G22NF_DEKARev5  [title]
+  Query : What is 8G22NF-DEKA?
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[27/86] FetchRobotics_CartConnect100_UnpackChargeRepackRev04  [title]
+  Query : CART CONNECT100 – UNPACK, CHARGE, REPACK
+  Prec@10: With=40%  Without=20%  Delta=+20%  → YES
+[28/86] FetchRobotics_FetchRobotCleaningGuideRev01  [title]
+  Query : FETCH ROBOT CLEANING GUIDE
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[29/86] FetchRobotics_FetchRobotResetRev01  [title]
+  Query : FETCH ROBOT RESET
+  Prec@10: With=20%  Without=10%  Delta=+10%  → YES
+[30/86] FetchRobotics_FlexShelfDual&SingleScreens_UnpackChargeRepackRev04  [title]
+  Query : FLEXSHELF DUAL/SINGLE SCREENS – UNPACK, CHARGE, AND REPACK
+  Prec@10: With=40%  Without=30%  Delta=+10%  → YES
+[31/86] FetchRobotics_GettingStartedFreight100_basedCustomerdocumentRev01  [title]
+  Query : FREIGHT100-BASED ROBOTS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[32/86] FetchRobotics_HMIUnit_UnpackChargeRepackRev04  [title]
+  Query : HMI UNIT – UNPACK, CHARGE, AND REPACK
+  Prec@10: With=20%  Without=30%  Delta=-10%  → NO
+[33/86] FetchRobotics_InspectionChecklistProcessRev01  [title]
+  Query : INSPECTION CHECKLIST PROCESS
+  Prec@10: With=40%  Without=30%  Delta=+10%  → YES
+[34/86] FetchRobotics_LoosePanelReworkRev01  [title]
+  Query : LOOSE PANEL REWORK
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[35/86] FetchRobotics_ManualChargingProcedureRev03  [title]
+  Query : MANUAL CHARGING PROCESS
+  Prec@10: With=30%  Without=20%  Delta=+10%  → YES
+[36/86] FetchRobotics_RollerTop_RT100_UnpackChargeRepackRev04  [title]
+  Query : ROLLERTOP (RT)100 – UNPACK, CHARGE, REPACK
+  Prec@10: With=40%  Without=20%  Delta=+20%  → YES
+[37/86] FetchRobotics_SpecificationCosmeticStandardsRev01  [title]
+  Query : SPECIFICATION, COSMETIC STANDARDS
+  Prec@10: With=40%  Without=20%  Delta=+20%  → YES
+[38/86] GeneralSWIs_5SLeadershipAuditRev01  [title]
+  Query : 5S LEADERSHIP AUDIT
+  Prec@10: With=90%  Without=80%  Delta=+10%  → YES
+[39/86] GeneralSWIs_CreateandPrintSerialLabelsRev01  [title]
+  Query : CREATE AND PRINT SERIAL
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[40/86] GeneralSWIs_CreateandPrintTX5BulkPartsLabelRev01  [title]
+  Query : CREATE AND PRINT TX5
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[41/86] GeneralSWIs_CubiScanCalibrationRev01  [title]
+  Query : CUBISCAN CALIBRATION
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[42/86] GeneralSWIs_DunnageDispenserMachineRev01  [title]
+  Query : DUNNAGE DISPENSER MACHINE (RANPAK - WRAP PAK PT/FILL PAK TT)
+  Prec@10: With=30%  Without=20%  Delta=+10%  → YES
+[43/86] GeneralSWIs_ESDSensitivePartsHandlingRev02  [title]
+  Query : ESD SENSITIVE PARTS HANDLING
+  Prec@10: With=60%  Without=60%  Delta=+0%  → TIE
+[44/86] GeneralSWIs_ESDStationCleaningProcedureRev02  [title]
+  Query : ESD STATION CLEANING PROCEDURE
+  Prec@10: With=20%  Without=10%  Delta=+10%  → YES
+[45/86] GeneralSWIs_FetchOperationRev01  [title]
+  Query : FETCH OPERATION
+  Prec@10: With=30%  Without=30%  Delta=+0%  → TIE
+[46/86] GeneralSWIs_PalletWrappingRev01  [title]
+  Query : PALLET WRAPPING
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[47/86] GeneralSWIs_ReeltoReelCounterRev02  [title]
+  Query : REEL TO REEL COUNTER (RRC-330)
+  Prec@10: With=30%  Without=30%  Delta=+0%  → TIE
+[48/86] GeneralSWIs_ScaleCountingRev01  [title]
+  Query : SCALE COUNTING
+  Prec@10: With=30%  Without=30%  Delta=+0%  → TIE
+[49/86] GeneralSWIs_VacuumSealingOperationRev02  [title]
+  Query : VACUUM SEALING OPERATION
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[50/86] GeneralSWIs_VisualPackagingDamageCriteriaRev01  [title]
+  Query : VISUAL PACKAGING DAMAGE CRITERIA
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[51/86] GeneralSWIs_WI_General_DataLoaderv1_0  [title]
+  Query : ENTERING DATA USING THE DATA LOADER TOOL
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[52/86] GeneralSWIs_WI_General_LoginScangunv1_0  [title]
+  Query : LOG-IN TO SCANGUN
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[53/86] GeneralSWIs_WI_General_LPNInquiryv1_0  [title]
+  Query : LPN INQUIRY
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[54/86] GeneralSWIs_WI_General_LPNStatusandAssociatedTransactionsv1_0  [title]
+  Query : LPN STATUS & ASSOCIATED TRANSACTIONS
+  Prec@10: With=70%  Without=70%  Delta=+0%  → TIE
+[55/86] GeneralSWIs_WI_General_OperatingUnitsinTX4_TX5v1_0  [title]
+  Query : OPERATING UNITS IN TX4-TX5
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[56/86] GeneralSWIs_WI_General_OracleReportsv1_0  [title]
+  Query : WORK INSTRUCTION – GENERAL – ORACLE REPORTS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[57/86] GeneralSWIs_WI_General_WildcardTestEnvironmentv1_0  [title]
+  Query : ORACLE WILDCARD ENVIRONMENT
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[58/86] GlobalTradeMgmtSWIs_CreatinganOfflineShipmentinGTMv1_1  [title]
+  Query : Creating an Offline Shipment in GTM
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[59/86] GlobalTradeMgmtSWIs_HTSRequestProcessRev01  [title]
+  Query : HTS REQUEST PROCESS
+  Prec@10: With=60%  Without=40%  Delta=+20%  → YES
+[60/86] InboundSWIs_DockSafetyLoadingUnloadingRev02  [title]
+  Query : DOCK SAFETY LOADING/UNLOADING
+  Prec@10: With=50%  Without=40%  Delta=+10%  → YES
+[61/86] OutboundSWIs_WI_Outbound_PickingExceptionsv1_0  [title]
+  Query : WORK INSTRUCTION – OUTBOUND –PICKING EXCEPTIONS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[62/86] OutboundSWIs_WI_Outbound_SchedulingPickReleasev1_0  [title]
+  Query : SCHEDULING THE DAILY PICK RELEASE
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[63/86] OutboundSWIs_WI_Outbound_ShipConfirmv2_0  [title]
+  Query : SHIP CONFIRM
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[64/86] OutboundSWIs_WI_Outbound_StageMovev2_0  [title]
+  Query : WORK INSTRUCTION –OUTBOUND – STAGE MOVE
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[65/86] OutboundSWIs_WI_Outbound_UpdatingCOOv1_0  [title]
+  Query : UPDATING THE COUNTRY OF ORIGIN FOR A DELIVERY
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[66/86] OutboundSWIs_ZebraTrailerInspectionandReleaseFormRev01xls  [title]
+  Query : Zebra Trailer Inspection and Release Verification Checklist
+  Prec@10: With=10%  Without=20%  Delta=-10%  → NO
+[67/86] ReconfigSWIs_Archive_WI_ReConfig_WIPMaterialIssuev1_0  [title]
+  Query : WIP MATERIAL ISSUE
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[68/86] ReconfigSWIs_WI_ReConfig_AddingNewPrintersforCommonCradlev1_0  [title]
+  Query : WORK INSTRUCTION – RECONFIG – ADDING NEW PRINTERS
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[69/86] ReconfigSWIs_WI_ReConfig_AssignPickTasksv1_0  [title]
+  Query : ASSIGN PICK TASKS
+  Prec@10: With=40%  Without=20%  Delta=+20%  → YES
+[70/86] ReconfigSWIs_WI_ReConfig_DiscretePickingv1_0  [title]
+  Query : DISCRETE PICKING (JOBS)
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[71/86] ReconfigSWIs_WI_ReConfig_DropLPNafterPickingv1_0  [title]
+  Query : DROP LOADED LPN AFTER PICKING
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[72/86] ReconfigSWIs_WI_ReConfig_LabelPrintingv1_0  [title]
+  Query : LABEL PRINTING (RECONFIG)
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[73/86] ReconfigSWIs_WI_ReConfig_LPNConsolidatev1_0  [title]
+  Query : LPN CONSOLIDATE AFTER WIP COMPLETIONS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[74/86] ReconfigSWIs_WI_ReConfig_PickingExceptionsv1_0  [title]
+  Query : PICKING EXCEPTIONS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[75/86] ReconfigSWIs_WI_ReConfig_PrintLaborLoadReportv1_0  [title]
+  Query : PRINT LABOR LOAD REPORT
+  Prec@10: With=60%  Without=30%  Delta=+30%  → YES
+[76/86] ReconfigSWIs_WI_ReConfig_PrintTravelers1.0  [title]
+  Query : PRINT TRAVELERS
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[77/86] ReconfigSWIs_WI_ReConfig_ReprintCommonCradleLabelsv1_0  [title]
+  Query : REPRINT COMMON CRADLE LABELS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[78/86] ReconfigSWIs_WI_ReConfig_UpdateSerialNumberCOOv1_0  [title]
+  Query : UPDATE SERIAL NUMBER COO AFTER WIP COMPLETIONS
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[79/86] ReconfigSWIs_WI_ReConfig_WIPJobAlertsv1_0  [title]
+  Query : WIP JOB ALERTS
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[80/86] ReconfigSWIs_WI_ReConfig_WIPJobAssemblyCompletionAITv1_0  [title]
+  Query : WIP JOB ASSEMBLY COMPLETION (PRINTERS – AIT)
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[81/86] ReconfigSWIs_WI_ReConfig_WIPJobAssemblyCompletionCommonCradlev1_0  [title]
+  Query : WIP JOB ASSEMBLY COMPLETION (COMMON CRADLE)
+  Prec@10: With=20%  Without=20%  Delta=+0%  → TIE
+[82/86] ReconfigSWIs_WI_ReConfig_WIPJobMoveTransactionv1_0  [title]
+  Query : WORK INSTRUCTION – RECONFIG – WIP JOB MOVE TRANSACTION
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[83/86] ReconfigSWIs_WI_ReConfig_WIPMaterialIssuev1_0  [title]
+  Query : WORK INSTRUCTION – RECONFIG – WIP MATERIAL ISSUE
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[84/86] ReconfigSWIs_WIPJob_BackflushRev01  [title]
+  Query : WIP JOB - BACKFLUSH
+  Prec@10: With=30%  Without=30%  Delta=+0%  → TIE
+[85/86] ZERT_ZERTCommunicationDevices  [title]
+  Query : ZERT DEVICE
+  Prec@10: With=10%  Without=10%  Delta=+0%  → TIE
+[86/86] ZERT_ZERTCommunicationDevicesProcessRev01  [title]
+  Query : ZERT COMMUNICATION DEVICES PROCESS
+  Prec@10: With=30%  Without=20%  Delta=+10%  → YES
+----------------------------------------------------------------------
+
+SUMMARY ACROSS 86 QUERIES (86 documents):
+  Config          : alpha=0.25  w_text=0.4  w_heading=0.6  TOP_N=10
+  Avg Precision@10: With=24.19%  Without=19.77%  Delta=+4.42%
+  Avg Recall@10   : With=94.29%  Without=81.53%
+  Avg MRR         : With=0.8917  Without=0.9212
+  Avg Relevancy   : With=24.19%  Without=19.77%  Delta=+4.42%
+  Ancestral wins  : 26 YES / 56 TIE / 4 NO
+----------------------------------------------------------------------
+
+Excel saved to: C:\Users\AK8963\OneDrive - Zebra Technologies\Documents\Langextract_run\database\output\per_doc_title_query_results5.xlsx
+  Sheet 1 'Detailed Results': 860 result rows across 86 docs
+  Sheet 2 'Summary': 86 document rows + average footer
